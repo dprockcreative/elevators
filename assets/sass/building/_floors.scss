@@ -1,0 +1,104 @@
+.floors {
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+	font-size: 1.2rem;
+	font-weight: 200;
+	color: $white-05;
+	border: 1px solid $white-02;
+	background-color: $white-005;
+	background-image: url('../images/mask.png');
+
+	li {
+		position: relative;
+		width: 8rem;
+		height: $base-story-height;
+		margin: 0;
+		padding: 0 0 0 0;
+		font-size: 4.4rem;
+		font-weight: 400;
+		color: $white-005;
+
+
+		&:first-child {
+			border-top-color: $white-02;
+		}
+
+		> section {
+			position: absolute;
+			top: 0.5rem;
+			left: 5.5rem;
+			display: block;
+			min-width: 2rem;
+			height: 4rem;
+			padding: 0;
+			font-size: 1.4rem;
+			line-height: normal;
+			background-color: $black-04;
+			text-align: center;
+			@include border(0.1rem solid $black-06, false);
+			@include border-radius(0.3rem);
+
+			&:before, &:after {
+				@extend .icons;
+				position: absolute;
+				left: 0.15rem;
+				z-index: 0;
+				cursor: pointer;
+				width: 1.4rem;
+				height: 1.4rem;
+				font-size: 1.4rem;
+				line-height: 0.7em;
+				color: $white-08;
+				@include no-select();
+				pointer-events: none;
+			}
+
+			&:before {
+				@extend .icon-up;
+				top: 0.6rem;
+			}
+
+			&:after {
+				@extend .icon-down;
+				bottom: 0.3rem;
+			}
+
+			> nav {
+				position: relative;
+				z-index: 1;
+				width: 0;
+				margin: 0;
+				padding: 0.8rem;
+				text-align: center;
+				opacity: 0;
+				white-space: nowrap;
+				@include no-select();
+				pointer-events: none;
+
+				@include transition-property(opacity, width, margin-left);
+				@include transition-duration(250ms);
+				@include transition-delay(0s);
+				@include transition-timing-function(ease);
+
+				button {
+					width: 2rem;
+					padding: 0;
+					line-height: 2rem;
+				}
+			}
+
+			&.active,
+			&:hover {
+				background-color: $black-02;
+				> nav {
+					opacity: 1;
+					width: auto;
+					margin-left: 2.5rem;
+					@include all-select();
+					pointer-events: auto;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+.elevator {
+  cursor: pointer;
+  position: absolute;
+  bottom: $base-floor-margin;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  background-color: $monsoon;
+  @include box-shadow(0 0 0 1px $white-03 inset);
+  @include border-radius(1px);
+
+  @include transition-property(bottom, background-color);
+  @include transition-duration(1s, 750ms);
+  @include transition-delay(0s, 250ms);
+  @include transition-timing-function(ease-in-out, ease);
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 1.5rem;
+    background-color: $jumbo;
+    @include transition(width $door-duration $door-delay, ease);
+    @include box-shadow(0 0 0 1px $black-01 inset);
+  }
+
+  &:before { left: 0; }
+  &:after { right: 0; }
+
+  &.open {
+    background-color: $white-005;
+    &:before, &:after {
+      width: 0;
+    }
+  }
+
+  > .cube {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    z-index: 0;
+    display: block;
+    background-color: $white-005;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $black-05 $white-005 $white-02;
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      right: -2px;
+      left: -2px;
+      border-style: none solid;
+      border-width: 0 1px;
+    }
+
+    &:before {
+      top: -4px;
+      bottom: 19px;
+      background-color: $black-05;
+      border-color: transparent $black-08;
+      @include transform(perspective(4px) rotateX(-20deg));
+    }
+
+    &:after {
+      top: 19px;
+      bottom: -5px;
+      background-color: $white-02;
+      border-color: transparent $white-03;
+      @include transform(perspective(4px) rotateX(20deg));
+    }
+  }
+}

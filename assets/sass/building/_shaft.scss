@@ -1,0 +1,20 @@
+.shaft {
+  position: relative;
+  width: 3.2rem;
+  margin: 0 0.5rem;
+  padding: 0;
+  background-color: $black-005;
+  @include border(1px solid $white-005, false);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+@include shaft(2);
+@include shaft(3);
+@include shaft(4);
+@include shaft(5);
+@include shaft(6);
+@include shaft(7);
+@include shaft(8);
+@include shaft(9);
+@include shaft(10);

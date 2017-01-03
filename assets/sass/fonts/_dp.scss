@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'dp';
+  font-weight: normal;
+  font-style: normal;
+  @include fontsrc('#{$font_src}dp/', 'dp', 'dp');
+}
+
+.icons {
+  font-family: 'dp' !important;
+  speak: none;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  font-variant: inherit;
+  line-height: inherit;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logo {
+  &:before,
+  &:after {
+    content: "\e900";
+  }
+}
+.icon-up {
+  &:before,
+  &:after {
+    content: "\e901";
+  }
+}
+.icon-down {
+  &:before,
+  &:after {
+    content: "\e902";
+  }
+}

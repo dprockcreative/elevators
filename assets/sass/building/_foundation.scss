@@ -1,0 +1,10 @@
+.foundation {
+	margin: 0.2rem 0 0;
+	padding: 0.5rem;
+	background-color: $white-005;
+	@include border(0.1rem solid $white-02, false);
+
+	> form {
+		text-align: center;
+	}
+}

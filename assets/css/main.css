@@ -1,0 +1,4163 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+/* Document
+   ========================================================================== */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  line-height: 1.15;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */ }
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0; }
+
+/**
+ * Add the correct display in IE 9-.
+ */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block; }
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+figcaption,
+figure,
+main {
+  /* 1 */
+  display: block; }
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */ }
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+a:active,
+a:hover {
+  outline-width: 0; }
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit; }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000; }
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+video {
+  display: inline-block; }
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none; }
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible; }
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none; }
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */ }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+details,
+menu {
+  display: block; }
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item; }
+
+/* Scripting
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+canvas {
+  display: inline-block; }
+
+/**
+ * Add the correct display in IE.
+ */
+template {
+  display: none; }
+
+/* Hidden
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10-.
+ */
+[hidden] {
+  display: none; }
+
+/*
+  Media Queries
+*/
+body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch; }
+  body > header {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 0 6rem;
+    -ms-flex: 0 0 6rem;
+    flex: 0 0 6rem;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch; }
+  body > main {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch; }
+    body > main > section {
+      -webkit-box-ordinal-group: 1;
+      -moz-box-ordinal-group: 1;
+      -webkit-order: 0;
+      -ms-flex-order: 0;
+      order: 0;
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+      align-self: stretch; }
+  body > footer {
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 0 4rem;
+    -ms-flex: 0 0 4rem;
+    flex: 0 0 4rem;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch; }
+
+form {
+  padding: 0.7rem 1rem 1rem;
+  text-align: left; }
+  form label.inline {
+    display: inline-block;
+    margin: 0 0 0 0.6rem; }
+    form label.inline:first-child {
+      margin-left: 0; }
+  form label[title] {
+    position: relative; }
+    form label[title]:before {
+      content: attr(title);
+      display: block;
+      margin: 0;
+      padding: 0 0 0.2rem;
+      font-size: 1rem;
+      font-weight: 200;
+      font-style: normal;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: left; }
+
+input {
+  margin: 0;
+  padding: 0.6rem 0.5rem 0.5rem 1.4rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: normal;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: left;
+  border: 0.1rem solid rgba(255, 255, 255, 0.5);
+  outline: 0 none transparent;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  border-radius: 0.3rem; }
+  input:hover, input:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2); }
+  input:active {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0.1rem solid rgba(255, 255, 255, 0.9);
+    outline: 0 none transparent; }
+
+input[type="number"] {
+  width: 3.7rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  text-align: right; }
+
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0.8rem 0.5rem 0.6rem;
+  font-size: 1rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.1rem solid rgba(0, 0, 0, 0.6);
+  outline: 0 none transparent;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  border-radius: 0.2rem;
+  -webkit-box-sizing: unset;
+  -moz-box-sizing: unset;
+  box-sizing: unset; }
+  button:hover, button:focus,
+  input[type="submit"]:hover,
+  input[type="submit"]:focus,
+  input[type="button"]:hover,
+  input[type="button"]:focus,
+  input[type="reset"]:hover,
+  input[type="reset"]:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1); }
+  button:active,
+  input[type="submit"]:active,
+  input[type="button"]:active,
+  input[type="reset"]:active {
+    color: #000;
+    border-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(255, 255, 255, 0.8); }
+  button[disabled],
+  input[type="submit"][disabled],
+  input[type="button"][disabled],
+  input[type="reset"][disabled] {
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(0, 0, 0, 0.4);
+    background-color: transparent; }
+    button[disabled] :hover, button[disabled]:focus, button[disabled]:active,
+    input[type="submit"][disabled] :hover,
+    input[type="submit"][disabled]:focus,
+    input[type="submit"][disabled]:active,
+    input[type="button"][disabled] :hover,
+    input[type="button"][disabled]:focus,
+    input[type="button"][disabled]:active,
+    input[type="reset"][disabled] :hover,
+    input[type="reset"][disabled]:focus,
+    input[type="reset"][disabled]:active {
+      color: rgba(255, 255, 255, 0.4);
+      background-color: transparent; }
+  button.active,
+  input[type="submit"].active,
+  input[type="button"].active,
+  input[type="reset"].active {
+    cursor: progress;
+    -webkit-box-shadow: 0 0 0.5rem 0 rgba(255, 255, 255, 0.5) inset;
+    -moz-box-shadow: 0 0 0.5rem 0 rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0 0 0.5rem 0 rgba(255, 255, 255, 0.5) inset; }
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  margin-left: 0.5rem; }
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1; }
+
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1; }
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1; }
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1; }
+
+::-ms-expand {
+  display: none; }
+
+::-moz-focus-inner {
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important; }
+
+::-moz-focus-inner {
+  border: none; }
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0px 0px 0px #000; }
+
+@-moz-document url-prefix() {
+  select {
+    padding: 0 4px !important; } }
+@font-face {
+  font-family: 'dp';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/dp/dp.eot");
+  src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
+.icons, body > header > hgroup h1, .floors li > section:before, body > main > section > ol li > section:before, .floors li > section:after, body > main > section > ol li > section:after {
+  font-family: 'dp' !important;
+  speak: none;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  font-variant: inherit;
+  line-height: inherit;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-logo:before, body > header > hgroup h1:before, .icon-logo:after, body > header > hgroup h1:after {
+  content: "\e900"; }
+
+.icon-up:before, .floors li > section:before, body > main > section > ol li > section:before, .icon-up:after {
+  content: "\e901"; }
+
+.icon-down:before, .icon-down:after, .floors li > section:after, body > main > section > ol li > section:after {
+  content: "\e902"; }
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/roboto/roboto-thin-webfont.eot");
+  src: url("../fonts/roboto/roboto-thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-thin-webfont.woff") format("woff"), url("../fonts/roboto/roboto-thin-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-thin-webfont.svg#robotothin") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 100;
+  src: url("../fonts/roboto/roboto-thinitalic-webfont.eot");
+  src: url("../fonts/roboto/roboto-thinitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-thinitalic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-thinitalic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-thinitalic-webfont.svg#robotothin_italic") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/roboto/roboto-light-webfont.eot");
+  src: url("../fonts/roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-light-webfont.svg#robotolight") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: lighter;
+  src: url("../fonts/roboto/roboto-light-webfont.eot");
+  src: url("../fonts/roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-light-webfont.svg#robotolight") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 200;
+  src: url("../fonts/roboto/roboto-lightitalic-webfont.eot");
+  src: url("../fonts/roboto/roboto-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-lightitalic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-lightitalic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-lightitalic-webfont.svg#robotolight_italic") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/roboto/roboto-regular-webfont.eot");
+  src: url("../fonts/roboto/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-regular-webfont.woff") format("woff"), url("../fonts/roboto/roboto-regular-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-regular-webfont.svg#robotoregular") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/roboto/roboto-regular-webfont.eot");
+  src: url("../fonts/roboto/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-regular-webfont.woff") format("woff"), url("../fonts/roboto/roboto-regular-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-regular-webfont.svg#robotoregular") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/roboto/roboto-italic-webfont.eot");
+  src: url("../fonts/roboto/roboto-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-italic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-italic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-italic-webfont.svg#robotoitalic") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto/roboto-medium-webfont.eot");
+  src: url("../fonts/roboto/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-medium-webfont.woff") format("woff"), url("../fonts/roboto/roboto-medium-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-medium-webfont.svg#robotomedium") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/roboto/roboto-mediumitalic-webfont.eot");
+  src: url("../fonts/roboto/roboto-mediumitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-mediumitalic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-mediumitalic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-mediumitalic-webfont.svg#robotomedium_italic") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/roboto/roboto-bold-webfont.eot");
+  src: url("../fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("../fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-bold-webfont.svg#robotobold") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/roboto/roboto-bold-webfont.eot");
+  src: url("../fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("../fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-bold-webfont.svg#robotobold") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 500;
+  src: url("../fonts/roboto/roboto-bolditalic-webfont.eot");
+  src: url("../fonts/roboto/roboto-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bolditalic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-bolditalic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-bolditalic-webfont.svg#robotobold_italic") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/roboto/roboto-black-webfont.eot");
+  src: url("../fonts/roboto/roboto-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-black-webfont.woff") format("woff"), url("../fonts/roboto/roboto-black-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-black-webfont.svg#robotoblack") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bolder;
+  src: url("../fonts/roboto/roboto-bold-webfont.eot");
+  src: url("../fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("../fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-bold-webfont.svg#robotobold") format("svg"); }
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/roboto/roboto-blackitalic-webfont.eot");
+  src: url("../fonts/roboto/roboto-blackitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-blackitalic-webfont.woff") format("woff"), url("../fonts/roboto/roboto-blackitalic-webfont.ttf") format("truetype"), url("../fonts/roboto/roboto-blackitalic-webfont.svg#robotoblack_italic") format("svg"); }
+html {
+  height: 100%;
+  font-size: 10px; }
+  html body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    font-weight: 300;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    background-color: #333; }
+    html body > div[id] {
+      position: inherit;
+      width: inherit;
+      height: inherit;
+      margin: inherit;
+      padding: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      font-style: inherit;
+      color: inherit;
+      overflow: inherit;
+      background-color: inherit; }
+  html.debug body:after {
+    content: "ALL";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: block;
+    margin: 0;
+    padding: 0.3rem 0.5rem;
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    pointer-events: none; }
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+p {
+  cursor: default; }
+
+a {
+  color: rgba(255, 255, 255, 0.8);
+  outline: 0;
+  text-decoration: none; }
+  a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none; }
+  a:active, a:focus {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    outline: 0; }
+
+var, mark {
+  font-size: 1.2rem !important;
+  font-weight: 300;
+  font-style: normal;
+  background-color: transparent; }
+
+var {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5); }
+
+mark {
+  line-height: normal;
+  color: rgba(255, 255, 255, 0.5); }
+
+small {
+  font-size: 1.2rem;
+  font-weight: 200; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.text-align {
+  display: block; }
+  .text-align.left {
+    text-align: left; }
+  .text-align.right {
+    text-align: right; }
+  .text-align.center {
+    text-align: center; }
+
+body > header {
+  text-align: center; }
+  body > header * {
+    cursor: default;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none; }
+  body > header > hgroup {
+    position: relative;
+    display: block;
+    max-width: 80rem;
+    margin: 2rem auto;
+    padding: 0;
+    text-align: left; }
+    body > header > hgroup h1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5rem;
+      height: 5rem;
+      margin: 0;
+      padding: 0;
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.6); }
+      body > header > hgroup h1:after {
+        display: none; }
+      body > header > hgroup h1 > span {
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 1px;
+        height: 1px;
+        font-size: 7px;
+        opacity: 0;
+        overflow: hidden; }
+    body > header > hgroup h2, body > header > hgroup h3 {
+      padding: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 100; }
+    body > header > hgroup h2 {
+      margin: 0 0 0 5rem;
+      font-size: 2.4rem; }
+    body > header > hgroup h3 {
+      margin: 0.7rem 0 0 5rem;
+      font-size: 1.2rem; }
+    body > header > hgroup h1, body > header > hgroup h2, body > header > hgroup h3 {
+      text-shadow: 0 0 0 transparent;
+      -webkit-transition-property: color, text-shadow;
+      -moz-transition-property: color, text-shadow;
+      -ms-transition-property: color, text-shadow;
+      -o-transition-property: color, text-shadow;
+      transition-property: color, text-shadow;
+      -webkit-transition-duration: 250ms;
+      -moz-transition-duration: 250ms;
+      -ms-transition-duration: 250ms;
+      -o-transition-duration: 250ms;
+      transition-duration: 250ms;
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-transition-timing-function: linear;
+      -moz-transition-timing-function: linear;
+      -ms-transition-timing-function: linear;
+      -o-transition-timing-function: linear;
+      transition-timing-function: linear; }
+    body > header > hgroup:hover h1, body > header > hgroup:hover h2, body > header > hgroup:hover h3 {
+      color: #fff;
+      text-shadow: 0 0 1rem rgba(255, 255, 255, 0.5); }
+
+body > main {
+  text-align: center; }
+  body > main > section {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 5rem 0; }
+    body > main > section > ul, body > main > section > ol {
+      display: inline-block;
+      vertical-align: bottom; }
+
+body > footer {
+  position: relative;
+  text-align: center; }
+  body > footer * {
+    cursor: default;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none; }
+  body > footer > ul, body > footer > ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap; }
+    body > footer > ul li, body > footer > ol li {
+      display: inline-block;
+      vertical-align: middle; }
+  body > footer > ul {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem 0;
+    text-align: left; }
+    body > footer > ul li {
+      margin: 0 0 0 1.4rem;
+      padding: 0 0 0 1.4rem;
+      font-size: 1.2rem;
+      font-weight: 200;
+      font-style: normal;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: left;
+      border-left: 1px solid rgba(255, 255, 255, 0.3); }
+      body > footer > ul li:first-child {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none; }
+      body > footer > ul li > a {
+        cursor: pointer; }
+  body > footer > ol {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    body > footer > ol li {
+      width: 1rem;
+      height: 1rem;
+      border-left: 1px solid #000; }
+      body > footer > ol li:nth-child(1) {
+        background-color: #eee; }
+      body > footer > ol li:nth-child(2) {
+        background-color: #ddd; }
+      body > footer > ol li:nth-child(3) {
+        background-color: #ccc; }
+      body > footer > ol li:nth-child(4) {
+        background-color: #bbb; }
+      body > footer > ol li:nth-child(5) {
+        background-color: #aaa; }
+      body > footer > ol li:nth-child(6) {
+        background-color: #999; }
+      body > footer > ol li:nth-child(7) {
+        background-color: #888; }
+      body > footer > ol li:nth-child(8) {
+        background-color: #777; }
+      body > footer > ol li:nth-child(9) {
+        background-color: #666; }
+      body > footer > ol li:nth-child(10) {
+        background-color: #555; }
+      body > footer > ol li:nth-child(11) {
+        background-color: #444; }
+      body > footer > ol li:nth-child(12) {
+        background-color: #333; }
+      body > footer > ol li:nth-child(13) {
+        background-color: #222; }
+      body > footer > ol li:nth-child(14) {
+        background-color: #111; }
+
+body {
+  position: relative; }
+  body > main > dialog {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 1px;
+    height: 1px;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    pointer-events: none; }
+    body > main > dialog > div {
+      position: fixed;
+      z-index: 0;
+      overflow: hidden;
+      text-align: center;
+      user-select: auto;
+      -webkit-touch-callout: default;
+      -webkit-user-select: auto;
+      -khtml-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      -ms-touch-action: auto;
+      pointer-events: auto;
+      -webkit-transition-property: opacity, top, right, bottom, left;
+      -moz-transition-property: opacity, top, right, bottom, left;
+      -ms-transition-property: opacity, top, right, bottom, left;
+      -o-transition-property: opacity, top, right, bottom, left;
+      transition-property: opacity, top, right, bottom, left;
+      -webkit-transition-duration: 500ms;
+      -moz-transition-duration: 500ms;
+      -ms-transition-duration: 500ms;
+      -o-transition-duration: 500ms;
+      transition-duration: 500ms;
+      -webkit-transition-delay: 0ms;
+      -moz-transition-delay: 0ms;
+      -ms-transition-delay: 0ms;
+      -o-transition-delay: 0ms;
+      transition-delay: 0ms;
+      -webkit-transition-timing-function: ease-in-out;
+      -moz-transition-timing-function: ease-in-out;
+      -ms-transition-timing-function: ease-in-out;
+      -o-transition-timing-function: ease-in-out;
+      transition-timing-function: ease-in-out; }
+      body > main > dialog > div > article {
+        opacity: inherit;
+        width: 30rem;
+        margin: 30rem auto 0;
+        padding: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.8);
+        -webkit-border-radius: 0.3rem;
+        -moz-border-radius: 0.3rem;
+        -ms-border-radius: 0.3rem;
+        border-radius: 0.3rem;
+        -webkit-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        -moz-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -ms-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 250ms;
+        -moz-transition-duration: 250ms;
+        -ms-transition-duration: 250ms;
+        -o-transition-duration: 250ms;
+        transition-duration: 250ms;
+        -webkit-transition-delay: 0ms;
+        -moz-transition-delay: 0ms;
+        -ms-transition-delay: 0ms;
+        -o-transition-delay: 0ms;
+        transition-delay: 0ms;
+        -webkit-transition-timing-function: ease-in-out;
+        -moz-transition-timing-function: ease-in-out;
+        -ms-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out; }
+        body > main > dialog > div > article > header {
+          padding: 0 0 2rem; }
+          body > main > dialog > div > article > header h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: normal; }
+        body > main > dialog > div > article > form > label {
+          display: block;
+          margin: 2rem 0; }
+        body > main > dialog > div > article > form > footer {
+          margin: 2rem 0 0;
+          text-align: right; }
+          body > main > dialog > div > article > form > footer label {
+            display: inline-block;
+            margin: 0 0 0 1rem; }
+      body > main > dialog > div:not(.active) {
+        top: 50%;
+        right: 50%;
+        bottom: 50%;
+        left: 50%;
+        background-color: transparent;
+        opacity: 0; }
+      body > main > dialog > div.active {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        opacity: 1; }
+
+.building, body > main > section > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2); }
+  .building li, body > main > section > ul li {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 0;
+    white-space: normal;
+    border-style: solid;
+    border-width: 0.1rem 0 0 0.1rem;
+    border-color: rgba(255, 255, 255, 0.2) transparent transparent rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: url("../images/mask.png"); }
+    .building li:first-child, body > main > section > ul li:first-child {
+      padding-left: 2rem; }
+    .building li:last-child, body > main > section > ul li:last-child {
+      padding-right: 2rem;
+      border-right-width: 1px;
+      border-right-color: rgba(255, 255, 255, 0.2); }
+
+.floors, body > main > section > ol {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  background-image: url("../images/mask.png"); }
+  .floors li, body > main > section > ol li {
+    position: relative;
+    width: 8rem;
+    height: 5rem;
+    margin: 0;
+    padding: 0 0 0 0;
+    font-size: 4.4rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.05); }
+    .floors li:first-child, body > main > section > ol li:first-child {
+      border-top-color: rgba(255, 255, 255, 0.2); }
+    .floors li > section, body > main > section > ol li > section {
+      position: absolute;
+      top: 0.5rem;
+      left: 5.5rem;
+      display: block;
+      min-width: 2rem;
+      height: 4rem;
+      padding: 0;
+      font-size: 1.4rem;
+      line-height: normal;
+      background-color: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      border: 0.1rem solid rgba(0, 0, 0, 0.6);
+      outline: 0 none transparent;
+      -webkit-border-radius: 0.3rem;
+      -moz-border-radius: 0.3rem;
+      -ms-border-radius: 0.3rem;
+      border-radius: 0.3rem; }
+      .floors li > section:before, body > main > section > ol li > section:before, .floors li > section:after, body > main > section > ol li > section:after {
+        position: absolute;
+        left: 0.15rem;
+        z-index: 0;
+        cursor: pointer;
+        width: 1.4rem;
+        height: 1.4rem;
+        font-size: 1.4rem;
+        line-height: 0.7em;
+        color: rgba(255, 255, 255, 0.8);
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -ms-touch-action: none;
+        pointer-events: none; }
+      .floors li > section:before, body > main > section > ol li > section:before {
+        top: 0.6rem; }
+      .floors li > section:after, body > main > section > ol li > section:after {
+        bottom: 0.3rem; }
+      .floors li > section > nav, body > main > section > ol li > section > nav {
+        position: relative;
+        z-index: 1;
+        width: 0;
+        margin: 0;
+        padding: 0.8rem;
+        text-align: center;
+        opacity: 0;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -ms-touch-action: none;
+        pointer-events: none;
+        -webkit-transition-property: opacity, width, margin-left;
+        -moz-transition-property: opacity, width, margin-left;
+        -ms-transition-property: opacity, width, margin-left;
+        -o-transition-property: opacity, width, margin-left;
+        transition-property: opacity, width, margin-left;
+        -webkit-transition-duration: 250ms;
+        -moz-transition-duration: 250ms;
+        -ms-transition-duration: 250ms;
+        -o-transition-duration: 250ms;
+        transition-duration: 250ms;
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -ms-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+        -webkit-transition-timing-function: ease;
+        -moz-transition-timing-function: ease;
+        -ms-transition-timing-function: ease;
+        -o-transition-timing-function: ease;
+        transition-timing-function: ease; }
+        .floors li > section > nav button, body > main > section > ol li > section > nav button {
+          width: 2rem;
+          padding: 0;
+          line-height: 2rem; }
+      .floors li > section.active, body > main > section > ol li > section.active, .floors li > section:hover, body > main > section > ol li > section:hover {
+        background-color: rgba(0, 0, 0, 0.2); }
+        .floors li > section.active > nav, body > main > section > ol li > section.active > nav, .floors li > section:hover > nav, body > main > section > ol li > section:hover > nav {
+          opacity: 1;
+          width: auto;
+          margin-left: 2.5rem;
+          user-select: text;
+          -webkit-touch-callout: default;
+          -webkit-user-select: text;
+          -khtml-user-select: all;
+          -moz-user-select: text;
+          -ms-user-select: text;
+          -ms-touch-action: auto;
+          pointer-events: auto; }
+
+.shaft {
+  position: relative;
+  width: 3.2rem;
+  margin: 0 0.5rem;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  outline: 0 none transparent;
+  border-top: 0;
+  border-bottom: 0; }
+
+[stories="2"].shaft {
+  height: 10rem; }
+[stories="2"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="2"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="2"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="2"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="3"].shaft {
+  height: 15rem; }
+[stories="3"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="3"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="3"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="3"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="3"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="3"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="3"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="3"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="3"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="4"].shaft {
+  height: 20rem; }
+[stories="4"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="4"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="4"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="4"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="4"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="4"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="4"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="4"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="4"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="4"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="4"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="5"].shaft {
+  height: 25rem; }
+[stories="5"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="5"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="5"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="5"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="5"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="5"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="5"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="5"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="5"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="5"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="5"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="5"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="5"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="6"].shaft {
+  height: 30rem; }
+[stories="6"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="6"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="6"] .elevator[current="1"][next="6"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="2"][next="6"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="3"][next="6"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="4"][next="6"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="6"] .elevator[current="5"][next="6"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="1"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="2"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="3"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="4"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="5"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="6"] .elevator[current="6"][next="6"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="7"].shaft {
+  height: 35rem; }
+[stories="7"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="6"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="7"] .elevator[current="1"][next="7"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="6"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="2"][next="7"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="6"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="3"][next="7"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="6"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="4"][next="7"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="6"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="5"][next="7"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="1"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="2"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="3"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="4"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="5"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="6"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="7"] .elevator[current="6"][next="7"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="1"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="2"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="3"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="4"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="5"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="6"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="7"] .elevator[current="7"][next="7"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="8"].shaft {
+  height: 40rem; }
+[stories="8"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="6"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="7"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="8"] .elevator[current="1"][next="8"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="6"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="7"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="2"][next="8"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="6"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="7"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="3"][next="8"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="6"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="7"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="4"][next="8"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="6"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="7"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="5"][next="8"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="1"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="2"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="3"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="4"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="5"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="6"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="7"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="6"][next="8"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="1"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="2"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="3"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="4"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="5"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="6"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="7"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="8"] .elevator[current="7"][next="8"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="1"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="2"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="3"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="4"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="5"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="6"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="7"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="8"] .elevator[current="8"][next="8"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="9"].shaft {
+  height: 45rem; }
+[stories="9"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="6"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="7"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="8"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="9"] .elevator[current="1"][next="9"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="6"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="7"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="8"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="2"][next="9"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="6"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="7"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="8"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="3"][next="9"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="6"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="7"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="8"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="4"][next="9"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="6"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="7"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="8"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="5"][next="9"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="1"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="2"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="3"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="4"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="5"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="6"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="7"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="8"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="6"][next="9"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="1"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="2"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="3"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="4"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="5"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="6"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="7"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="8"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="7"][next="9"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="1"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="2"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="3"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="4"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="5"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="6"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="7"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="8"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="9"] .elevator[current="8"][next="9"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="1"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="2"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="3"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="4"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="5"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="6"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="7"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="8"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="9"] .elevator[current="9"][next="9"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+[stories="10"].shaft {
+  height: 50rem; }
+[stories="10"] .elevator[current="1"][next="1"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="2"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="3"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="4"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="5"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="6"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="7"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="8"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="9"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="10"] .elevator[current="1"][next="10"] {
+  bottom: 0.15rem !important;
+  -webkit-transition-duration: 3700ms, 750ms;
+  -moz-transition-duration: 3700ms, 750ms;
+  -ms-transition-duration: 3700ms, 750ms;
+  -o-transition-duration: 3700ms, 750ms;
+  transition-duration: 3700ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="1"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="2"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="3"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="4"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="5"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="6"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="7"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="8"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="9"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="2"][next="10"] {
+  bottom: 5.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="1"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="2"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="3"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="4"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="5"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="6"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="7"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="8"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="9"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="3"][next="10"] {
+  bottom: 10.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="1"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="2"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="3"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="4"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="5"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="6"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="7"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="8"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="9"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="4"][next="10"] {
+  bottom: 15.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="1"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="2"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="3"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="4"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="5"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="6"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="7"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="8"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="9"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="5"][next="10"] {
+  bottom: 20.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="1"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="2"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="3"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="4"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="5"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="6"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="7"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="8"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="9"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="6"][next="10"] {
+  bottom: 25.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="1"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="2"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="3"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="4"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="5"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="6"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="7"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="8"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="9"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="7"][next="10"] {
+  bottom: 30.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="1"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="2"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="3"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="4"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="5"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="6"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="7"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="8"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="9"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="8"][next="10"] {
+  bottom: 35.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="1"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="2"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="3"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="4"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="5"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="6"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="7"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="8"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="9"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+[stories="10"] .elevator[current="9"][next="10"] {
+  bottom: 40.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="1"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 3700ms, 750ms;
+  -moz-transition-duration: 3700ms, 750ms;
+  -ms-transition-duration: 3700ms, 750ms;
+  -o-transition-duration: 3700ms, 750ms;
+  transition-duration: 3700ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="2"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 3400ms, 750ms;
+  -moz-transition-duration: 3400ms, 750ms;
+  -ms-transition-duration: 3400ms, 750ms;
+  -o-transition-duration: 3400ms, 750ms;
+  transition-duration: 3400ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="3"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 3100ms, 750ms;
+  -moz-transition-duration: 3100ms, 750ms;
+  -ms-transition-duration: 3100ms, 750ms;
+  -o-transition-duration: 3100ms, 750ms;
+  transition-duration: 3100ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="4"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 2800ms, 750ms;
+  -moz-transition-duration: 2800ms, 750ms;
+  -ms-transition-duration: 2800ms, 750ms;
+  -o-transition-duration: 2800ms, 750ms;
+  transition-duration: 2800ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="5"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 2500ms, 750ms;
+  -moz-transition-duration: 2500ms, 750ms;
+  -ms-transition-duration: 2500ms, 750ms;
+  -o-transition-duration: 2500ms, 750ms;
+  transition-duration: 2500ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="6"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 2200ms, 750ms;
+  -moz-transition-duration: 2200ms, 750ms;
+  -ms-transition-duration: 2200ms, 750ms;
+  -o-transition-duration: 2200ms, 750ms;
+  transition-duration: 2200ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="7"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 1900ms, 750ms;
+  -moz-transition-duration: 1900ms, 750ms;
+  -ms-transition-duration: 1900ms, 750ms;
+  -o-transition-duration: 1900ms, 750ms;
+  transition-duration: 1900ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="8"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 1600ms, 750ms;
+  -moz-transition-duration: 1600ms, 750ms;
+  -ms-transition-duration: 1600ms, 750ms;
+  -o-transition-duration: 1600ms, 750ms;
+  transition-duration: 1600ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="9"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 1300ms, 750ms;
+  -moz-transition-duration: 1300ms, 750ms;
+  -ms-transition-duration: 1300ms, 750ms;
+  -o-transition-duration: 1300ms, 750ms;
+  transition-duration: 1300ms, 750ms; }
+[stories="10"] .elevator[current="10"][next="10"] {
+  bottom: 45.15rem !important;
+  -webkit-transition-duration: 1000ms, 750ms;
+  -moz-transition-duration: 1000ms, 750ms;
+  -ms-transition-duration: 1000ms, 750ms;
+  -o-transition-duration: 1000ms, 750ms;
+  transition-duration: 1000ms, 750ms; }
+
+.elevator {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0.15rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  background-color: #777;
+  -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  -moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-transition-property: bottom, background-color;
+  -moz-transition-property: bottom, background-color;
+  -ms-transition-property: bottom, background-color;
+  -o-transition-property: bottom, background-color;
+  transition-property: bottom, background-color;
+  -webkit-transition-duration: 1s, 750ms;
+  -moz-transition-duration: 1s, 750ms;
+  -ms-transition-duration: 1s, 750ms;
+  -o-transition-duration: 1s, 750ms;
+  transition-duration: 1s, 750ms;
+  -webkit-transition-delay: 0s, 250ms;
+  -moz-transition-delay: 0s, 250ms;
+  -ms-transition-delay: 0s, 250ms;
+  -o-transition-delay: 0s, 250ms;
+  transition-delay: 0s, 250ms;
+  -webkit-transition-timing-function: ease-in-out, ease;
+  -moz-transition-timing-function: ease-in-out, ease;
+  -ms-transition-timing-function: ease-in-out, ease;
+  -o-transition-timing-function: ease-in-out, ease;
+  transition-timing-function: ease-in-out, ease; }
+  .elevator:before, .elevator:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 1.5rem;
+    background-color: #888;
+    -webkit-transition: width 750ms 250ms, ease;
+    -moz-transition: width 750ms 250ms, ease;
+    -ms-transition: width 750ms 250ms, ease;
+    -o-transition: width 750ms 250ms, ease;
+    transition: width 750ms 250ms, ease;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset; }
+  .elevator:before {
+    left: 0; }
+  .elevator:after {
+    right: 0; }
+  .elevator.open {
+    background-color: rgba(255, 255, 255, 0.05); }
+    .elevator.open:before, .elevator.open:after {
+      width: 0; }
+  .elevator > .cube {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    z-index: 0;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.5) rgba(255, 255, 255, 0.05) rgba(255, 255, 255, 0.2); }
+    .elevator > .cube:before, .elevator > .cube:after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      right: -2px;
+      left: -2px;
+      border-style: none solid;
+      border-width: 0 1px; }
+    .elevator > .cube:before {
+      top: -4px;
+      bottom: 19px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-color: transparent rgba(0, 0, 0, 0.8);
+      -webkit-transform: perspective(4px) rotateX(-20deg);
+      -moz-transform: perspective(4px) rotateX(-20deg);
+      -ms-transform: perspective(4px) rotateX(-20deg);
+      -o-transform: perspective(4px) rotateX(-20deg);
+      transform: perspective(4px) rotateX(-20deg); }
+    .elevator > .cube:after {
+      top: 19px;
+      bottom: -5px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: transparent rgba(255, 255, 255, 0.3);
+      -webkit-transform: perspective(4px) rotateX(20deg);
+      -moz-transform: perspective(4px) rotateX(20deg);
+      -ms-transform: perspective(4px) rotateX(20deg);
+      -o-transform: perspective(4px) rotateX(20deg);
+      transform: perspective(4px) rotateX(20deg); }
+
+.foundation, body > main > section > footer {
+  margin: 0.2rem 0 0;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.1rem solid rgba(255, 255, 255, 0.2);
+  outline: 0 none transparent; }
+  .foundation > form, body > main > section > footer > form {
+    text-align: center; }
+
+/*# sourceMappingURL=main.css.map */

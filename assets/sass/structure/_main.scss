@@ -1,0 +1,28 @@
+body {
+  > main {
+    text-align: center;
+
+    > section {
+      max-width: $content-max-width;
+      margin: 0 auto;
+      padding: 5rem 0;
+
+      > ul, > ol {
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+			> ul {
+				@extend .building;
+			}
+
+			> ol {
+				@extend .floors;
+			}
+
+			> footer {
+				@extend .foundation;
+			}
+    }
+  }
+}
