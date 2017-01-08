@@ -66,8 +66,9 @@ export class Task implements iTask {
       @param  shaft [Shaft]
       @return void
    */
-  public assignShaft (shaft: Shaft): void {
+  public assignShaft (shaft: Shaft): Task {
     this.shaft = shaft;
+    return this;
   }
 
   /*  Task Can Use Shaft

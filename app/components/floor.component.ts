@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, DoCheck } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Button, Event, Floor, Shaft, Task } from '../interfaces/index';
+import { Button, Floor, Shaft, Task } from '../interfaces/index';
+
 import { FloorService, ShaftService, TasksService } from '../services/index';
 
 @Component({
@@ -20,11 +21,7 @@ import { FloorService, ShaftService, TasksService } from '../services/index';
   `
 })
 
-/*
-TODO ^  [ngClass]="{'active':false}"
-*/
-
-export class FloorComponent implements OnInit {//, DoCheck {
+export class FloorComponent implements OnInit {
 
   @Input() floor: Floor;
 
@@ -95,33 +92,5 @@ export class FloorComponent implements OnInit {//, DoCheck {
   ngOnInit (): void {
     this.buildButtons();
   }
-
-  /*
-  ngDoCheck (): void {
-    //console.log('FloorComponent::ngDoCheck', this.floor);
-  }
-  */
 }
 
-
-  /*  Events
-      - handle streamed subject
-
-    //tasksService.notifyStream.subscribe((event) => this.events(event));
-
-  private events (event: Event): void {
-
-    if (this.floor.id === event.floor) {
-      if (event.status === 'deployed') {
-        this.requests.splice(0, 1);
-      }
-    }
-
-    if (this.floor.destination) {
-      if (event.status === 'deployed') {
-        this.floor.destination = false;
-      }
-    }
-
-  }
-   */

@@ -10,3 +10,5 @@ export const TASK_COMPLETE            = 8;
 
 export const TASK_STOPS_INTERVAL      = 500;
 export const TASK_STOPS_LIMIT         = 2;
+
+export const TASKS_BROADCAST_INTERVAL = 1000;

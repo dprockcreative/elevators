@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnInit, DoCheck } from '@angular/core';
 import { Elevator, Shaft, Task } from '../interfaces/index';
-import { ShaftService, TasksService } from '../services/index';
+import { TasksService } from '../services/index';
 
 @Component({
   selector: '[shaft]',
@@ -17,7 +17,7 @@ export class ShaftComponent implements OnInit, DoCheck {
   @Output() elevator: Elevator;
 
   constructor (
-    public tasksService: TasksService
+    private tasksService: TasksService
   ) {
     tasksService.openTasksStream.subscribe(tasks => this.queryOpenTasks(tasks));
   }
@@ -79,26 +79,4 @@ export class ShaftComponent implements OnInit, DoCheck {
     this.elevator = this.shaft.elevator;
   }
 }
-
-
-/*
-  private goToFloor (shaft: Shaft, floor: number, complete: boolean = false): Promise<any> {
-    let elevator = shaft.elevator;
-
-    return new Promise((resolve, reject) => {
-      Object.assign(shaft, { 'current' : floor, 'next' : floor });
-
-      elevator.Arrived(floor)
-        .then(() => this.tasksService.notify('arrived', floor))
-        .then(() => elevator.OpenDoors())
-        .then(() => this.tasksService.notify('opened', floor))
-        .then(() => elevator.LoadUnload())
-        .then(() => this.tasksService.notify('loading', floor))
-        .then(() => elevator.CloseDoors())
-        .then(() => this.tasksService.notify('closed', floor))
-        .then(() => this.tasksService.notify(complete?'completed':'deployed', floor))
-        .then(resolve);
-    });
-  }
-*/
 

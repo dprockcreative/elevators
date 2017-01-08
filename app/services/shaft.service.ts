@@ -36,6 +36,14 @@ export class ShaftService {
       .catch(this.handleError);
   }
 
+  /*  Get Current
+      @type   public
+      @return array [Shaft Array]
+   */
+   public getCurrent (): Shaft[] {
+    return this.shafts;
+   }
+
   /*  Get Shafts
       @type   public
       @return Promise [Shaft Array]

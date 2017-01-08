@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 
-//Event,
 import { Floor, Shaft, Task } from '../interfaces/index';
+
+import { ShaftService } from '../services/index';
 
 import {
   TASK_CALLED,
@@ -14,13 +15,15 @@ import {
   TASK_DELIVERED_ARRIVED,
   TASK_DELIVERED_UNLOADING,
   TASK_DELIVERED_COMPLETE,
-  TASK_STOPS_LIMIT
+  TASK_STOPS_LIMIT,
+  TASKS_BROADCAST_INTERVAL
 } from '../constants/index';
 
 @Injectable()
 export class TasksService {
 
   private tasks: Task[] = [];
+  private INT: any      = 0;
 
   // Observable sources
   private openTasksSource     = new Subject<Task[]>();
@@ -34,6 +37,11 @@ export class TasksService {
   destroyTaskStream   = this.destroyTaskSource.asObservable();
   elevatorTaskStream  = this.elevatorTaskSource.asObservable();
   completeStopStream  = this.completeStopSource.asObservable();
+
+  constructor (
+    private ngZone: NgZone, 
+    private shaftService: ShaftService
+  ) {}
 
   /*  Start Elevator Operations - Event Stream Emitter
       @type   public
@@ -55,41 +63,6 @@ export class TasksService {
       'floor': task.floor,
       'stop': stop
     });
-  }
-
-  /*  Receive request from Floor - Event Stream Emitter
-      @type   public
-      @param  from [number: Floor]
-      @param  to [number: Floor]
-      @return void
-      - Generates Task/s for Broadcast.
-   */
-  public requestFromFloor (from: number, to: number): void {
-
-    let task  = new Task(from, to);
-    let tasks = this.getTasks();
-
-    // nothing to compare or merge
-    if (!tasks.length) {
-      this.addTask(task);
-    }
-    // look for mergeable tasks
-    else {
-
-      let mTasks = this.mergableTasks(task);
-
-      // nothing to compare or merge
-      if (!mTasks.length) {
-        this.addTask(task);
-      }
-      // merge
-      else {
-        this.mergeTasks(task, mTasks[0]);
-      }
-
-    }
-
-    this.broadcastTasks();
   }
 
   /*  Get Tasks
@@ -166,14 +139,91 @@ export class TasksService {
     return false;
   }
 
+  /*  Receive request from Floor
+      @type   public
+      @param  from [number: Floor]
+      @param  to [number: Floor]
+      @return void
+      - Generates Task/s for Broadcast.
+   */
+  public requestFromFloor (from: number, to: number): void {
 
-  /*  Broadcast Open Tasks
+    let task  : Task  = new Task(from, to);
+    let shaft : Shaft = this.shaftForTask(task);
+
+    console.log('requestFromFloor', task, shaft);
+
+    let mTasks = this.mergableTasks(task);
+
+    // nothing to merge
+    if (!mTasks.length) {
+      this.addTask(
+        task.assignShaft(shaft)
+      );
+    }
+    // merge
+    else {
+      this.mergeTasks(task, mTasks[0]);
+    }
+
+    this.watchTasks();
+  }
+
+  /*  Shafts for Task
+      @type   private
+      @param  T [Task]
+      @return array [Task Array]
+   */
+  private shaftForTask (task: Task): Shaft {
+    return this.shaftService.getCurrent()
+      .filter(shaft => task.canUse(shaft))
+      .filter(shaft => (this.taskForShaft(shaft) === null))
+      .sort((sa,sb) => {
+        let a = sa.elevator.floor;
+        let b = sb.elevator.floor;
+        return b>a?1:(a>b?-1:0);
+      })[0];
+  }
+
+  /*  Consolidate Open Tasks - Event Stream Emitter
+      @type   private
+      @return boolean
+   */
+  private consolidateOpenTasks (): boolean {
+    if (this.tasks.length) {
+      let task = this.tasks.find(task => (!task.shaft));
+      if (task) {
+        let mTasks = this.mergableTasks(task);
+        if (mTasks.length) {
+          this.mergeTasks(task, mTasks[0]);
+          this.removeTask(task);
+        }
+      }
+
+      this.openTasksSource.next(this.tasks);
+      return true;
+    }
+    return false;
+  }
+
+  /*  Watch Tasks - Event Stream Emitter
       @type   private
       @return void
-      - passes tasks queue to Stream.
    */
-  private broadcastTasks (): void {
+  private watchTasks (): void {
     this.openTasksSource.next(this.tasks);
+
+    if (!this.INT) {
+      this.ngZone.runOutsideAngular(() => {
+        this.INT = setInterval(() => {
+          console.log('Tasks: ' + this.tasks.length);
+          if (!this.consolidateOpenTasks()) {
+            clearInterval(this.INT);
+            this.INT = 0;
+          }
+        }, TASKS_BROADCAST_INTERVAL);
+      });
+    }
   }
 
   /*  Merge-able Tasks
@@ -183,13 +233,14 @@ export class TasksService {
       - Looks for Viable Open Tasks that allow compared Task<T> as added stop.
    */
   private mergableTasks (T: Task): Task[] {
-    return this.tasks.filter((task) => {
-      return (
+    return this.tasks.filter(task => {
+      return task.shaft && (
         task.floor === T.floor &&
         task.up === T.up &&
         task.status < TASK_CALLED_COMPLETE &&
-        task.stops.length < TASK_STOPS_LIMIT
-      );
+        task.stops.length < TASK_STOPS_LIMIT && 
+        (task.up ? task.shaft.elevator.floor > T.floor : task.shaft.elevator.floor < T.floor)
+      ) || false;
     });
   }
 
