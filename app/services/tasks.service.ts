@@ -151,20 +151,28 @@ export class TasksService {
     let task  : Task  = new Task(from, to);
     let shaft : Shaft = this.shaftForTask(task);
 
-    console.log('requestFromFloor', task, shaft);
+    let log = [`Request: Floors: ${from} -> ${to}`];
 
     let mTasks = this.mergableTasks(task);
 
     // nothing to merge
     if (!mTasks.length) {
-      this.addTask(
+
+      let t = this.addTask(
         task.assignShaft(shaft)
       );
+
+      log.push(`Generated new Task using Shaft ${t.shaft.id}`);
     }
     // merge
     else {
-      this.mergeTasks(task, mTasks[0]);
+      let t = this.mergeTasks(task, mTasks[0]);
+
+      log.push(`Merged with existing Task using Shaft ${t.shaft.id}`);
+
     }
+
+    console.info.apply(null, log);
 
     this.watchTasks();
   }
@@ -211,12 +219,16 @@ export class TasksService {
       @return void
    */
   private watchTasks (): void {
+
     this.openTasksSource.next(this.tasks);
 
     if (!this.INT) {
+
       this.ngZone.runOutsideAngular(() => {
         this.INT = setInterval(() => {
-          console.log('Tasks: ' + this.tasks.length);
+
+          console.debug(`Remaining Tasks in Queue: ${this.tasks.length}`);
+
           if (!this.consolidateOpenTasks()) {
             clearInterval(this.INT);
             this.INT = 0;
@@ -251,8 +263,9 @@ export class TasksService {
       @return void
       - Adds stop to existing Task
    */
-  private mergeTasks(src: Task, dest: Task): void {
+  private mergeTasks(src: Task, dest: Task): Task {
     dest.addStop(src.stops);
+    return dest;
   }
 
   /*  Add Task

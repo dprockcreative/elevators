@@ -7,9 +7,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import './extensions/rxjs-extensions';
 
-import { AppComponent, BuildingComponent, DialogComponent } from './components/index';
+import { AppComponent, BuildingComponent, LogComponent, DialogComponent } from './components/index';
 import { ShaftModule, FloorModule } from './modules/index';
-import { InMemoryDataService, DialogService, FloorService, ShaftService, TasksService } from './services/index';
+import { InMemoryDataService, DialogService, FloorService, LogService, ShaftService, TasksService } from './services/index';
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import { InMemoryDataService, DialogService, FloorService, ShaftService, TasksSe
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })
   ],
-  declarations: [ AppComponent, BuildingComponent, DialogComponent ],
-  providers:    [ DialogService, FloorService, ShaftService, TasksService ],
+  declarations: [ AppComponent, BuildingComponent, LogComponent, DialogComponent ],
+  providers:    [ DialogService, FloorService, LogService, ShaftService, TasksService ],
   bootstrap:    [ AppComponent ]
 })
 

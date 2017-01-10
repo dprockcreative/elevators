@@ -50,11 +50,11 @@ body {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 1 60rem;
+    -ms-flex: 0 1 60rem;
+    flex: 0 1 60rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -66,19 +66,19 @@ body {
     display: flex;
     -webkit-box-direction: normal;
     -moz-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     -webkit-align-content: center;
     -ms-flex-line-pack: center;
     align-content: center;
@@ -88,7 +88,7 @@ body {
     -ms-flex-align: stretch;
     align-items: stretch;
 
-    > section {
+    > aside {
       -webkit-box-ordinal-group: 1;
       -moz-box-ordinal-group: 1;
       -webkit-order: 0;
@@ -96,9 +96,25 @@ body {
       order: 0;
       -webkit-box-flex: 0;
       -moz-box-flex: 0;
-      -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-      flex: 0 0 auto;
+      -webkit-flex: 0 0 24rem;
+      -ms-flex: 0 0 24rem;
+      flex: 0 0 24rem;
+      -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+      align-self: stretch;
+    }
+
+    > section {
+      -webkit-box-ordinal-group: 2;
+      -moz-box-ordinal-group: 2;
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
       -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
       align-self: stretch;

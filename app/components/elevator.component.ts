@@ -77,6 +77,8 @@ export class ElevatorComponent {
 
     let floor: number = this.TASK.floor;
 
+    console.info(`Elevator ${this.elevator.shaft.id} starting on Task to Floor ${this.TASK.floor}`, this.TASK.id);
+
     this.callProcedure(floor)
       .then(() => this.cycleStops())
       .then(() => this.completeTask())
@@ -89,6 +91,9 @@ export class ElevatorComponent {
    */
   private callProcedure (floor: number): Promise<any> {
     return new Promise((resolve, reject) => {
+
+      console.info(`Elevator ${this.elevator.shaft.id} starting call procedure ${this.TASK.floor}`);
+
       this.elevator.goTo(floor);
       this.setTaskStatus(TASK_CALLED);
       this.arrived(floor, TASK_CALLED_ARRIVED)
@@ -124,6 +129,9 @@ export class ElevatorComponent {
    */
   private cycleStops (): Promise<any> {
     return new Promise((resolve, reject) => {
+
+      console.info(`Elevator ${this.elevator.shaft.id} cycling stops ${this.TASK.floor}`);
+
       let tick = 0;
       let stop;
       let stops;
@@ -176,6 +184,8 @@ export class ElevatorComponent {
       @return void
    */
   private completeTask (): void {
+    console.info(`Elevator ${this.elevator.shaft.id} marking Task complete`, this.TASK.id);
+
     this.tasksService.destroyTask(this.TASK);
   }
 
@@ -201,7 +211,9 @@ export class ElevatorComponent {
       let I;
       I = setInterval(() => {
         if (this.elevator.floor === floor) {
-          //console.debug('ElevatorComponent::arrived', floor);
+
+      	  console.info(`Elevator ${this.elevator.shaft.id} Arrived Floor ${this.elevator.floor}`);
+
           this.setTaskStatus(status);
           clearInterval(I);
           resolve(true);
@@ -219,7 +231,9 @@ export class ElevatorComponent {
     return new Promise((resolve, reject) => {
       let T;
       T = setTimeout(() => {
-        //console.debug('ElevatorComponent::loadUnload', 'resolve');
+
+      	console.info(`Elevator ${this.elevator.shaft.id} Loading/Unloading`);
+
         this.setTaskStatus(status);
         clearTimeout(T);
         resolve(true);
@@ -236,6 +250,9 @@ export class ElevatorComponent {
     return new Promise((resolve, reject) => {
       let T;
       this.elevator.open = true;
+
+      console.info(`Elevator ${this.elevator.shaft.id} Opening Doors`);
+
       T = setTimeout(() => {
         //console.debug('ElevatorComponent::openDoors', 'resolve');
         this.setTaskStatus(status);
@@ -255,7 +272,9 @@ export class ElevatorComponent {
       let T;
       this.elevator.open = false;
       T = setTimeout(() => {
-        //console.debug('ElevatorComponent::closeDoors', 'resolve');
+
+      	console.info(`Elevator ${this.elevator.shaft.id} Closing Doors`);
+
         this.setTaskStatus(status);
         clearTimeout(T);
         resolve(true);

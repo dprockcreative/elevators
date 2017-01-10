@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Floor, Shaft } from '../interfaces/index';
-import { FloorService, ShaftService, DialogService } from '../services/index';
+import { FloorService, ShaftService, DialogService, LogService } from '../services/index';
 
 @Component({
   selector: 'section',
@@ -12,16 +12,6 @@ import { FloorService, ShaftService, DialogService } from '../services/index';
     <ol reversed="true">
       <li *ngFor="let floor of floors" [floor]="floor"></li>
     </ol>
-    <footer>
-      <form>
-        <label class="inline" title="Shafts">
-          <input type="number" name="shafts" min="1" max="5" step="1" (ngModelChange)="setShaftsLength($event)" [(ngModel)]="config.length" [readonly]="processing()" tabindex="1"/>
-        </label>
-        <label class="inline" *ngFor="let row of config" title="Shaft {{row.id}}">
-          <input type="number" name="shaft_{{row.id}}" min="3" max="10" step="1" (ngModelChange)="setShaftsStories($event, row)" [(ngModel)]="row.stories" tabindex="{{row.id + 1}}"/>
-        </label>
-      </form>
-    </footer>
   `
 })
 
@@ -31,50 +21,13 @@ export class BuildingComponent implements OnInit {
   floors: Floor[] = [];
   stories: number;
 
-  config: any[] = [];
-
   constructor(
     private floorService: FloorService,
     private shaftService: ShaftService,
-    private dialogService: DialogService
-  ) {}
-
-  /*  Processing
-      @type   public
-      @return boolean
-   */
-  public processing (): boolean {
-    return this.config.length !== this.shafts.length;
-  }
-
-  /*  Set Shafts Length
-      @type   public
-      @param  value [number]
-      @return void
-   */
-  public setShaftsLength (value: number): void {
-    let length = this.config.length;
-    if (length !== value) {
-      // delete
-      let promises = [];
-      let i;
-
-      if (length > value) {
-        for (i = length - value; i >= 1; i--) {
-          promises.push(this.shaftService.remove(this.shafts[length - i]));
-        }
-      }
-      // push
-      else {
-        for (i = value - length; i >= 1; i--) {
-          let shaft = {'stories': this.config[length - i].stories};
-          this.config.push(Object.assign({}, shaft, { 'id' : value }));
-          promises.push(this.shaftService.save(shaft as Shaft));
-        }
-      }
-
-      Promise.all(promises).then(() => this.build());
-    }
+    private dialogService: DialogService,
+    private logService: LogService
+  ) {
+    logService.useConsole('info');
   }
 
   /*  Set Shafts Stories
@@ -126,19 +79,11 @@ export class BuildingComponent implements OnInit {
       @return void
    */
   private build (): void {
+    console.info('Building Rendered');
     this.buildShafts()
       .then(shafts => this.setStories(shafts))
       .then(stories => this.buildFloors(stories))
-      .then(() => this.setConfig())
       .catch(error => this.error = error);
-  }
-
-  /*  Set Config
-      @type   private
-      @return void
-   */
-  private setConfig (): void {
-    this.config = this.shaftService.getConfig();
   }
 
   ngOnInit (): void {

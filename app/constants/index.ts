@@ -24,3 +24,8 @@ export {
   DIALOG_STRING_MAP,
   DIALOG_DEFAULT_TYPE
 } from './dialog';
+
+export {
+  LOG_DISMISS_TIMEOUT,
+  LOG_EXPIRED_TIMEOUT
+} from './log';

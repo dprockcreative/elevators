@@ -454,11 +454,11 @@ body {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 1 60rem;
+    -ms-flex: 0 1 60rem;
+    flex: 0 1 60rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -469,19 +469,19 @@ body {
     display: flex;
     -webkit-box-direction: normal;
     -moz-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     -webkit-align-content: center;
     -ms-flex-line-pack: center;
     align-content: center;
@@ -490,7 +490,7 @@ body {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch; }
-    body > main > section {
+    body > main > aside {
       -webkit-box-ordinal-group: 1;
       -moz-box-ordinal-group: 1;
       -webkit-order: 0;
@@ -498,9 +498,23 @@ body {
       order: 0;
       -webkit-box-flex: 0;
       -moz-box-flex: 0;
-      -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-      flex: 0 0 auto;
+      -webkit-flex: 0 0 24rem;
+      -ms-flex: 0 0 24rem;
+      flex: 0 0 24rem;
+      -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+      align-self: stretch; }
+    body > main > section {
+      -webkit-box-ordinal-group: 2;
+      -moz-box-ordinal-group: 2;
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
       -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
       align-self: stretch; }
@@ -681,7 +695,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, .floors li > section:before, body > main > section > ol li > section:before, .floors li > section:after, body > main > section > ol li > section:after {
+.icons, body > header > hgroup h1, .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -697,10 +711,10 @@ select:-moz-focusring {
 .icon-logo:before, body > header > hgroup h1:before, .icon-logo:after, body > header > hgroup h1:after {
   content: "\e900"; }
 
-.icon-up:before, .floors li > section:before, body > main > section > ol li > section:before, .icon-up:after {
+.icon-up:before, .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .icon-up:after {
   content: "\e901"; }
 
-.icon-down:before, .icon-down:after, .floors li > section:after, body > main > section > ol li > section:after {
+.icon-down:before, .icon-down:after, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
   content: "\e902"; }
 
 @font-face {
@@ -979,14 +993,56 @@ body > header {
       text-shadow: 0 0 1rem rgba(255, 255, 255, 0.5); }
 
 body > main {
+  position: relative;
+  min-height: 60rem;
+  text-align: left; }
+
+.section, body > main > section {
+  margin: 0 auto;
+  padding: 5rem 0;
   text-align: center; }
-  body > main > section {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 5rem 0; }
-    body > main > section > ul, body > main > section > ol {
-      display: inline-block;
-      vertical-align: bottom; }
+  .section > ul, body > main > section > ul, .section > ol, body > main > section > ol {
+    display: inline-block;
+    vertical-align: bottom; }
+
+.aside, body > main > aside {
+  height: 100%;
+  padding: 5rem 0;
+  margin: 0; }
+  .aside > ul, body > main > aside > ul {
+    list-style: none;
+    text-align: left;
+    width: 22rem;
+    height: inherit;
+    margin: 0;
+    padding: 0 1rem;
+    overflow-y: auto;
+    overflow-x: hidden; }
+    .aside > ul li, body > main > aside > ul li {
+      margin: 0 0 0.5rem 0;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 200;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.6rem;
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.05);
+      border: 0.1rem dotted rgba(255, 255, 255, 0.2);
+      outline: 0 none transparent;
+      -webkit-border-radius: 0.3rem;
+      -moz-border-radius: 0.3rem;
+      -ms-border-radius: 0.3rem;
+      border-radius: 0.3rem;
+      -webkit-transition: opacity 1000ms 0s ease-out;
+      -moz-transition: opacity 1000ms 0s ease-out;
+      -ms-transition: opacity 1000ms 0s ease-out;
+      -o-transition: opacity 1000ms 0s ease-out;
+      transition: opacity 1000ms 0s ease-out; }
+      .aside > ul li:first-child, body > main > aside > ul li:first-child {
+        color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(0, 0, 0, 0.2); }
+      .aside > ul li.expired, body > main > aside > ul li.expired {
+        opacity: 0; }
 
 body > footer {
   position: relative;
@@ -1066,151 +1122,36 @@ body > footer {
       body > footer > ol li:nth-child(14) {
         background-color: #111; }
 
-body {
-  position: relative; }
-  body > main > dialog {
-    position: fixed;
-    top: 50%;
-    right: 50%;
-    bottom: 50%;
-    left: 50%;
-    z-index: 999;
-    width: 1px;
-    height: 1px;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -ms-touch-action: none;
-    pointer-events: none; }
-    body > main > dialog > div {
-      position: fixed;
-      z-index: 0;
-      overflow: hidden;
-      text-align: center;
-      user-select: auto;
-      -webkit-touch-callout: default;
-      -webkit-user-select: auto;
-      -khtml-user-select: auto;
-      -moz-user-select: auto;
-      -ms-user-select: auto;
-      -ms-touch-action: auto;
-      pointer-events: auto;
-      -webkit-transition-property: opacity, top, right, bottom, left;
-      -moz-transition-property: opacity, top, right, bottom, left;
-      -ms-transition-property: opacity, top, right, bottom, left;
-      -o-transition-property: opacity, top, right, bottom, left;
-      transition-property: opacity, top, right, bottom, left;
-      -webkit-transition-duration: 500ms;
-      -moz-transition-duration: 500ms;
-      -ms-transition-duration: 500ms;
-      -o-transition-duration: 500ms;
-      transition-duration: 500ms;
-      -webkit-transition-delay: 0ms;
-      -moz-transition-delay: 0ms;
-      -ms-transition-delay: 0ms;
-      -o-transition-delay: 0ms;
-      transition-delay: 0ms;
-      -webkit-transition-timing-function: ease-in-out;
-      -moz-transition-timing-function: ease-in-out;
-      -ms-transition-timing-function: ease-in-out;
-      -o-transition-timing-function: ease-in-out;
-      transition-timing-function: ease-in-out; }
-      body > main > dialog > div > article {
-        opacity: inherit;
-        width: 30rem;
-        margin: 30rem auto 0;
-        padding: 2rem;
-        color: rgba(255, 255, 255, 0.9);
-        text-align: left;
-        background-color: rgba(0, 0, 0, 0.8);
-        -webkit-border-radius: 0.3rem;
-        -moz-border-radius: 0.3rem;
-        -ms-border-radius: 0.3rem;
-        border-radius: 0.3rem;
-        -webkit-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
-        -moz-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
-        box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
-        -webkit-transition-property: opacity;
-        -moz-transition-property: opacity;
-        -ms-transition-property: opacity;
-        -o-transition-property: opacity;
-        transition-property: opacity;
-        -webkit-transition-duration: 250ms;
-        -moz-transition-duration: 250ms;
-        -ms-transition-duration: 250ms;
-        -o-transition-duration: 250ms;
-        transition-duration: 250ms;
-        -webkit-transition-delay: 0ms;
-        -moz-transition-delay: 0ms;
-        -ms-transition-delay: 0ms;
-        -o-transition-delay: 0ms;
-        transition-delay: 0ms;
-        -webkit-transition-timing-function: ease-in-out;
-        -moz-transition-timing-function: ease-in-out;
-        -ms-transition-timing-function: ease-in-out;
-        -o-transition-timing-function: ease-in-out;
-        transition-timing-function: ease-in-out; }
-        body > main > dialog > div > article > header {
-          padding: 0 0 2rem; }
-          body > main > dialog > div > article > header h3 {
-            margin: 0;
-            padding: 0;
-            font-size: 1.8rem;
-            font-weight: 300;
-            line-height: normal; }
-        body > main > dialog > div > article > form > label {
-          display: block;
-          margin: 2rem 0; }
-        body > main > dialog > div > article > form > footer {
-          margin: 2rem 0 0;
-          text-align: right; }
-          body > main > dialog > div > article > form > footer label {
-            display: inline-block;
-            margin: 0 0 0 1rem; }
-      body > main > dialog > div:not(.active) {
-        top: 50%;
-        right: 50%;
-        bottom: 50%;
-        left: 50%;
-        background-color: transparent;
-        opacity: 0; }
-      body > main > dialog > div.active {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.2);
-        opacity: 1; }
-
-.building, body > main > section > ul {
+.building, .section > ul, body > main > section > ul {
+  position: relative;
+  z-index: 0;
   list-style: none;
   margin: 0;
   padding: 0;
   white-space: nowrap;
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2); }
-  .building li, body > main > section > ul li {
+  .building li, .section > ul li, body > main > section > ul li {
     display: inline-block;
     vertical-align: bottom;
     margin: 0;
     white-space: normal;
     border-style: solid;
-    border-width: 0.1rem 0 0 0.1rem;
-    border-color: rgba(255, 255, 255, 0.2) transparent transparent rgba(255, 255, 255, 0.2);
+    border-width: 0.1rem 0.05rem 0 0.1rem;
+    border-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) transparent rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.05);
     background-image: url("../images/mask.png"); }
-    .building li:first-child, body > main > section > ul li:first-child {
+    .building li:first-child, .section > ul li:first-child, body > main > section > ul li:first-child {
       padding-left: 2rem; }
-    .building li:last-child, body > main > section > ul li:last-child {
+    .building li:last-child, .section > ul li:last-child, body > main > section > ul li:last-child {
       padding-right: 2rem;
       border-right-width: 1px;
       border-right-color: rgba(255, 255, 255, 0.2); }
 
-.floors, body > main > section > ol {
+.floors, .section > ol, body > main > section > ol {
+  position: relative;
+  z-index: 1;
   list-style-position: inside;
-  margin: 0;
+  margin: 0 25rem 0 0;
   padding: 0;
   font-size: 1.2rem;
   font-weight: 200;
@@ -1218,7 +1159,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: rgba(255, 255, 255, 0.05);
   background-image: url("../images/mask.png"); }
-  .floors li, body > main > section > ol li {
+  .floors li, .section > ol li, body > main > section > ol li {
     position: relative;
     width: 8rem;
     height: 5rem;
@@ -1227,9 +1168,9 @@ body {
     font-size: 4.4rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.05); }
-    .floors li:first-child, body > main > section > ol li:first-child {
+    .floors li:first-child, .section > ol li:first-child, body > main > section > ol li:first-child {
       border-top-color: rgba(255, 255, 255, 0.2); }
-    .floors li > section, body > main > section > ol li > section {
+    .floors li > section, .section > ol li > section, body > main > section > ol li > section {
       position: absolute;
       top: 0.5rem;
       left: 5.5rem;
@@ -1247,7 +1188,7 @@ body {
       -moz-border-radius: 0.3rem;
       -ms-border-radius: 0.3rem;
       border-radius: 0.3rem; }
-      .floors li > section:before, body > main > section > ol li > section:before, .floors li > section:after, body > main > section > ol li > section:after {
+      .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
         position: absolute;
         left: 0.15rem;
         z-index: 0;
@@ -1265,11 +1206,11 @@ body {
         -ms-user-select: none;
         -ms-touch-action: none;
         pointer-events: none; }
-      .floors li > section:before, body > main > section > ol li > section:before {
+      .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before {
         top: 0.6rem; }
-      .floors li > section:after, body > main > section > ol li > section:after {
+      .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
         bottom: 0.3rem; }
-      .floors li > section > nav, body > main > section > ol li > section > nav {
+      .floors li > section > nav, .section > ol li > section > nav, body > main > section > ol li > section > nav {
         position: relative;
         z-index: 1;
         width: 0;
@@ -1306,13 +1247,13 @@ body {
         -ms-transition-timing-function: ease;
         -o-transition-timing-function: ease;
         transition-timing-function: ease; }
-        .floors li > section > nav button, body > main > section > ol li > section > nav button {
+        .floors li > section > nav button, .section > ol li > section > nav button, body > main > section > ol li > section > nav button {
           width: 2rem;
           padding: 0;
           line-height: 2rem; }
-      .floors li > section.active, body > main > section > ol li > section.active, .floors li > section:hover, body > main > section > ol li > section:hover {
+      .floors li > section.active, .section > ol li > section.active, body > main > section > ol li > section.active, .floors li > section:hover, .section > ol li > section:hover, body > main > section > ol li > section:hover {
         background-color: rgba(0, 0, 0, 0.2); }
-        .floors li > section.active > nav, body > main > section > ol li > section.active > nav, .floors li > section:hover > nav, body > main > section > ol li > section:hover > nav {
+        .floors li > section.active > nav, .section > ol li > section.active > nav, body > main > section > ol li > section.active > nav, .floors li > section:hover > nav, .section > ol li > section:hover > nav, body > main > section > ol li > section:hover > nav {
           opacity: 1;
           width: auto;
           margin-left: 2.5rem;
@@ -4151,13 +4092,142 @@ body {
       -o-transform: perspective(4px) rotateX(20deg);
       transform: perspective(4px) rotateX(20deg); }
 
-.foundation, body > main > section > footer {
+.foundation, .section > footer, body > main > section > footer {
   margin: 0.2rem 0 0;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
-  .foundation > form, body > main > section > footer > form {
-    text-align: center; }
+  .foundation > ul, .section > footer > ul, body > main > section > footer > ul {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 0 1rem; }
+    .foundation > ul li, .section > footer > ul li, body > main > section > footer > ul li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 200;
+      color: rgba(255, 255, 255, 0.5); }
+      .foundation > ul li:first-child, .section > footer > ul li:first-child, body > main > section > footer > ul li:first-child {
+        color: rgba(255, 255, 255, 0.8); }
+
+body {
+  position: relative; }
+  body > main > dialog {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 1px;
+    height: 1px;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    pointer-events: none; }
+    body > main > dialog > div {
+      position: fixed;
+      z-index: 0;
+      overflow: hidden;
+      text-align: center;
+      user-select: auto;
+      -webkit-touch-callout: default;
+      -webkit-user-select: auto;
+      -khtml-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      -ms-touch-action: auto;
+      pointer-events: auto;
+      -webkit-transition-property: opacity, top, right, bottom, left;
+      -moz-transition-property: opacity, top, right, bottom, left;
+      -ms-transition-property: opacity, top, right, bottom, left;
+      -o-transition-property: opacity, top, right, bottom, left;
+      transition-property: opacity, top, right, bottom, left;
+      -webkit-transition-duration: 500ms;
+      -moz-transition-duration: 500ms;
+      -ms-transition-duration: 500ms;
+      -o-transition-duration: 500ms;
+      transition-duration: 500ms;
+      -webkit-transition-delay: 0ms;
+      -moz-transition-delay: 0ms;
+      -ms-transition-delay: 0ms;
+      -o-transition-delay: 0ms;
+      transition-delay: 0ms;
+      -webkit-transition-timing-function: ease-in-out;
+      -moz-transition-timing-function: ease-in-out;
+      -ms-transition-timing-function: ease-in-out;
+      -o-transition-timing-function: ease-in-out;
+      transition-timing-function: ease-in-out; }
+      body > main > dialog > div > article {
+        opacity: inherit;
+        width: 30rem;
+        margin: 30rem auto 0;
+        padding: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.8);
+        -webkit-border-radius: 0.3rem;
+        -moz-border-radius: 0.3rem;
+        -ms-border-radius: 0.3rem;
+        border-radius: 0.3rem;
+        -webkit-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        -moz-box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.4), 0 0 0.1rem 0 rgba(255, 255, 255, 0.8) inset;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -ms-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 250ms;
+        -moz-transition-duration: 250ms;
+        -ms-transition-duration: 250ms;
+        -o-transition-duration: 250ms;
+        transition-duration: 250ms;
+        -webkit-transition-delay: 0ms;
+        -moz-transition-delay: 0ms;
+        -ms-transition-delay: 0ms;
+        -o-transition-delay: 0ms;
+        transition-delay: 0ms;
+        -webkit-transition-timing-function: ease-in-out;
+        -moz-transition-timing-function: ease-in-out;
+        -ms-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out; }
+        body > main > dialog > div > article > header {
+          padding: 0 0 2rem; }
+          body > main > dialog > div > article > header h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: normal; }
+        body > main > dialog > div > article > form > label {
+          display: block;
+          margin: 2rem 0; }
+        body > main > dialog > div > article > form > footer {
+          margin: 2rem 0 0;
+          text-align: right; }
+          body > main > dialog > div > article > form > footer label {
+            display: inline-block;
+            margin: 0 0 0 1rem; }
+      body > main > dialog > div:not(.active) {
+        top: 50%;
+        right: 50%;
+        bottom: 50%;
+        left: 50%;
+        background-color: transparent;
+        opacity: 0; }
+      body > main > dialog > div.active {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        opacity: 1; }
 
 /*# sourceMappingURL=main.css.map */

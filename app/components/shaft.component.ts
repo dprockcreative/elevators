@@ -33,6 +33,7 @@ export class ShaftComponent implements OnInit, DoCheck {
 
     if (qualified) {
       qualified.assignShaft(this.shaft);
+      console.info(`Task Floor: ${qualified.floor} -> ${qualified.stops[0]} picked up by Shaft ${qualified.shaft.id}`);
     }
   }
 

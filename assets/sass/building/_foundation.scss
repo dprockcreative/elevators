@@ -4,7 +4,23 @@
 	background-color: $white-005;
 	@include border(0.1rem solid $white-02, false);
 
-	> form {
-		text-align: center;
-	}
+  > ul {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 0 1rem;
+
+    li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 200;
+      color: $white-05;
+
+      &:first-child {
+        color: $white-08;
+      }
+
+    }
+  }
+
 }

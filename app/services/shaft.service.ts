@@ -40,9 +40,17 @@ export class ShaftService {
       @type   public
       @return array [Shaft Array]
    */
-   public getCurrent (): Shaft[] {
+  public getCurrent (): Shaft[] {
     return this.shafts;
-   }
+  }
+
+  /*  Get Length
+      @type   public
+      @return length [number]
+   */
+  public getLength (): number {
+    return this.shafts.length;
+  }
 
   /*  Get Shafts
       @type   public
@@ -69,6 +77,15 @@ export class ShaftService {
    */
   public remove (shaft: Shaft): Promise<Response> {
     return this.delete(shaft);
+  }
+
+  /*  Remove By Index
+      @type   public
+      @param  shaft [Shaft]
+      @return Promise [Response]
+   */
+  public removeByIndex (index: number): Promise<Response> {
+    return this.delete(this.shafts[index]);
   }
 
   /*  Save
