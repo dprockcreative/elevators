@@ -3,11 +3,12 @@ import { Component, DoCheck } from '@angular/core';
 import { Log } from '../interfaces/index';
 import { LogService } from '../services/index';
 
+
 @Component({
   selector: 'aside',
   template: `
     <ul [ngClass]="{'active': active()}">
-      <li *ngFor="let log of collection" [ngClass]="{'expired': log.expired}">{{log.message}}</li>
+      <li *ngFor="let log of collection" [ngClass]="{'expired': log.expired}" [innerHTML]="log.message | markdown"></li>
     </ul>
   `
 })

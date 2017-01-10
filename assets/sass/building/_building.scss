@@ -8,9 +8,11 @@
 	border-bottom: 0.1rem solid $white-02;
 
 	li {
+	  position: relative;
 		display: inline-block;
 		vertical-align: bottom;
 		margin: 0;
+		padding: 0 0.5rem;
 		white-space: normal;
 		border-style: solid;
 		border-width: 0.1rem 0.05rem 0 0.1rem;
@@ -18,15 +20,21 @@
 		background-color: $white-005;
 		background-image: url('../images/mask.png');
 
-		&:first-child {
-			padding-left: 2rem;
-		}
-
 		&:last-child {
-			padding-right: 2rem;
-			border-right-width: 1px;
-			border-right-color: $white-02;
+			border-right-width: 0.1rem;
 		}
 
+    &:before {
+      content: attr(shaft);
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      font-size: 3.6rem;
+      font-weight: 400;
+      line-height: normal;
+      color: $black-01;
+    }
 	}
 }

@@ -1,22 +1,28 @@
 .section {
-  margin: 0 auto;
+  margin: 0;
   padding: 5rem 0;
   text-align: center;
 
-  > ul, > ol {
+  > article {
     display: inline-block;
-    vertical-align: bottom;
-  }
+    width: auto;
+    margin: 0 25rem 0 auto;
 
-  > ul {
-    @extend .building;
-  }
+    > ul, > ol {
+      display: inline-block;
+      vertical-align: bottom;
+    }
 
-  > ol {
-    @extend .floors;
-  }
+    > ul {
+      @extend .building;
+    }
 
-  > footer {
-    @extend .foundation;
+    > ol {
+      @extend .floors;
+    }
+
+    > footer {
+      @extend .foundation;
+    }
   }
 }

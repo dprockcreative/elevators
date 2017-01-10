@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 
 import { Elevator, Task } from '../interfaces/index';
 
@@ -39,7 +39,8 @@ export class ElevatorComponent {
   TASK: null | Task = null;
 
   constructor (
-    public tasksService: TasksService
+    private tasksService: TasksService,
+    private ngZone: NgZone
   ) {
     tasksService.elevatorTaskStream.subscribe(task => this.queryTask(task));
     tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
@@ -77,11 +78,14 @@ export class ElevatorComponent {
 
     let floor: number = this.TASK.floor;
 
-    console.info(`Elevator ${this.elevator.shaft.id} starting on Task to Floor ${this.TASK.floor}`, this.TASK.id);
+    console.info(`Elevator ${this.elevator.shaft.id} starting on Task to Floor ${floor}`, this.TASK.id);
 
     this.callProcedure(floor)
       .then(() => this.cycleStops())
       .then(() => this.completeTask())
+      .catch(err => {
+        console.warn(`ElevatorComponent::runTask [rejected: ${err}] `);
+      });
   }
 
   /*  Call Procedure
@@ -148,13 +152,21 @@ export class ElevatorComponent {
       };
 
       I = setInterval(() => {
-        stops = this.TASK.stops;
-        if (tick === stops.length) {
-          this.setTaskStatus(TASK_COMPLETE)
+        if (!this.TASK) {
           clearInterval(I);
-          resolve();
+          reject('task jettison -> cycleStops');
         } else {
-          ask();
+
+          stops = this.TASK.stops;
+
+          if (tick === stops.length) {
+            this.setTaskStatus(TASK_COMPLETE)
+            clearInterval(I);
+            resolve();
+          } else {
+            ask();
+          }
+
         }
       }, TASK_STOPS_INTERVAL);
     });
@@ -184,7 +196,7 @@ export class ElevatorComponent {
       @return void
    */
   private completeTask (): void {
-    console.info(`Elevator ${this.elevator.shaft.id} marking Task complete`, this.TASK.id);
+    console.info(`Elevator ${this.elevator.shaft.id} marking Task complete`, `Task ID: ${this.TASK.id}`);
 
     this.tasksService.destroyTask(this.TASK);
   }
@@ -208,17 +220,24 @@ export class ElevatorComponent {
    */
   private arrived (floor: number, status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      let I;
-      I = setInterval(() => {
-        if (this.elevator.floor === floor) {
 
-      	  console.info(`Elevator ${this.elevator.shaft.id} Arrived Floor ${this.elevator.floor}`);
-
-          this.setTaskStatus(status);
+      let I = setInterval(() => {
+        if (!this.TASK) {
           clearInterval(I);
-          resolve(true);
+          reject('task jettison -> arrived');
+        } else {
+
+          if (this.elevator.floor === floor) {
+
+            console.info(`Elevator ${this.elevator.shaft.id} Arrived Floor ${this.elevator.floor}`);
+
+            this.setTaskStatus(status);
+            clearInterval(I);
+            resolve(true);
+          }
         }
       }, ELEVATOR_CHECK_INTERVAL);
+
     });
   };
 
@@ -229,14 +248,19 @@ export class ElevatorComponent {
    */
   private loadUnload (status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      let T;
-      T = setTimeout(() => {
+      let T = setTimeout(() => {
 
-      	console.info(`Elevator ${this.elevator.shaft.id} Loading/Unloading`);
+        if (!this.TASK) {
+          clearTimeout(T);
+          reject('task jettison -> loadUnload');
+        } else {
 
-        this.setTaskStatus(status);
-        clearTimeout(T);
-        resolve(true);
+          console.info(`Elevator ${this.elevator.shaft.id} Loading/Unloading`);
+
+          this.setTaskStatus(status);
+          clearTimeout(T);
+          resolve(true);
+        }
       }, ELEVATOR_LOAD_DELAY);
     });
   };
@@ -248,16 +272,21 @@ export class ElevatorComponent {
    */
   private openDoors (status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      let T;
+
       this.elevator.open = true;
 
-      console.info(`Elevator ${this.elevator.shaft.id} Opening Doors`);
+      let T = setTimeout(() => {
 
-      T = setTimeout(() => {
-        //console.debug('ElevatorComponent::openDoors', 'resolve');
-        this.setTaskStatus(status);
-        clearTimeout(T);
-        resolve(true);
+        if (!this.TASK) {
+          clearTimeout(T);
+          reject('task jettison -> openDoors');
+        } else {
+          console.info(`Elevator ${this.elevator.shaft.id} Opening Doors`);
+
+          this.setTaskStatus(status);
+          clearTimeout(T);
+          resolve(true);
+        }
       }, ELEVATOR_DOOR_DELAY);
     });
   };
@@ -269,9 +298,10 @@ export class ElevatorComponent {
    */
   private closeDoors (status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      let T;
+
       this.elevator.open = false;
-      T = setTimeout(() => {
+
+      let T = setTimeout(() => {
 
       	console.info(`Elevator ${this.elevator.shaft.id} Closing Doors`);
 

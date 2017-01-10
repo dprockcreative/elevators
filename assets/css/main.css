@@ -442,9 +442,9 @@ body {
     order: 0;
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
-    -webkit-flex: 0 0 6rem;
-    -ms-flex: 0 0 6rem;
-    flex: 0 0 6rem;
+    -webkit-flex: 0 1 6rem;
+    -ms-flex: 0 1 6rem;
+    flex: 0 1 6rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch; }
@@ -454,11 +454,11 @@ body {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-    -webkit-box-flex: 0;
-    -moz-box-flex: 0;
-    -webkit-flex: 0 1 60rem;
-    -ms-flex: 0 1 60rem;
-    flex: 0 1 60rem;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 60rem;
+    -ms-flex: 1 0 60rem;
+    flex: 1 0 60rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -526,9 +526,9 @@ body {
     order: 2;
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
-    -webkit-flex: 0 0 4rem;
-    -ms-flex: 0 0 4rem;
-    flex: 0 0 4rem;
+    -webkit-flex: 0 1 4rem;
+    -ms-flex: 0 1 4rem;
+    flex: 0 1 4rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch; }
@@ -695,7 +695,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
+.icons, body > header > hgroup h1, .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -711,10 +711,10 @@ select:-moz-focusring {
 .icon-logo:before, body > header > hgroup h1:before, .icon-logo:after, body > header > hgroup h1:after {
   content: "\e900"; }
 
-.icon-up:before, .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .icon-up:after {
+.icon-up:before, .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .icon-up:after {
   content: "\e901"; }
 
-.icon-down:before, .icon-down:after, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
+.icon-down:before, .icon-down:after, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
   content: "\e902"; }
 
 @font-face {
@@ -998,12 +998,16 @@ body > main {
   text-align: left; }
 
 .section, body > main > section {
-  margin: 0 auto;
+  margin: 0;
   padding: 5rem 0;
   text-align: center; }
-  .section > ul, body > main > section > ul, .section > ol, body > main > section > ol {
+  .section > article, body > main > section > article {
     display: inline-block;
-    vertical-align: bottom; }
+    width: auto;
+    margin: 0 25rem 0 auto; }
+    .section > article > ul, body > main > section > article > ul, .section > article > ol, body > main > section > article > ol {
+      display: inline-block;
+      vertical-align: bottom; }
 
 .aside, body > main > aside {
   height: 100%;
@@ -1020,11 +1024,11 @@ body > main {
     overflow-x: hidden; }
     .aside > ul li, body > main > aside > ul li {
       margin: 0 0 0.5rem 0;
-      padding: 1rem;
-      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
       font-weight: 200;
       color: rgba(255, 255, 255, 0.4);
-      line-height: 1.6rem;
+      line-height: 1.4rem;
       opacity: 1;
       background-color: rgba(0, 0, 0, 0.05);
       border: 0.1rem dotted rgba(255, 255, 255, 0.2);
@@ -1038,38 +1042,39 @@ body > main {
       -ms-transition: opacity 1000ms 0s ease-out;
       -o-transition: opacity 1000ms 0s ease-out;
       transition: opacity 1000ms 0s ease-out; }
+      .aside > ul li.expired, body > main > aside > ul li.expired {
+        opacity: 0; }
+      .aside > ul li p, body > main > aside > ul li p {
+        margin: 0;
+        padding: 0.5rem 0;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        line-height: inherit; }
+      .aside > ul li em, body > main > aside > ul li em {
+        font-style: normal;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6); }
       .aside > ul li:first-child, body > main > aside > ul li:first-child {
         color: rgba(255, 255, 255, 0.7);
         background-color: rgba(0, 0, 0, 0.2); }
-      .aside > ul li.expired, body > main > aside > ul li.expired {
-        opacity: 0; }
+        .aside > ul li:first-child em, body > main > aside > ul li:first-child em {
+          color: rgba(255, 255, 255, 0.8); }
 
 body > footer {
   position: relative;
-  text-align: center; }
-  body > footer * {
-    cursor: default;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -ms-touch-action: none; }
-  body > footer > ul, body > footer > ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap; }
-    body > footer > ul li, body > footer > ol li {
-      display: inline-block;
-      vertical-align: middle; }
+  text-align: left; }
   body > footer > ul {
+    list-style: none;
     max-width: 80rem;
     margin: 0 auto;
     padding: 2rem 0;
-    text-align: left; }
+    text-align: left;
+    white-space: nowrap; }
     body > footer > ul li {
+      cursor: default;
+      display: inline-block;
+      vertical-align: middle;
       margin: 0 0 0 1.4rem;
       padding: 0 0 0 1.4rem;
       font-size: 1.2rem;
@@ -1078,51 +1083,22 @@ body > footer {
       line-height: 1.5;
       color: rgba(255, 255, 255, 0.5);
       text-align: left;
-      border-left: 1px solid rgba(255, 255, 255, 0.3); }
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -ms-touch-action: none; }
       body > footer > ul li:first-child {
         margin-left: 0;
         padding-left: 0;
         border-left: none; }
       body > footer > ul li > a {
         cursor: pointer; }
-  body > footer > ol {
-    position: absolute;
-    top: 0;
-    right: 0; }
-    body > footer > ol li {
-      width: 1rem;
-      height: 1rem;
-      border-left: 1px solid #000; }
-      body > footer > ol li:nth-child(1) {
-        background-color: #eee; }
-      body > footer > ol li:nth-child(2) {
-        background-color: #ddd; }
-      body > footer > ol li:nth-child(3) {
-        background-color: #ccc; }
-      body > footer > ol li:nth-child(4) {
-        background-color: #bbb; }
-      body > footer > ol li:nth-child(5) {
-        background-color: #aaa; }
-      body > footer > ol li:nth-child(6) {
-        background-color: #999; }
-      body > footer > ol li:nth-child(7) {
-        background-color: #888; }
-      body > footer > ol li:nth-child(8) {
-        background-color: #777; }
-      body > footer > ol li:nth-child(9) {
-        background-color: #666; }
-      body > footer > ol li:nth-child(10) {
-        background-color: #555; }
-      body > footer > ol li:nth-child(11) {
-        background-color: #444; }
-      body > footer > ol li:nth-child(12) {
-        background-color: #333; }
-      body > footer > ol li:nth-child(13) {
-        background-color: #222; }
-      body > footer > ol li:nth-child(14) {
-        background-color: #111; }
 
-.building, .section > ul, body > main > section > ul {
+.building, .section > article > ul, body > main > section > article > ul {
   position: relative;
   z-index: 0;
   list-style: none;
@@ -1130,36 +1106,50 @@ body > footer {
   padding: 0;
   white-space: nowrap;
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2); }
-  .building li, .section > ul li, body > main > section > ul li {
+  .building li, .section > article > ul li, body > main > section > article > ul li {
+    position: relative;
     display: inline-block;
     vertical-align: bottom;
     margin: 0;
+    padding: 0 0.5rem;
     white-space: normal;
     border-style: solid;
     border-width: 0.1rem 0.05rem 0 0.1rem;
     border-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) transparent rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.05);
     background-image: url("../images/mask.png"); }
-    .building li:first-child, .section > ul li:first-child, body > main > section > ul li:first-child {
-      padding-left: 2rem; }
-    .building li:last-child, .section > ul li:last-child, body > main > section > ul li:last-child {
-      padding-right: 2rem;
-      border-right-width: 1px;
-      border-right-color: rgba(255, 255, 255, 0.2); }
+    .building li:last-child, .section > article > ul li:last-child, body > main > section > article > ul li:last-child {
+      border-right-width: 0.1rem; }
+    .building li:before, .section > article > ul li:before, body > main > section > article > ul li:before {
+      content: attr(shaft);
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      font-size: 3.6rem;
+      font-weight: 400;
+      line-height: normal;
+      color: rgba(0, 0, 0, 0.1); }
 
-.floors, .section > ol, body > main > section > ol {
+.floors, .section > article > ol, body > main > section > article > ol {
   position: relative;
   z-index: 1;
   list-style-position: inside;
-  margin: 0 25rem 0 0;
+  margin: 0;
   padding: 0;
   font-size: 1.2rem;
   font-weight: 200;
   color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: rgba(255, 255, 255, 0.05);
-  background-image: url("../images/mask.png"); }
-  .floors li, .section > ol li, body > main > section > ol li {
+  background-image: url("../images/mask.png");
+  -webkit-transition: height 500ms 0s ease-out;
+  -moz-transition: height 500ms 0s ease-out;
+  -ms-transition: height 500ms 0s ease-out;
+  -o-transition: height 500ms 0s ease-out;
+  transition: height 500ms 0s ease-out; }
+  .floors li, .section > article > ol li, body > main > section > article > ol li {
     position: relative;
     width: 8rem;
     height: 5rem;
@@ -1168,9 +1158,9 @@ body > footer {
     font-size: 4.4rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.05); }
-    .floors li:first-child, .section > ol li:first-child, body > main > section > ol li:first-child {
+    .floors li:first-child, .section > article > ol li:first-child, body > main > section > article > ol li:first-child {
       border-top-color: rgba(255, 255, 255, 0.2); }
-    .floors li > section, .section > ol li > section, body > main > section > ol li > section {
+    .floors li > section, .section > article > ol li > section, body > main > section > article > ol li > section {
       position: absolute;
       top: 0.5rem;
       left: 5.5rem;
@@ -1188,7 +1178,7 @@ body > footer {
       -moz-border-radius: 0.3rem;
       -ms-border-radius: 0.3rem;
       border-radius: 0.3rem; }
-      .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before, .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
+      .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
         position: absolute;
         left: 0.15rem;
         z-index: 0;
@@ -1206,11 +1196,11 @@ body > footer {
         -ms-user-select: none;
         -ms-touch-action: none;
         pointer-events: none; }
-      .floors li > section:before, .section > ol li > section:before, body > main > section > ol li > section:before {
+      .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before {
         top: 0.6rem; }
-      .floors li > section:after, .section > ol li > section:after, body > main > section > ol li > section:after {
+      .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
         bottom: 0.3rem; }
-      .floors li > section > nav, .section > ol li > section > nav, body > main > section > ol li > section > nav {
+      .floors li > section > nav, .section > article > ol li > section > nav, body > main > section > article > ol li > section > nav {
         position: relative;
         z-index: 1;
         width: 0;
@@ -1247,13 +1237,13 @@ body > footer {
         -ms-transition-timing-function: ease;
         -o-transition-timing-function: ease;
         transition-timing-function: ease; }
-        .floors li > section > nav button, .section > ol li > section > nav button, body > main > section > ol li > section > nav button {
+        .floors li > section > nav button, .section > article > ol li > section > nav button, body > main > section > article > ol li > section > nav button {
           width: 2rem;
           padding: 0;
           line-height: 2rem; }
-      .floors li > section.active, .section > ol li > section.active, body > main > section > ol li > section.active, .floors li > section:hover, .section > ol li > section:hover, body > main > section > ol li > section:hover {
+      .floors li > section.active, .section > article > ol li > section.active, body > main > section > article > ol li > section.active, .floors li > section:hover, .section > article > ol li > section:hover, body > main > section > article > ol li > section:hover {
         background-color: rgba(0, 0, 0, 0.2); }
-        .floors li > section.active > nav, .section > ol li > section.active > nav, body > main > section > ol li > section.active > nav, .floors li > section:hover > nav, .section > ol li > section:hover > nav, body > main > section > ol li > section:hover > nav {
+        .floors li > section.active > nav, .section > article > ol li > section.active > nav, body > main > section > article > ol li > section.active > nav, .floors li > section:hover > nav, .section > article > ol li > section:hover > nav, body > main > section > article > ol li > section:hover > nav {
           opacity: 1;
           width: auto;
           margin-left: 2.5rem;
@@ -1275,7 +1265,12 @@ body > footer {
   border: 1px solid rgba(255, 255, 255, 0.05);
   outline: 0 none transparent;
   border-top: 0;
-  border-bottom: 0; }
+  border-bottom: 0;
+  -webkit-transition: height 500ms 0s ease-out;
+  -moz-transition: height 500ms 0s ease-out;
+  -ms-transition: height 500ms 0s ease-out;
+  -o-transition: height 500ms 0s ease-out;
+  transition: height 500ms 0s ease-out; }
 
 [stories="2"].shaft {
   height: 10rem; }
@@ -4092,23 +4087,23 @@ body > footer {
       -o-transform: perspective(4px) rotateX(20deg);
       transform: perspective(4px) rotateX(20deg); }
 
-.foundation, .section > footer, body > main > section > footer {
+.foundation, .section > article > footer, body > main > section > article > footer {
   margin: 0.2rem 0 0;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
-  .foundation > ul, .section > footer > ul, body > main > section > footer > ul {
+  .foundation > ul, .section > article > footer > ul, body > main > section > article > footer > ul {
     list-style: none;
     text-align: left;
     margin: 0;
     padding: 0 1rem; }
-    .foundation > ul li, .section > footer > ul li, body > main > section > footer > ul li {
+    .foundation > ul li, .section > article > footer > ul li, body > main > section > article > footer > ul li {
       margin: 0.5rem 0;
       font-size: 1rem;
       font-weight: 200;
       color: rgba(255, 255, 255, 0.5); }
-      .foundation > ul li:first-child, .section > footer > ul li:first-child, body > main > section > footer > ul li:first-child {
+      .foundation > ul li:first-child, .section > article > footer > ul li:first-child, body > main > section > article > footer > ul li:first-child {
         color: rgba(255, 255, 255, 0.8); }
 
 body {

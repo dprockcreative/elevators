@@ -8,13 +8,7 @@ import { ShaftService } from '../services/index';
 
 import {
   TASK_CALLED,
-  TASK_CALLED_ARRIVED,
-  TASK_CALLED_LOADING,
   TASK_CALLED_COMPLETE,
-  TASK_DELIVERED,
-  TASK_DELIVERED_ARRIVED,
-  TASK_DELIVERED_UNLOADING,
-  TASK_DELIVERED_COMPLETE,
   TASK_STOPS_LIMIT,
   TASKS_BROADCAST_INTERVAL
 } from '../constants/index';
@@ -22,15 +16,15 @@ import {
 @Injectable()
 export class TasksService {
 
-  private tasks: Task[] = [];
-  private INT: any      = 0;
+  private tasks : Task[]  = [];
+  private INT   : any     = 0;
+  private LENGTH: number  = 0;
 
   // Observable sources
   private openTasksSource     = new Subject<Task[]>();
   private destroyTaskSource   = new Subject<Task>();
   private elevatorTaskSource  = new Subject<Task>();
   private completeStopSource  = new Subject<{[key: string]: number}>();
-
 
   // Observable streams
   openTasksStream     = this.openTasksSource.asObservable();
@@ -151,30 +145,51 @@ export class TasksService {
     let task  : Task  = new Task(from, to);
     let shaft : Shaft = this.shaftForTask(task);
 
-    let log = [`Request: Floors: ${from} -> ${to}`];
+    let log = [`Request from Floor: *${from}* to Floor: *${to}*`];
 
     let mTasks = this.mergableTasks(task);
 
     // nothing to merge
     if (!mTasks.length) {
 
-      let t = this.addTask(
-        task.assignShaft(shaft)
-      );
+      let t = this.addTask(task);
 
-      log.push(`Generated new Task using Shaft ${t.shaft.id}`);
+      if (shaft) {
+
+        t.assignShaft(shaft)
+
+        log.push(`Generated new Task using Shaft ${t.shaft.id}`, `Task ID: ${t.id}`);
+
+      } else {
+
+        log.push(`Generated new Task for async pickup`, `Task ID: ${t.id}`);
+
+      }
+
     }
     // merge
     else {
+
       let t = this.mergeTasks(task, mTasks[0]);
 
-      log.push(`Merged with existing Task using Shaft ${t.shaft.id}`);
+      log.push(`Merged with existing Task using Shaft ${t.shaft.id}`, `Task ID: ${t.id}`);
 
     }
 
     console.info.apply(null, log);
 
     this.watchTasks();
+  }
+
+  /*  Reset
+      @type   public
+      @return void
+   */
+  public reset (): void {
+    if (this.tasks.length) {
+      this.tasks = [];
+      console.info(`Tasks Queue reset`);
+    }
   }
 
   /*  Shafts for Task
@@ -227,7 +242,14 @@ export class TasksService {
       this.ngZone.runOutsideAngular(() => {
         this.INT = setInterval(() => {
 
-          console.debug(`Remaining Tasks in Queue: ${this.tasks.length}`);
+          if (this.tasks.length !== this.LENGTH) {
+            this.LENGTH = this.tasks.length;
+            if (this.LENGTH !== 1) {
+            	console.info(`${this.LENGTH} Tasks remain in Queue`);
+            } else {
+            	console.info(`${this.LENGTH} Task remains in Queue`);
+            }
+          }
 
           if (!this.consolidateOpenTasks()) {
             clearInterval(this.INT);
@@ -289,4 +311,5 @@ export class TasksService {
     let index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
   }
+
 }
