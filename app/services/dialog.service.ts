@@ -2,73 +2,69 @@ import { Injectable } from '@angular/core';
 
 import { Dialog } from '../interfaces/index';
 
+import {
+  DIALOG_TYPES,
+  DIALOG_STRING_MAP,
+  DIALOG_TYPE_ALERT,
+  DIALOG_TYPE_CONFIRM,
+  DIALOG_TYPE_WIZARD
+} from '../constants/index';
+
 @Injectable()
 export class DialogService {
 
   queue: Dialog[] = [];
 
-  constructor () {
-    /*
-    setTimeout(() => {
-      this.add(this.make('Sample header', 'Sample message', () => {
-        return new Promise((resolve, reject) => {
-          console.warn('Sample Promise');
-          resolve('sample resolve');
-        });
-      }));
-    }, 1000);
-    */
-  }
+  constructor () {}
 
-  /*  Get
-      @type   public
-      @param  index [number = 0]
-      @return object [Dialog]
-   */
-  public get (index: number = 0): Dialog {
-    return this.queue[index];
-  }
-
-  /*  Make
+  /*  Alert
       @type   public
       @param  header [string]
-      @param  message [string]
-      @param  type [!optional string]
-      @return object [Dialog]
+      @param  content [array]
+      @param  immediate [boolean !optional]
+      @return dialog [instance of Dialog]
    */
-  public make (header: string, message: string, type?:string): Dialog {
-    return new Dialog(header, message, type);
+  public alert (header: string, content: string[], immediate?: boolean): Dialog {
+    return this.create(header, content, DIALOG_TYPE_ALERT, immediate);
   }
 
-  /*  Add
+  /*  Confirm
       @type   public
-      @param  dialog [Dialog]
-      @return void
+      @param  header [string]
+      @param  content [array]
+      @param  immediate [boolean !optional]
+      @return dialog [instance of Dialog]
    */
-  public add (dialog: Dialog): void {
-    dialog.parent = this;
-    dialog.index = this.queue.length;
-    this.queue.push(dialog);
+  public confirm (header: string, content: string[], immediate?: boolean): Dialog {
+    return this.create(header, content, DIALOG_TYPE_CONFIRM, immediate);
   }
 
-  /*  Sequence
+  /*  Wizard
       @type   public
-      @param  dialogs [Dialog Array]
-      @return void
+      @param  header [string]
+      @param  content [array]
+      @param  immediate [boolean !optional]
+      @return dialog [instance of Dialog]
    */
-  public sequence (dialogs: Dialog[]): void {
-    for (var i = 0; i < dialogs.length; i++) {
-      this.add(dialogs[i]);
-    }
+  public wizard (header: string, content: string[], immediate?: boolean): Dialog {
+    return this.create(header, content, DIALOG_TYPE_WIZARD, immediate);
   }
 
-  /*  Dismiss
+  /*  Current
       @type   public
-      @param  index [number = 0]
-      @return void
+      @return boolean
    */
-  public dismiss (index: number = 0): void {
-    this.queue.splice(index, 1);
+  public current (): Dialog {
+    return this.queue[0] || new Dialog();
+  }
+
+  /*  Is Type
+      @type   public
+      @param  type [string]
+      @return boolean
+   */
+  public isType (type: string): boolean {
+    return this.current().type === type;
   }
 
   /*  Active
@@ -76,7 +72,74 @@ export class DialogService {
       @return boolean
    */
   public active (): boolean {
-    return this.queue.length > 0;
+    return this.queue.length ? this.current().active : false;
+  }
+
+  /*  Add
+      @type   public
+      @param  dialog [Dialog]
+      @return void
+   */
+  public add (dialog: Dialog): Promise<Dialog> {
+    this.queue.push(dialog);
+    return Promise.resolve(dialog);
+  }
+
+  /*  Remove
+      @type   public
+      @param  dialog [Dialog]
+      @return void
+   */
+  public remove (dialog: Dialog): void {
+    let index;
+    if (!!~(index = this.queue.indexOf(dialog))) {
+      this.queue.splice(index, 1);
+    }
+  }
+
+  /*  Complete
+      @type   public
+      @param  args [any]
+      @return void
+   */
+  public complete (args?:any): void {
+    let dialog = this.current();
+    dialog.deactivate().then(() => {
+      if (typeof args === 'boolean') {
+        dialog.deferred[args ? 'resolve' : 'reject']();
+      } else {
+        dialog.deferred.resolve(args);
+      }
+      this.remove(dialog);
+    });
+  }
+
+  /*  Dismiss
+      @type   public
+      @return void
+   */
+  public dismiss (args?:any): void {
+    let dialog = this.current();
+    dialog.deactivate().then(() => {
+      dialog.deferred.resolve();
+      this.remove(dialog);
+    });
+  }
+
+  /*  Create
+      @type   private
+      @param  header [string]
+      @param  content [array]
+      @param  type [string - constant]
+      @param  immediate [boolean !default = true]
+      @return dialog [instance of Dialog]
+   */
+  private create (header: string, content: string[], type: string, immediate: boolean = true): Dialog {
+    let dialog = new Dialog(header, content, type);
+    if (immediate) {
+      this.add(dialog).then(d => d.activate());
+    }
+    return dialog;
   }
 
 }

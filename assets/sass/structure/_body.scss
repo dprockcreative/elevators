@@ -3,6 +3,7 @@ html {
   font-size: 10px;
 
   body {
+    @extend .flex-body-container;
     position: relative;
     width: 100%;
     height: 100%;

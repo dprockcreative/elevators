@@ -8,4 +8,4 @@ import { FloorComponent } from '../components/index';
   exports:      [ FloorComponent ]
 })
 
-export class FloorModule { }
+export class FloorModule {}

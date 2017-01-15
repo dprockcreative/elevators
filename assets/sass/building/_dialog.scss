@@ -12,26 +12,23 @@ body {
     	z-index: 999;
     	width: 1px;
     	height: 1px;
-			@include no-select();
+			@include auto-select();
 			pointer-events: none;
 
 			> div {
+			  @extend .flex-center-container;
 				position: fixed;
-				z-index: 0;
 				overflow: hidden;
 				text-align: center;
-				@include auto-select();
-				pointer-events: auto;
 
-				@include transition-property(opacity, top, right, bottom, left);
-				@include transition-duration(500ms);
-				@include transition-delay(0ms);
-				@include transition-timing-function(ease-in-out);
+        @include transition-property(opacity, top, right, bottom, left);
+        @include transition-timing-function(ease-in-out);
 
 				> article {
+			  	@extend .flex-center-box;
 					opacity: inherit;
 					width: 30rem;
-					margin: 30rem auto 0;
+					margin: auto;
 					padding: 2rem;
 					color: $white-09;
 					text-align: left;
@@ -39,12 +36,10 @@ body {
 					@include border-radius(0.3rem);
 					@include box-shadow(0 0 0.5rem 0 $black-04, 0 0 0.1rem 0 $white-08 inset);
 
-					@include transition-property(opacity);
-					@include transition-duration(250ms);
-					@include transition-delay(0ms);
-					@include transition-timing-function(ease-in-out);
+          @include transition-property(opacity, transform);
+          @include transition-timing-function(ease, cubic-bezier(0.175, 0.885, 0.32, 1.275));
 
-					> header {
+					header {
 						padding: 0 0 2rem;
 
 						h3 {
@@ -56,42 +51,85 @@ body {
 						}
 					}
 
-					> form {
+					form {
+					  margin: 0;
+					  padding: 0;
 
-						> label {
-							display: block;
-							margin: 2rem 0;
+						> alert,
+						> confirm,
+						> wizard {
+						  > label {
+                display: block;
+                margin: 2rem 0;
+              }
 						}
 
-						> footer {
-							margin: 2rem 0 0;
-							text-align: right;
-							label {
-								display: inline-block;
-								margin: 0 0 0 1rem;
-							}
-						}
+						> alert,
+						> confirm,
+						> wizard {
+              footer {
+                margin: 2rem 0 0;
+                text-align: right;
+
+                label {
+                  display: inline-block;
+                  margin: 0 0 0 0.3rem;
+
+                  input {
+                    background-color: $white-01 !important;
+                    &:hover {
+                      background-color: $white-03 !important;
+                    }
+                  }
+                }
+              }
+            }
 					}
 				}
 
 				&:not(.active) {
+					z-index: -1;
 					top: 50%;
 					right: 50%;
 					bottom: 50%;
 					left: 50%;
+				  opacity: 0;
 					background-color: transparent;
-					opacity: 0;
+          @include no-select();
+          pointer-events: none;
+
+          @include transition-duration(0s);
+          @include transition-delay(250ms);
+
+					> article {
+					  transform: scale(0.1);
+
+            @include transition-duration(250ms);
+            @include transition-delay(0s);
+					}
 				}
 
 				&.active {
+				  z-index: 1;
 					top: 0;
 					right: 0;
 					bottom: 0;
 					left: 0;
+				  opacity: 1;
 					background-color: $black-02;
-					opacity: 1;
-				}
+          @include auto-select();
+          pointer-events: auto;
 
+          @include transition-duration(0s);
+          @include transition-delay(0s);
+
+					> article {
+            transform: scale(1);
+
+            @include transition-duration(250ms);
+            @include transition-delay(250ms);
+					}
+				}
 			}
     }
   }

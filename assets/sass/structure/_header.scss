@@ -1,5 +1,7 @@
 body {
   > header {
+    @extend .flex-body-header;
+
     text-align: center;
 
     * {

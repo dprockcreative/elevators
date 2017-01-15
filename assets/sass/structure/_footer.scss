@@ -1,5 +1,7 @@
 body {
   > footer {
+    @extend .flex-body-footer;
+
     position: relative;
     text-align: left;
 

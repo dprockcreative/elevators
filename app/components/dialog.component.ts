@@ -1,26 +1,29 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Dialog } from '../interfaces/index';
+
 import { DialogService } from '../services/index';
+
+import {
+  DIALOG_TYPES,
+  DIALOG_STRING_MAP,
+  DIALOG_TYPE_ALERT,
+  DIALOG_TYPE_CONFIRM,
+  DIALOG_TYPE_WIZARD
+} from '../constants/index';
 
 @Component({
   selector: 'dialog',
   template: `
-    <div [ngClass]="{'active':active()}">
+    <div [ngClass]="{'active':S.active()}">
       <article>
         <header>
-          <h3 [innerHtml]="dialog.header"></h3>
+          <h3>{{dialog.header()}}</h3>
         </header>
-        <form (ngSubmit)="dialog.submit()">
-          {{dialog.body}}
-          <footer>
-            <label *ngIf="(dialog.type !== 'alert')">
-             <input type="reset" value="{{dialog.labels('no')}}" (click)="dialog.reset()" />
-            </label>
-            <label>
-             <input type="submit" value="{{dialog.labels('yes')}}" />
-            </label>
-          </footer>
+        <form (ngSubmit)="submit()">
+          <alert *ngIf="S.isType('alert')"></alert>
+          <confirm *ngIf="S.isType('confirm')"></confirm>
+          <wizard *ngIf="S.isType('wizard')"></wizard>
         </form>
       </article>
     </div>
@@ -29,37 +32,66 @@ import { DialogService } from '../services/index';
 
 /**
  *  Dialog Component
- *
-    let d = this.dialogService.make(
-      'Construct a new Building?',
-      `
-        <label>
-          <input type="text" name="text" placeholder="Enter Text" />
-        </label>
-      `,
-      'wizard'
-    );
-
-    this.dialogService.add(d);
  */
-export class DialogComponent implements DoCheck {
+export class DialogComponent {
 
-  dialog: Dialog | null;
+  protected dialog: Dialog;
+  private S: DialogService;
 
-  constructor (private dialogService: DialogService) {}
+  constructor (
+    private dialogService: DialogService
+  ) {
+    this.S = dialogService;
+    this.dialog = dialogService.current();
+  }
 
-  /*  Active
-      @type   public
-      @return boolean
+  /*  Content
+      @type     protected
+      @return   string
+      - default functions occur if not overridden by sub class
    */
-  public active (): boolean {
-    return this.dialogService.active();
+  protected content (): string {
+    return this.dialog.screen();
   }
 
-  ngDoCheck (): void {
-    let active = this.dialogService.active();
-    if (!this.dialog || !this.dialog.parent) {
-      this.dialog = active ? this.dialogService.get() : new Dialog();
-    }
+  /*  Label
+      @type     protected
+      @return   string
+      - default functions occur if not overridden by sub class
+   */
+  protected label (key: string): string {
+    return DIALOG_STRING_MAP[this.dialog.type][key];
   }
+
+  /*  Service
+      @override true
+      @type     protected
+      @return   DialogService
+      - default functions occur if not overridden by sub class
+   */
+  protected service (): DialogService {
+    return this.dialogService;
+  }
+
+  /*  Reset
+      @override true
+      @type     protected
+      @return   void
+      - default functions occur if not overridden by sub class
+   */
+  protected reset (): void {
+    this.service().dismiss();
+  }
+
+
+  /*  Submit
+      @override true
+      @type     protected
+      @return   void
+      - default functions occur if not overridden by sub class
+   */
+  protected submit (): void {
+    this.service().dismiss();
+  }
+
 }

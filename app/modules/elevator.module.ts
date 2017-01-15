@@ -9,4 +9,4 @@ import { ElevatorComponent } from '../components/index';
   exports:      [ ElevatorComponent ]
 })
 
-export class ElevatorModule { }
+export class ElevatorModule {}

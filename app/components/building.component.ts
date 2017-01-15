@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Floor, Shaft } from '../interfaces/index';
-import { DialogService, FloorService, LogService, ShaftService, TasksService } from '../services/index';
+import { FloorService, LogService, SessionService, ShaftService, TasksService } from '../services/index';
 
 @Component({
   selector: 'section',
@@ -28,15 +27,14 @@ import { DialogService, FloorService, LogService, ShaftService, TasksService } f
 })
 
 export class BuildingComponent implements OnInit {
-  error: any;
-  shafts: Shaft[] = [];
-  floors: Floor[] = [];
-  stories: number;
 
-  config: any[] = [];
+  shafts  : Shaft[] = [];
+  floors  : Floor[] = [];
+  config  : any[]   = [];
+  stories : number;
 
   constructor(
-    private dialogService: DialogService,
+    private sessionService: SessionService,
     private floorService: FloorService,
     private logService: LogService,
     private shaftService: ShaftService,
@@ -145,8 +143,7 @@ export class BuildingComponent implements OnInit {
     this.buildShafts()
       .then(shafts => this.setStories(shafts))
       .then(stories => this.buildFloors(stories))
-      .then(() => this.setConfig())
-      .catch(error => this.error = error);
+      .then(() => this.setConfig());
   }
 
   ngOnInit (): void {

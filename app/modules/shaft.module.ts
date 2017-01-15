@@ -9,4 +9,4 @@ import { ShaftComponent } from '../components/index';
   exports:      [ ShaftComponent ]
 })
 
-export class ShaftModule { }
+export class ShaftModule {}
