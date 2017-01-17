@@ -1,3 +1,5 @@
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Deferred } from '../extensions/deferred';
 
 import {
@@ -10,13 +12,16 @@ import {
 
 interface iDialog {
   index     : number;
-  active    : boolean;
   type      : string;
   title     : string;
+  active    : boolean;
   content   : any[];
-  models    : {[key: string]: any}
+  form      : FormGroup;
   deferred  : Deferred<any>;
+  prev      (): boolean;
   next      (): boolean;
+  start     (): boolean;
+  end       (): boolean;
   header    (): string;
   screen    (): any;
   activate  (): void;
@@ -25,35 +30,58 @@ interface iDialog {
 }
 
 export class Dialog implements iDialog {
-  index   : number                = 0;
-  active  : boolean               = false;
-	type    : string                = '';
-  title   : string                = '';
-  content : any[]                 = [];
-  models  : {[key: string]: any}  = {};
-
+  index   : number    = 0;
+	type    : string    = '';
+  title   : string    = '';
+  active  : boolean   = false;
+  content : any[]     = [];
+  form    : FormGroup = new FormGroup({});
   deferred: Deferred<any>;
 
-	constructor (title?: string, content?: string[], type?: string) {
+	constructor (title?: string, content?: any[], type?: string) {
     if (title && content && type) {
       this.title    = title;
       this.content  = content;
       this.type     = type;
       this.deferred = new Deferred<any>();
-
-      this.models = {
-        'foo': 'I am Foo'
-      };
+      this.contentToFormGroup();
     }
 	}
+
+  /*  Previous
+      @type   public
+      @return boolean
+   */
+  public prev (): boolean {
+    if (this.index > 0) {
+      this.index--;
+      return true;
+    }
+    return false;
+  }
 
   /*  Next
       @type   public
       @return boolean
    */
   public next (): boolean {
-    this.index++;
-    return this.index < this.content.length;
+    return this.index++, (this.index < this.content.length);
+  }
+
+  /*  Start
+      @type   public
+      @return boolean
+   */
+  public start (): boolean {
+    return this.index === 0;
+  }
+
+  /*  End
+      @type   public
+      @return boolean
+   */
+  public end (): boolean {
+    return (this.index === (this.content.length - 1));
   }
 
   /*  Header
@@ -100,5 +128,23 @@ export class Dialog implements iDialog {
    */
   public promise (): Promise<any> {
     return this.deferred.promise;
+  }
+
+  /*  Content To Form Group
+      @type   public
+      @return void
+   */
+  private contentToFormGroup (): void {
+
+    let screens = this.content.slice(0);
+    let fcs = {};
+
+    screens.forEach(screen => {
+      if(typeof screen === 'object' && ('model' in screen && 'name' in screen.model)) {
+        fcs[screen.model.name] = new FormControl(screen.model.value || '', Validators.required);
+      }
+    });
+
+    this.form = new FormGroup(fcs);
   }
 }

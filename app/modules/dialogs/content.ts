@@ -12,10 +12,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Dialog } from '../../interfaces/index';
 
-
 /*  Generic Content Component
  */
-@Component({selector: 'generic-content', template: `<p>{{label}}</p>`})
+@Component({
+  selector: 'generic-content', 
+  template: `
+    <p>{{label}}</p>
+  `
+})
 class GenericContentComponent {
   label: string = '';
   constructor (
@@ -26,33 +30,27 @@ class GenericContentComponent {
 }
 
 /*  Input Text Content Component
-        <input type="number" name="shaft_{{row.id}}" min="3" max="10" step="1" (ngModelChange)="setShaftsStories($event, row)" [(ngModel)]="row.stories" tabindex="{{row.id + 1}}"/>
  */
 @Component({
   selector: 'input-text-content', 
   template: `
     <label title="{{label}}" [formGroup]="form">
-      <input type="text" formControlName="{{name}}" />
+      <input type="text" [formControlName]="name" />
     </label>
   `
 })
 class InputTextContentComponent {
 
-  form: FormGroup;
-
+  form  : FormControl;
   label : string = '';
   name  : string = '';
 
   constructor (
     private injector: Injector
   ) {
+    this.form  = this.injector.get('form');
     this.label = this.injector.get('label');
     this.name  = this.injector.get('name');
-    this.form  = this.injector.get('form');
-  }
-
-  onChange (evt: any): void {
-    console.log('InputTextContentComponent::onChange', 'simple change', evt);
   }
 }
 

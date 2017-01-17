@@ -6,14 +6,6 @@ import { DialogService } from '../../services/index';
 
 import { DialogComponent } from '../../components/index';
 
-import {
-  DIALOG_TYPES,
-  DIALOG_STRING_MAP,
-  DIALOG_TYPE_ALERT,
-  DIALOG_TYPE_CONFIRM,
-  DIALOG_TYPE_WIZARD
-} from '../../constants/index';
-
 @Component({
   selector: 'alert',
   template: `
@@ -37,8 +29,12 @@ export class DialogAlert extends DialogComponent implements OnInit {
     this.dialog = dialogService.current();
   }
 
+  /*  Submit
+      @type     protected
+      @return   void
+      - overrides DialogComponent
+   */
   protected submit (): void {
-    console.log('DialogAlert::submit');
     if (!this.dialog.next()) {
       super.service().dismiss();
     }
@@ -46,30 +42,5 @@ export class DialogAlert extends DialogComponent implements OnInit {
 
   ngOnInit (): void {
     super.submit = this.submit;
-    console.log('DialogAlert::OnInit');
   }
-
 }
-
-
-/*
-  //@ContentChild(TemplateRef) content;
-  //@ViewChild('content', {read: ViewContainerRef}) content: ViewContainerRef;
-
-
- Input, Inject, ContentChild, TemplateRef, ViewChild, ViewContainerRef, ComponentFactoryResolver, 
-
- [innerHtml]="dialog.header"
- (ngSubmit)="dialog.submit()"
-
-
-          {{dialog.body}}
-          <footer>
-            <label *ngIf="(dialog.type !== 'alert')">
-             <input type="reset" value="{{dialog.labels('no')}}" (click)="dialog.reset()" />
-            </label>
-            <label>
-             <input type="submit" value="{{dialog.labels('yes')}}" />
-            </label>
-          </footer>
-*/

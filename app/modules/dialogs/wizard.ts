@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Dialog } from '../../interfaces/index';
 
@@ -7,20 +6,24 @@ import { DialogService } from '../../services/index';
 
 import { DialogComponent } from '../../components/index';
 
+import {
+  DIALOG_STRING_MAP
+} from '../../constants/index';
+
 import { DYNAMIC_COMPONENTS, DYNAMIC_COMPONENTS_MAP } from './content';
 
 @Component({
   selector: 'wizard',
   template: `
-    <div *ngFor="let screen of dialog.content; let index = index">
-      <content-component *ngIf="(index == dialog.index)" [dcd]="content(screen)" [formGroup]="form"></content-component>
+    <div *ngFor="let dcd of dcds; let index = index">
+      <content-component *ngIf="(index == dialog.index)" [dcd]="dcd"></content-component>
     </div>
     <footer>
       <label>
-       <input type="button" [value]="label('no')" (click)="reset()" />
+       <input type="button" [value]="label('no', 'start')" (click)="reset()" />
       </label>
       <label>
-       <input type="submit" [value]="label('yes')" />
+       <input type="submit" [value]="label('yes', 'end')" [disabled]="disabled()" />
       </label>
     </footer>
   `
@@ -30,7 +33,7 @@ export class DialogWizard extends DialogComponent implements OnInit {
 
   protected dialog: Dialog;
 
-  @Input() form: FormGroup;
+  protected dcds: any[] = [];
 
   constructor (
     dialogService: DialogService
@@ -39,27 +42,39 @@ export class DialogWizard extends DialogComponent implements OnInit {
     this.dialog = dialogService.current();
   }
 
-  /*  Content
+  /*  Disabled
       @type     protected
-      @params   screen [{[key: string] string}]
-      @return   dynamic content definition [object]
+      @return   void
       - overrides DialogComponent
    */
-  protected content (screen?: any): any {
-    let dcd = {
-      'component': DYNAMIC_COMPONENTS_MAP['generic-content'],
-      'inputs': { 'label' : screen.label || '' }
-    };
+  protected disabled (): boolean {
+    return this.dialog.end() && (this.dialog.form.valid === false) || false;
+  }
 
-    if (screen.type in DYNAMIC_COMPONENTS_MAP) {
-      Object.assign(dcd, {'component' : DYNAMIC_COMPONENTS_MAP[screen.type]});
+  /*  Label
+      @type     protected
+      @return   string
+      - overrides DialogComponent
+   */
+  protected label (key: string, alt?: string): string {
+    if (this.dialog.start() && key === 'no') {
+      return DIALOG_STRING_MAP[this.dialog.type]['start'];
+    } else if (this.dialog.end() && key === 'yes') {
+      return DIALOG_STRING_MAP[this.dialog.type]['end'];
+    } else {
+      return DIALOG_STRING_MAP[this.dialog.type][key];
     }
+  }
 
-    if (screen.model && screen.model.name) {
-      Object.assign(dcd.inputs, {'name' : screen.model.name, 'form': this.form});
+  /*  Reset
+      @type     protected
+      @return   void
+      - overrides DialogComponent
+   */
+  protected reset (): void {
+    if (!this.dialog.prev()) {
+      super.service().dismiss();
     }
-
-    return dcd;
   }
 
   /*  Submit
@@ -68,47 +83,40 @@ export class DialogWizard extends DialogComponent implements OnInit {
       - overrides DialogComponent
    */
   protected submit (): void {
-    console.log('DialogWizard::submit', this.form);
     if (!this.dialog.next()) {
-      super.service().dismiss();
+      super.service().complete(this.dialog.form.value);
     }
   }
 
-  ngOnInit (): void {
-    let screens = this.dialog.content.slice(0);
+  /*  Dynamic Component Definitions
+      @type     protected
+      @return   dcds [Array object]
+   */
+  private dynamicComponentDefinitions (): any[] {
+    let tdcds: any[] = [];
+    this.dialog.content.slice(0).forEach((screen) => {
+      let dcd = {
+        'component': DYNAMIC_COMPONENTS_MAP['generic-content'],
+        'inputs': { 'label' : screen.label || '' }
+      };
 
-    let fcs = {};
-    screens.forEach((screen, index) => {
-      if('model' in screen && 'name' in screen.model) {
-        fcs[screen.model.name] = new FormControl(screen.model.value || '');
+      if (screen.type in DYNAMIC_COMPONENTS_MAP) {
+        Object.assign(dcd, {'component' : DYNAMIC_COMPONENTS_MAP[screen.type]});
       }
+
+      if (screen.model && screen.model.name) {
+        Object.assign(dcd.inputs, {'name' : screen.model.name, 'form': this.dialog.form});
+      }
+      tdcds.push(dcd);
     });
 
-    this.form = new FormGroup(fcs);
+    return tdcds;
+  }
 
-    super.content = this.content;
+  ngOnInit (): void {
+    super.label   = this.label;
+    super.reset   = this.reset;
     super.submit  = this.submit;
-
-    console.log('DialogWizard::ngOnInit', fcs);
-
+    this.dcds     = this.dynamicComponentDefinitions();
   }
 }
-
-
-/*
-
-
- [innerHtml]="dialog.header"
- (ngSubmit)="dialog.submit()"
-
-
-          {{dialog.body}}
-          <footer>
-            <label *ngIf="(dialog.type !== 'alert')">
-             <input type="reset" value="{{dialog.labels('no')}}" (click)="dialog.reset()" />
-            </label>
-            <label>
-             <input type="submit" value="{{dialog.labels('yes')}}" />
-            </label>
-          </footer>
-*/

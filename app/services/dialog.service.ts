@@ -47,12 +47,6 @@ export class DialogService {
       @return dialog [instance of Dialog]
    */
   public wizard (header: string, content: any[], immediate?: boolean): Dialog {
-    console.log('DialogService::wizard', header, JSON.stringify(content, null, 2));
-
-    let screens = content.map(screen => screen.label); 
-
-    console.log('DialogService::wizard->screens', JSON.stringify(screens, null, 2));
-
     return this.create(header, content, DIALOG_TYPE_WIZARD, immediate);
   }
 
@@ -62,15 +56,6 @@ export class DialogService {
    */
   public current (): Dialog {
     return this.queue[0] || new Dialog();
-  }
-
-  /*  Is Type
-      @type   public
-      @param  type [string]
-      @return boolean
-   */
-  public isType (type: string): boolean {
-    return this.current().type === type;
   }
 
   /*  Active
@@ -127,7 +112,7 @@ export class DialogService {
   public dismiss (args?:any): void {
     let dialog = this.current();
     dialog.deactivate().then(() => {
-      dialog.deferred.resolve();
+      dialog.deferred.resolve(args);
       this.remove(dialog);
     });
   }

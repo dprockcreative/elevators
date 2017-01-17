@@ -40,7 +40,9 @@ body {
           @include transition-timing-function(ease, cubic-bezier(0.175, 0.885, 0.32, 1.275));
 
 					header {
+					  cursor: default;
 						padding: 0 0 2rem;
+						@include no-select();
 
 						h3 {
 							margin: 0;

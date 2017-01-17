@@ -75,67 +75,6 @@ export class SessionService {
 
           //console.info('SessionService->', 'inject dialog');
 
-          let wizard = this.dialogService.wizard(
-            'The Wizard',
-            [
-              {
-                'label': 'Screen One Label',
-                'type' : 'input-text-content',
-                'model': {
-                  'name' : 'one',
-                  'value': "One's Default Value",
-                }
-              },
-              {
-                'label': 'Screen Two Label',
-                'type': 'generic-content',
-              },
-            ]
-          );
-
-          wizard.promise()
-            .then(() => {
-              console.log('results of wizard action', 'complete');
-            })
-            .catch(() => {
-              console.log('results of wizard action', 'cancelled');
-            });
-/*
-          wizard.promise()
-            .then(() => {
-              console.log('results of wizard action', 'complete');
-            })
-            .catch(() => {
-              console.log('results of wizard action', 'cancelled');
-            });
-*/
-/*
-         let alert = this.dialogService.alert(
-            'Hello and Welcome',
-            [`<p>Content Part 1</p>`, `<p>Content Part 2</p>`],
-            false
-          );
-
-          let confirm = this.dialogService.confirm(
-            'Does this work',
-            [`<p>Click confirm or cancel</p>`]
-          );
-
-          confirm.promise()
-            .then(() => {
-              console.log('results of confirm action', 'confirmed');
-              this.dialogService.remove(alert);
-            })
-            .catch(() => {
-              console.log('results of confirm action', 'cancelled');
-              this.dialogService.add(alert).then(alert => alert.activate());;
-            });
-
-          alert.promise().then(() => {
-            console.log('results of alert action');
-          });
-*/
-
 
 
           return true;
@@ -159,6 +98,36 @@ export class SessionService {
     }
 
   }
-
-
 }
+
+
+/*
+
+          let wizard = this.dialogService.wizard(
+            'The Wizard',
+            [
+              {
+                'label': 'Screen One Label',
+                'type' : 'input-text-content',
+                'model': {
+                  'name' : 'one'
+                }
+              },
+              {
+                'label': 'Screen Two Label',
+                'type': 'input-text-content',
+                'model': {
+                  'name' : 'two'
+                }
+              },
+            ]
+          );
+
+          wizard.promise()
+            .then((results) => {
+              console.log('results of wizard action', 'complete', results);
+            })
+            .catch(() => {
+              console.log('results of wizard action', 'cancelled');
+            });
+*/

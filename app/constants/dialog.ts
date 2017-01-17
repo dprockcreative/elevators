@@ -6,6 +6,6 @@ export const DIALOG_TYPE_WIZARD   = DIALOG_TYPES[2];
 
 export const DIALOG_STRING_MAP = {
   [DIALOG_TYPE_ALERT]   : { 'yes' : 'ok'},
-  [DIALOG_TYPE_CONFIRM] : { 'yes' : 'confirm', 'no': 'cancel'},
-  [DIALOG_TYPE_WIZARD]  : { 'yes' : 'next', 'no': 'prev'},
+  [DIALOG_TYPE_CONFIRM] : { 'yes' : 'confirm', 'no' : 'cancel'},
+  [DIALOG_TYPE_WIZARD]  : { 'yes' : 'next', 'no' : 'prev', 'start' : 'cancel', 'end' : 'complete' },
 };

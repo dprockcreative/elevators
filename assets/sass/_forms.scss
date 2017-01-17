@@ -53,6 +53,16 @@ input {
 	}
 }
 
+input[type="text"], 
+input[type="tel"], 
+input[type="email"], 
+input[type="search"], 
+input[type="url"] {
+	padding-top: 1rem;
+	padding-bottom: 0.9rem;
+}
+
+
 input[type="number"] {
 	width: 3.7rem;
 	padding-left: 0.1rem;

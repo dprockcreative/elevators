@@ -32,13 +32,23 @@ export class DialogConfirm extends DialogComponent implements OnInit {
     this.dialog = dialogService.current();
   }
 
+  /*  Reset
+      @type     protected
+      @return   void
+      - overrides DialogComponent
+   */
   protected reset (): void {
-    console.log('DialogConfirm::reset');
-    super.service().complete(false);
+    if (!this.dialog.prev()) {
+      super.service().complete(false);
+    }
   }
 
+  /*  Submit
+      @type     protected
+      @return   void
+      - overrides DialogComponent
+   */
   protected submit (): void {
-    console.log('DialogConfirm::submit');
     if (!this.dialog.next()) {
       super.service().complete(true);
     }
@@ -47,24 +57,5 @@ export class DialogConfirm extends DialogComponent implements OnInit {
   ngOnInit (): void {
     super.submit = this.submit;
     super.reset  = this.reset;
-    console.log('DialogConfirm::OnInit');
   }
-
 }
-
-
-/*
- [innerHtml]="dialog.header"
- (ngSubmit)="dialog.submit()"
-
-
-          {{dialog.body}}
-          <footer>
-            <label *ngIf="(dialog.type !== 'alert')">
-             <input type="reset" value="{{dialog.labels('no')}}" (click)="dialog.reset()" />
-            </label>
-            <label>
-             <input type="submit" value="{{dialog.labels('yes')}}" />
-            </label>
-          </footer>
-*/
