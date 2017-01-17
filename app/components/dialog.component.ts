@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterViewInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Dialog } from '../interfaces/index';
 
@@ -20,10 +21,10 @@ import {
         <header>
           <h3>{{dialog.header()}}</h3>
         </header>
-        <form (ngSubmit)="submit()">
+        <form (ngSubmit)="submit()" [formGroup]="form">
           <alert *ngIf="S.isType('alert')"></alert>
           <confirm *ngIf="S.isType('confirm')"></confirm>
-          <wizard *ngIf="S.isType('wizard')"></wizard>
+          <wizard *ngIf="S.isType('wizard')" [form]="form"></wizard>
         </form>
       </article>
     </div>
@@ -33,10 +34,12 @@ import {
 /**
  *  Dialog Component
  */
-export class DialogComponent {
+export class DialogComponent implements OnInit, AfterContentChecked, AfterViewInit {
 
   protected dialog: Dialog;
   private S: DialogService;
+
+  form: FormGroup = new FormGroup({});
 
   constructor (
     private dialogService: DialogService
@@ -45,14 +48,6 @@ export class DialogComponent {
     this.dialog = dialogService.current();
   }
 
-  /*  Content
-      @type     protected
-      @return   string
-      - default functions occur if not overridden by sub class
-   */
-  protected content (): string {
-    return this.dialog.screen();
-  }
 
   /*  Label
       @type     protected
@@ -73,6 +68,15 @@ export class DialogComponent {
     return this.dialogService;
   }
 
+  /*  Content
+      @type     protected
+      @return   any
+      - default functions occur if not overridden by sub class
+   */
+  protected content (screen?:any): any {
+    return this.dialog.screen();
+  }
+
   /*  Reset
       @override true
       @type     protected
@@ -83,7 +87,6 @@ export class DialogComponent {
     this.service().dismiss();
   }
 
-
   /*  Submit
       @override true
       @type     protected
@@ -92,6 +95,19 @@ export class DialogComponent {
    */
   protected submit (): void {
     this.service().dismiss();
+  }
+
+  ngAfterContentChecked (): void {
+    //console.log('DialogComponent::ngAfterContentChecked', this.dialog);
+  }
+
+  ngAfterViewInit (): void {
+    //console.log('DialogComponent::ngAfterViewInit', this.dialog);
+  }
+
+  ngOnInit() {
+    //console.log('DialogComponent::ngOnInit', this.dialog);
+    //this.form = new FormGroup({'default': new FormControl('')});
   }
 
 }

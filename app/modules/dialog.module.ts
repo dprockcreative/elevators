@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DialogService } from '../services/index';
 import { DialogComponent } from '../components/index';
-import { DialogAlert, DialogConfirm, DialogWizard } from './dialogs/index';
+import { DYNAMIC_COMPONENTS, DialogAlert, DialogConfirm, DialogWizard } from './dialogs/index';
 
 @NgModule({
-  imports:      [ CommonModule, FormsModule ],
+  imports:      [ CommonModule, ReactiveFormsModule ],
   providers:    [ DialogService ],
-  declarations: [ DialogComponent, DialogAlert, DialogConfirm, DialogWizard ],
+  declarations: [ DYNAMIC_COMPONENTS, DialogComponent, DialogAlert, DialogConfirm, DialogWizard ],
   exports:      [ DialogComponent ]
 })
 

@@ -12,10 +12,10 @@ import { DialogComponent } from '../../components/index';
     <div [innerHTML]="content()"></div>
     <footer>
       <label>
-       <input type="reset" value="cancel" (click)="reset()" />
+       <input type="reset" [value]="label('no')" (click)="reset()" />
       </label>
       <label>
-       <input type="submit" value="confirm" />
+       <input type="submit" [value]="label('yes')" />
       </label>
     </footer>
   `

@@ -46,7 +46,13 @@ export class DialogService {
       @param  immediate [boolean !optional]
       @return dialog [instance of Dialog]
    */
-  public wizard (header: string, content: string[], immediate?: boolean): Dialog {
+  public wizard (header: string, content: any[], immediate?: boolean): Dialog {
+    console.log('DialogService::wizard', header, JSON.stringify(content, null, 2));
+
+    let screens = content.map(screen => screen.label); 
+
+    console.log('DialogService::wizard->screens', JSON.stringify(screens, null, 2));
+
     return this.create(header, content, DIALOG_TYPE_WIZARD, immediate);
   }
 

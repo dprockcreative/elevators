@@ -73,17 +73,52 @@ export class SessionService {
       let check = (): boolean => {
         if (DateTimeHasPassed(new Date(), this.start, SESSION_WELCOMED_DELAY)) {
 
-          console.info('SessionService->', 'inject dialog');
-//setTimeout(() => {
+          //console.info('SessionService->', 'inject dialog');
+
+          let wizard = this.dialogService.wizard(
+            'The Wizard',
+            [
+              {
+                'label': 'Screen One Label',
+                'type' : 'input-text-content',
+                'model': {
+                  'name' : 'one',
+                  'value': "One's Default Value",
+                }
+              },
+              {
+                'label': 'Screen Two Label',
+                'type': 'generic-content',
+              },
+            ]
+          );
+
+          wizard.promise()
+            .then(() => {
+              console.log('results of wizard action', 'complete');
+            })
+            .catch(() => {
+              console.log('results of wizard action', 'cancelled');
+            });
+/*
+          wizard.promise()
+            .then(() => {
+              console.log('results of wizard action', 'complete');
+            })
+            .catch(() => {
+              console.log('results of wizard action', 'cancelled');
+            });
+*/
+/*
+         let alert = this.dialogService.alert(
+            'Hello and Welcome',
+            [`<p>Content Part 1</p>`, `<p>Content Part 2</p>`],
+            false
+          );
 
           let confirm = this.dialogService.confirm(
             'Does this work',
             [`<p>Click confirm or cancel</p>`]
-          );
-
-          let alert = this.dialogService.alert(
-            'Hello and Welcome',
-            [`<p>Content Part 1</p>`, `<p>Content Part 2</p>`]
           );
 
           confirm.promise()
@@ -93,32 +128,15 @@ export class SessionService {
             })
             .catch(() => {
               console.log('results of confirm action', 'cancelled');
+              this.dialogService.add(alert).then(alert => alert.activate());;
             });
 
           alert.promise().then(() => {
             console.log('results of alert action');
           });
-/*
-          let alert = this.dialogService.alert(
-            'Hello and Welcome',
-            [`<p>Content Part 1</p>`, `<p>Content Part 2</p>`]
-          );
-
-          alert.then(()=> {
-            console.log('results of alert action');
-          });
 */
-//}, 1000);
 
-/*
-          let wizard = this.dialogService.make(
-            'Hello and Welcome',
-            'the body',
-            'wizard'
-          );
 
-          this.dialogService.add(wizard);
-*/
 
           return true;
         }
