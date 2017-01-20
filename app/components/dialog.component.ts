@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterContentChecked } from '@angular/core';
 
 import { Dialog } from '../interfaces/index';
 
@@ -15,6 +15,7 @@ import {
       <article>
         <header>
           <h3>{{dialog.header()}}</h3>
+          <h5>{{count()}}</h5>
         </header>
         <form (ngSubmit)="submit()" [formGroup]="dialog.form">
           <alert *ngIf="dialog.type === 'alert'"></alert>
@@ -29,7 +30,7 @@ import {
 /**
  *  Dialog Component
  */
-export class DialogComponent {
+export class DialogComponent implements AfterContentChecked {
 
   protected dialog: Dialog;
 
@@ -39,16 +40,12 @@ export class DialogComponent {
     this.dialog = dialogService.current();
   }
 
-  /*  Label
-      @override true
+  /*  Count
       @type     protected
-      @param    key [string]
-      @param    alt [string !optional]
       @return   string
-      - default functions occur if not overridden by sub class
    */
-  protected label (key: string, alt?: string): string {
-    return DIALOG_STRING_MAP[this.dialog.type][key];
+  protected count (): string {
+    return `${this.dialog.index + 1} of ${this.dialog.content.length}`;
   }
 
   /*  Service
@@ -66,8 +63,20 @@ export class DialogComponent {
       @return   any
       - default functions occur if not overridden by sub class
    */
-  protected content (screen?:any): any {
+  protected content (): any {
     return this.dialog.screen();
+  }
+
+  /*  Label
+      @override true
+      @type     protected
+      @param    key [string]
+      @param    alt [string !optional]
+      @return   string
+      - default functions occur if not overridden by sub class
+   */
+  protected label (key: string, alt?: string): string {
+    return DIALOG_STRING_MAP[this.dialog.type][key];
   }
 
   /*  Reset
@@ -90,6 +99,9 @@ export class DialogComponent {
     this.dialogService.dismiss();
   }
 
+  ngAfterContentChecked (): void {
+    this.dialog = this.dialogService.current();
+  }
 }
 
 /*
@@ -119,7 +131,7 @@ export class DialogComponent {
             false
           )
 
-      // ^^^ third argument = false : means that the dialog will not be added to the queue until: 
+      // ^^^ third argument = false : means that the dialog will not be added to the queue until:
       if (conditional) {
         this.dialogService.add(alert).then(d => d.activate());
       }
@@ -129,7 +141,7 @@ export class DialogComponent {
       });
 
     ================
-    CONFIRMS 
+    CONFIRMS
 
       this.dialogService.confirm(
           'Text Appears in Header',
@@ -152,16 +164,20 @@ export class DialogComponent {
         'Text Appears in Header',
         [
           {
-            'label': 'Screen One Label',
+            'type': 'generic-content',
+            'template': `<any html/>`
+          },
+          {
             'type' : 'input-text-content',
-            'model': {
+            'inputs': {
+              'label': 'Screen One Label',
               'name' : 'one'
             }
           },
           {
-            'label': 'Screen Two Label',
             'type': 'input-text-content',
-            'model': {
+            'inputs': {
+              'label': 'Screen Two Label',
               'name' : 'two'
             }
           },

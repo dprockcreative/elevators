@@ -53,16 +53,19 @@ export class ElevatorComponent {
    */
   private queryTask (task: Task): void {
     if (this.elevator.shaft.id === task.shaft.id) {
-      //  Blocking Action
 
+      //  Blocking Action
       //  prevents duplicate requests from executing...
       if (!this.TASK) {
+
         this.TASK = task;
         this.runTask();
-      }
-      //  ...but allows for async update to properties
-      //  ; avoiding the need for dirty checking later.
-      else {
+
+      } else {
+
+        //  ...but allows for async update to properties
+        //  ; avoiding the need for dirty checking later.
+
         if (this.TASK.id === task.id) {
           Object.assign(this.TASK, task);
         }
@@ -152,17 +155,22 @@ export class ElevatorComponent {
       };
 
       I = setInterval(() => {
+
         if (!this.TASK) {
+
           clearInterval(I);
           reject('task jettison -> cycleStops');
+
         } else {
 
           stops = this.TASK.stops;
 
           if (tick === stops.length) {
-            this.setTaskStatus(TASK_COMPLETE)
+
+            this.setTaskStatus(TASK_COMPLETE);
             clearInterval(I);
             resolve();
+
           } else {
             ask();
           }
@@ -303,7 +311,7 @@ export class ElevatorComponent {
 
       let T = setTimeout(() => {
 
-      	console.info(`Elevator ${this.elevator.shaft.id} Closing Doors`);
+        console.info(`Elevator ${this.elevator.shaft.id} Closing Doors`);
 
         this.setTaskStatus(status);
         clearTimeout(T);

@@ -4175,8 +4175,13 @@ body {
     bottom: 50%;
     left: 50%;
     z-index: 999;
+    display: block;
     width: 1px;
     height: 1px;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+    background: transparent;
     user-select: auto;
     -webkit-touch-callout: default;
     -webkit-user-select: auto;
@@ -4185,6 +4190,12 @@ body {
     -ms-user-select: auto;
     -ms-touch-action: auto;
     pointer-events: none; }
+    body > main > dialog::backdrop {
+      background: transparent; }
+    body > main > dialog:before, body > main > dialog:after {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box; }
     body > main > dialog > div {
       position: fixed;
       overflow: hidden;
@@ -4201,7 +4212,7 @@ body {
       transition-timing-function: ease-in-out; }
       body > main > dialog > div > article {
         opacity: inherit;
-        width: 30rem;
+        width: 40rem;
         margin: auto;
         padding: 2rem;
         color: rgba(255, 255, 255, 0.9);
@@ -4225,6 +4236,7 @@ body {
         -o-transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         body > main > dialog > div > article header {
+          position: relative;
           cursor: default;
           padding: 0 0 2rem;
           user-select: none;
@@ -4234,20 +4246,43 @@ body {
           -moz-user-select: none;
           -ms-user-select: none;
           -ms-touch-action: none; }
-          body > main > dialog > div > article header h3 {
+          body > main > dialog > div > article header h3, body > main > dialog > div > article header h5 {
             margin: 0;
             padding: 0;
-            font-size: 1.8rem;
-            font-weight: 300;
             line-height: normal; }
+          body > main > dialog > div > article header h3 {
+            font-size: 2rem;
+            font-weight: 200; }
+          body > main > dialog > div > article header h5 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.4); }
         body > main > dialog > div > article form {
           margin: 0;
-          padding: 0; }
+          padding: 0;
+          font-size: 1.2rem; }
           body > main > dialog > div > article form > alert > label,
           body > main > dialog > div > article form > confirm > label,
           body > main > dialog > div > article form > wizard > label {
             display: block;
             margin: 2rem 0; }
+          body > main > dialog > div > article form h4 {
+            font-size: 1.6rem;
+            font-weight: 100; }
+          body > main > dialog > div > article form p {
+            font-weight: 200;
+            line-height: 1.8rem; }
+          body > main > dialog > div > article form div {
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -ms-touch-action: none; }
           body > main > dialog > div > article form > alert footer,
           body > main > dialog > div > article form > confirm footer,
           body > main > dialog > div > article form > wizard footer {
@@ -4266,7 +4301,7 @@ body {
                 body > main > dialog > div > article form > confirm footer label input:hover,
                 body > main > dialog > div > article form > wizard footer label input:hover {
                   background-color: rgba(255, 255, 255, 0.3) !important; }
-      body > main > dialog > div:not(.active) {
+      body > main > dialog > div:not(.active), body > main > dialog > div:not([open]) {
         z-index: -1;
         top: 50%;
         right: 50%;
@@ -4292,7 +4327,7 @@ body {
         -ms-transition-delay: 250ms;
         -o-transition-delay: 250ms;
         transition-delay: 250ms; }
-        body > main > dialog > div:not(.active) > article {
+        body > main > dialog > div:not(.active) > article, body > main > dialog > div:not([open]) > article {
           transform: scale(0.1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;
@@ -4304,7 +4339,7 @@ body {
           -ms-transition-delay: 0s;
           -o-transition-delay: 0s;
           transition-delay: 0s; }
-      body > main > dialog > div.active {
+      body > main > dialog > div.active, body > main > dialog > div[open] {
         z-index: 1;
         top: 0;
         right: 0;
@@ -4330,7 +4365,7 @@ body {
         -ms-transition-delay: 0s;
         -o-transition-delay: 0s;
         transition-delay: 0s; }
-        body > main > dialog > div.active > article {
+        body > main > dialog > div.active > article, body > main > dialog > div[open] > article {
           transform: scale(1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;

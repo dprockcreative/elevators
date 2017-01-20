@@ -6,7 +6,7 @@ export const SESSION_TIME_TO_MIN    = (minutes: number): number => {
 };
 
 export const SESSION_TIME_FROM_MIN  = (time: number): number => {
-  return (time/60)/1000;
+  return (time / 60) / 1000;
 };
 
 export const SESSION_WELCOMED_DELAY = SESSION_TIME_TO_MIN(2); // 2 MINUTES

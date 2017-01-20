@@ -1,12 +1,12 @@
 import { Elevator } from './elevator';
 
-interface iShaft {
+interface ShaftI {
   id: number;
   stories: number;
   elevator: Elevator;
 }
 
-export class Shaft implements iShaft {
+export class Shaft implements ShaftI {
   id: number;
   stories: number;
   elevator: Elevator;

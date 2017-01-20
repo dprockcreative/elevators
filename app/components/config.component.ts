@@ -1,18 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Floor, Shaft } from '../interfaces/index';
-import { FloorService, ShaftService, DialogService } from '../services/index';
+import { Shaft } from '../interfaces/index';
+import { ShaftService } from '../services/index';
 
 @Component({
   selector: 'footer',
   template: `
     <form>
       <label class="inline" title="Shafts">
-        <input type="number" name="shafts" min="1" max="5" step="1" (ngModelChange)="setShaftsLength($event)" [(ngModel)]="config.length" [readonly]="processing()" tabindex="1"/>
+        <input
+          type="number"
+          name="shafts"
+          min="1"
+          max="5"
+          step="1"
+          (ngModelChange)="setShaftsLength($event)"
+          [(ngModel)]="config.length"
+          [readonly]="processing()"
+          tabindex="1"
+        />
       </label>
       <label class="inline" *ngFor="let row of config" title="Shaft {{row.id}}">
-        <input type="number" name="shaft_{{row.id}}" min="3" max="10" step="1" (ngModelChange)="setShaftsStories($event, row)" [(ngModel)]="row.stories" tabindex="{{row.id + 1}}"/>
+        <input
+          type="number"
+          name="shaft_{{row.id}}"
+          min="3"
+          max="10"
+          step="1"
+          (ngModelChange)="setShaftsStories($event, row)"
+          [(ngModel)]="row.stories"
+          tabindex="{{row.id + 1}}"
+        />
       </label>
+
     </form>
   `
 })
@@ -40,23 +60,28 @@ export class ConfigComponent implements OnInit {
    */
   public setShaftsLength (value: number): void {
     let length = this.config.length;
+
     if (length !== value) {
+
       // delete
       let promises = [];
       let i;
 
       if (length > value) {
+
         for (i = length - value; i >= 1; i--) {
           promises.push(this.shaftService.removeByIndex(length - i));
         }
-      }
-      // push
-      else {
+
+      } else {
+
+        // push
         for (i = value - length; i >= 1; i--) {
           let shaft = {'stories': this.config[length - i].stories};
           this.config.push(Object.assign({}, shaft, { 'id' : value }));
           promises.push(this.shaftService.save(shaft as Shaft));
         }
+
       }
 
       Promise.all(promises).then(() => this.setConfig());

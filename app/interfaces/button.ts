@@ -1,16 +1,16 @@
 import { Floor } from './floor';
 
-interface iButton {
-  floor : Floor;
-  id    : number;
+interface ButtonI {
+  floor: Floor;
+  id: number;
   active: boolean;
   activate (): void;
   deactivate (): void;
 }
 
-export class Button implements iButton {
-  floor : Floor;
-  id    : number;
+export class Button implements ButtonI {
+  floor: Floor;
+  id: number;
   active: boolean = false;
 
   constructor (floor: Floor, id: number) {

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Button, Floor, Shaft, Task } from '../interfaces/index';
+import { Button, Floor } from '../interfaces/index';
 
-import { FloorService, ShaftService, TasksService } from '../services/index';
+import { FloorService, TasksService } from '../services/index';
 
 @Component({
   selector: 'li[floor]',
@@ -35,11 +35,11 @@ export class FloorComponent implements OnInit {
   }
 
   /*  Call For Elevator
-      @type   private
+      @type   public
       @param  button [Button]
       @return void
    */
-  private callForElevator (button: Button): void {
+  public callForElevator (button: Button): void {
     button.activate();
     this.tasksService.requestFromFloor(this.floor.id, button.id);
   }
@@ -59,19 +59,19 @@ export class FloorComponent implements OnInit {
   }
 
   /*  Is Floor Active
-      @type   private
+      @type   public
       @return boolean
    */
-  private isFloorActive (): boolean {
+  public isFloorActive (): boolean {
     return this.tasksService.isFloorTasked(this.floor);
   }
 
   /*  Disabled
-      @type   private
+      @type   public
       @param  button [Button]
       @return boolean
    */
-  private disabled (button: Button): boolean {
+  public disabled (button: Button): boolean {
     return this.floor.id === button.id || button.active;
   }
 
@@ -80,9 +80,9 @@ export class FloorComponent implements OnInit {
       @return void
    */
   private buildButtons (): void {
-    let buttons : Button[] = [];
-    let length  : number   = this.floorService.getFloorsLength();
-    let id      : number   = 1;
+    let buttons: Button[] = [];
+    let length: number   = this.floorService.getFloorsLength();
+    let id: number   = 1;
     for (id = 1; id <= length; id++) {
       buttons.push(new Button(this.floor, id));
     }

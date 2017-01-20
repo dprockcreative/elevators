@@ -93,21 +93,22 @@ export class DialogWizard extends DialogComponent implements OnInit {
       @return   dcds [Array object]
    */
   private dynamicComponentDefinitions (): any[] {
+
     let tdcds: any[] = [];
-    this.dialog.content.slice(0).forEach((screen) => {
-      let dcd = {
-        'component': DYNAMIC_COMPONENTS_MAP['generic-content'],
-        'inputs': { 'label' : screen.label || '' }
-      };
 
-      if (screen.type in DYNAMIC_COMPONENTS_MAP) {
-        Object.assign(dcd, {'component' : DYNAMIC_COMPONENTS_MAP[screen.type]});
+    this.dialog.content.slice(0).forEach(screen => {
+
+      let type = screen.type;
+
+      if (type in DYNAMIC_COMPONENTS_MAP) {
+
+        let inputs = Object.assign({}, screen.inputs, { 'form' : this.dialog.form });
+
+        let dcd = Object.assign({}, DYNAMIC_COMPONENTS_MAP[type], { 'inputs' : inputs });
+
+        tdcds.push(dcd);
       }
 
-      if (screen.model && screen.model.name) {
-        Object.assign(dcd.inputs, {'name' : screen.model.name, 'form': this.dialog.form});
-      }
-      tdcds.push(dcd);
     });
 
     return tdcds;

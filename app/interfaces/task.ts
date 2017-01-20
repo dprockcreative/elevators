@@ -2,14 +2,14 @@ import { Shaft } from './shaft';
 
 import UUID from '../extensions/uuid';
 
-interface iTask {
-  id    : string;
-	status: number;
-  floor	: number;
-  stops	: number[];
-  up    : boolean;
-  down  : boolean;
-  shaft : Shaft;
+interface TaskI {
+  id: string;
+  status: number;
+  floor: number;
+  stops: number[];
+  up: boolean;
+  down: boolean;
+  shaft: Shaft;
   activate (): any;
   addStop (stop: number[] | number): void;
   assignShaft (shaft: Shaft): void;
@@ -17,14 +17,14 @@ interface iTask {
   getStatus (): number;
 }
 
-export class Task implements iTask {
-  id    : string    = '';
-	status: number 		= 0;
-  floor	: number 		= 0;
-  stops	: number[] 	= [];
-  up    : boolean;
-  down  : boolean;
-  shaft : Shaft;
+export class Task implements TaskI {
+  id: string      = '';
+  status: number  = 0;
+  floor: number   = 0;
+  stops: number[] = [];
+  up: boolean;
+  down: boolean;
+  shaft: Shaft;
 
   constructor (floor: number, stop: number) {
     this.floor  = floor;

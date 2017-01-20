@@ -10,10 +10,23 @@ body {
     	bottom: 50%;
     	left: 50%;
     	z-index: 999;
+    	// WEBKIT REQUIRES DISPLAY: BLOCK;
+    	display: block;
     	width: 1px;
     	height: 1px;
+    	margin: 0;
+    	padding: 0;
+    	color: transparent;
+    	background: transparent;
 			@include auto-select();
 			pointer-events: none;
+
+			&::backdrop {
+    	  background: transparent;
+			}
+			&:before, &:after {
+        @include box-sizing(content-box);
+			}
 
 			> div {
 			  @extend .flex-center-container;
@@ -27,7 +40,7 @@ body {
 				> article {
 			  	@extend .flex-center-box;
 					opacity: inherit;
-					width: 30rem;
+					width: 40rem;
 					margin: auto;
 					padding: 2rem;
 					color: $white-09;
@@ -40,22 +53,37 @@ body {
           @include transition-timing-function(ease, cubic-bezier(0.175, 0.885, 0.32, 1.275));
 
 					header {
+					  position: relative;
 					  cursor: default;
 						padding: 0 0 2rem;
 						@include no-select();
 
-						h3 {
+						h3, h5 {
 							margin: 0;
 							padding: 0;
-							font-size: 1.8rem;
-							font-weight: 300;
 							line-height: normal;
 						}
+
+						h3 {
+							font-size: 2rem;
+							font-weight: 200;
+						}
+
+						h5 {
+						  position: absolute;
+						  bottom: 0;
+						  right: 0;
+							font-size: 1.2rem;
+							font-weight: 300;
+							color: $white-04;
+						}
+
 					}
 
 					form {
 					  margin: 0;
 					  padding: 0;
+					  font-size: 1.2rem;
 
 						> alert,
 						> confirm,
@@ -65,6 +93,20 @@ body {
                 margin: 2rem 0;
               }
 						}
+
+            h4 {
+              font-size: 1.6rem;
+              font-weight: 100;
+            }
+
+            p {
+              font-weight: 200;
+							line-height: 1.8rem;
+            }
+
+            div {
+              @include no-select();
+            }
 
 						> alert,
 						> confirm,
@@ -89,7 +131,8 @@ body {
 					}
 				}
 
-				&:not(.active) {
+				&:not(.active),
+				&:not([open]) {
 					z-index: -1;
 					top: 50%;
 					right: 50%;
@@ -111,7 +154,8 @@ body {
 					}
 				}
 
-				&.active {
+				&.active,
+				&[open] {
 				  z-index: 1;
 					top: 0;
 					right: 0;

@@ -2,7 +2,7 @@ import { Directive, Inject, ElementRef, OnInit, AfterViewChecked } from '@angula
 
 import { ElevatorComponent } from '../components/index';
 
-import { Elevator, Shaft } from '../interfaces/index';
+import { Elevator } from '../interfaces/index';
 
 @Directive({
   selector: '.elevator'
@@ -10,11 +10,11 @@ import { Elevator, Shaft } from '../interfaces/index';
 
 export class ElevatorDirective implements OnInit, AfterViewChecked {
 
-  private elevator    : Elevator;
-  private height      : number = 0;
-  private shaftHeight : number = 0;
-  private floorHeight : number = 0;
-  private elem        : any;
+  private elevator: Elevator;
+  private height: number = 0;
+  private shaftHeight: number = 0;
+  private floorHeight: number = 0;
+  private elem: any;
 
   constructor (
     public element: ElementRef,

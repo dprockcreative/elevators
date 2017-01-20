@@ -15,7 +15,7 @@ export class FloorService {
   public buildFloors (stories: number): Promise<any> {
     this.floors = [];
     return new Promise((resolve, reject) => {
-      for (let i = stories;i >= 1; i--) {
+      for (let i = stories; i >= 1; i--) {
         this.floors.push(new Floor(i));
       }
       resolve(this.floors);
@@ -55,15 +55,4 @@ export class FloorService {
   public getFloorsLength (): number {
     return this.floors.length;
   }
-
-  /*  Handle Error
-      @type   private
-      @param  error [any]
-      @return Promise [any]
-   */
-  private handleError (error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
 }

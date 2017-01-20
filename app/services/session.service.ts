@@ -5,11 +5,11 @@ import { DialogService } from './dialog.service';
 import {
   SESSION_START_NS,
   SESSION_WELCOMED_NS,
-  SESSION_TIME_TO_MIN,
-  SESSION_TIME_FROM_MIN,
   SESSION_QUERY_INTERVAL,
-  SESSION_WELCOMED_DELAY
+  SESSION_WELCOMED_DELAY,
+  DIALOG_WIZARD_WELCOME
 } from '../constants/index';
+
 
 // Date Utilities
 const DateToLocaleString = (date: Date): string => {
@@ -28,7 +28,7 @@ export class SessionService {
   welcomed: boolean = false;
 
   constructor (
-    private ngZone: NgZone, 
+    private ngZone: NgZone,
     private dialogService: DialogService
   ) {
     this.query();
@@ -40,15 +40,6 @@ export class SessionService {
    */
   public isWelcomed (): boolean {
     return this.welcomed;
-  }
-
-  /*  Welcome
-      @type   public
-      @param  welcome [boolean - true]
-      @return void
-   */
-  public welcome (welcome: boolean = true): void {
-    this.welcomed = welcome;
   }
 
   /*  Query
@@ -69,13 +60,21 @@ export class SessionService {
     // Session Welcome Wizard
     this.welcomed = sessionStorage.getItem(SESSION_WELCOMED_NS) ? true : false;
 
+    let setWelcome = () => {
+      this.welcomed = true;
+      sessionStorage.setItem(SESSION_WELCOMED_NS, String(this.welcomed));
+    };
+
     if (!this.welcomed) {
       let check = (): boolean => {
+
         if (DateTimeHasPassed(new Date(), this.start, SESSION_WELCOMED_DELAY)) {
 
-          //console.info('SessionService->', 'inject dialog');
+          let s = this.dialogService;
 
-
+          s.wizard.apply(s, DIALOG_WIZARD_WELCOME).promise()
+            .then(setWelcome)
+            .catch(setWelcome);
 
           return true;
         }
@@ -86,6 +85,8 @@ export class SessionService {
 
         this.ngZone.runOutsideAngular(() => {
           let INT = setInterval(() => {
+
+            console.log(this.start, this.welcomed);
 
             if (this.welcomed || check()) {
               clearInterval(INT);

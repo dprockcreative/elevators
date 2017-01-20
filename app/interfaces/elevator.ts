@@ -1,21 +1,21 @@
 import { Shaft } from './shaft';
 
-interface iElevator {
+interface ElevatorI {
   shaft: Shaft;
   open: boolean;
   floor: number;
   current: number;
   next: number;
   goTo (floor: number): void;
-  ready (): boolean ;
+  ready (): boolean;
 }
 
-export class Elevator implements iElevator {
-  shaft   : Shaft;
-  open    : boolean = false;
-  floor   : number  = 0;
-  current : number  = 1;
-  next    : number  = 1;
+export class Elevator implements ElevatorI {
+  shaft: Shaft;
+  open: boolean   = false;
+  floor: number   = 0;
+  current: number = 1;
+  next: number    = 1;
 
   constructor (shaft: Shaft) {
     this.shaft = shaft;

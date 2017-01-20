@@ -7,7 +7,6 @@ import { Floor, Shaft, Task } from '../interfaces/index';
 import { ShaftService } from '../services/index';
 
 import {
-  TASK_CALLED,
   TASK_CALLED_COMPLETE,
   TASK_STOPS_LIMIT,
   TASKS_BROADCAST_INTERVAL
@@ -16,8 +15,8 @@ import {
 @Injectable()
 export class TasksService {
 
-  private tasks : Task[]  = [];
-  private INT   : any     = 0;
+  private tasks: Task[]  = [];
+  private INT: any     = 0;
   private LENGTH: number  = 0;
 
   // Observable sources
@@ -33,7 +32,7 @@ export class TasksService {
   completeStopStream  = this.completeStopSource.asObservable();
 
   constructor (
-    private ngZone: NgZone, 
+    private ngZone: NgZone,
     private shaftService: ShaftService
   ) {}
 
@@ -142,8 +141,8 @@ export class TasksService {
    */
   public requestFromFloor (from: number, to: number): void {
 
-    let task  : Task  = new Task(from, to);
-    let shaft : Shaft = this.shaftForTask(task);
+    let task: Task = new Task(from, to);
+    let shaft: Shaft = this.shaftForTask(task);
 
     let log = [`Request from Floor: *${from}* to Floor: *${to}*`];
 
@@ -156,7 +155,7 @@ export class TasksService {
 
       if (shaft) {
 
-        t.assignShaft(shaft)
+        t.assignShaft(shaft);
 
         log.push(`Generated new Task using Shaft ${t.shaft.id}`, `Task ID: ${t.id}`);
 
@@ -166,9 +165,7 @@ export class TasksService {
 
       }
 
-    }
-    // merge
-    else {
+    } else {
 
       let t = this.mergeTasks(task, mTasks[0]);
 
@@ -201,10 +198,10 @@ export class TasksService {
     return this.shaftService.getCurrent()
       .filter(shaft => task.canUse(shaft))
       .filter(shaft => (this.taskForShaft(shaft) === null))
-      .sort((sa,sb) => {
+      .sort((sa, sb) => {
         let a = sa.elevator.floor;
         let b = sb.elevator.floor;
-        return b>a?1:(a>b?-1:0);
+        return b > a ? 1 : ( a > b ? -1 : 0 );
       })[0];
   }
 
@@ -245,9 +242,9 @@ export class TasksService {
           if (this.tasks.length !== this.LENGTH) {
             this.LENGTH = this.tasks.length;
             if (this.LENGTH !== 1) {
-            	console.info(`${this.LENGTH} Tasks remain in Queue`);
+              console.info(`${this.LENGTH} Tasks remain in Queue`);
             } else {
-            	console.info(`${this.LENGTH} Task remains in Queue`);
+              console.info(`${this.LENGTH} Task remains in Queue`);
             }
           }
 
@@ -272,7 +269,7 @@ export class TasksService {
         task.floor === T.floor &&
         task.up === T.up &&
         task.status < TASK_CALLED_COMPLETE &&
-        task.stops.length < TASK_STOPS_LIMIT && 
+        task.stops.length < TASK_STOPS_LIMIT &&
         (task.up ? task.shaft.elevator.floor > T.floor : task.shaft.elevator.floor < T.floor)
       ) || false;
     });

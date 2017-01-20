@@ -3,13 +3,13 @@ import {
   LOG_EXPIRED_TIMEOUT
 } from '../constants/index';
 
-interface iLog {
+interface LogI {
   message: string;
   expired: boolean;
   live (): Promise<any>;
 }
 
-export class Log implements iLog {
+export class Log implements LogI {
   message: string;
   expired: boolean = false;
 
@@ -23,8 +23,8 @@ export class Log implements iLog {
         this.expired = true;
         clearTimeout(TID);
         TID = setTimeout(() => {
-        	resolve();
-        	clearTimeout(TID);
+          resolve();
+          clearTimeout(TID);
         }, LOG_EXPIRED_TIMEOUT);
       }, LOG_DISMISS_TIMEOUT);
     });

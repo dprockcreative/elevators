@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Dialog } from '../interfaces/index';
 
 import {
-  DIALOG_TYPES,
-  DIALOG_STRING_MAP,
   DIALOG_TYPE_ALERT,
   DIALOG_TYPE_CONFIRM,
   DIALOG_TYPE_WIZARD
@@ -24,7 +22,7 @@ export class DialogService {
       @param  immediate [boolean !optional]
       @return dialog [instance of Dialog]
    */
-  public alert (header: string, content: string[], immediate?: boolean): Dialog {
+  public alert (header: string, content: any[], immediate?: boolean): Dialog {
     return this.create(header, content, DIALOG_TYPE_ALERT, immediate);
   }
 
@@ -35,7 +33,7 @@ export class DialogService {
       @param  immediate [boolean !optional]
       @return dialog [instance of Dialog]
    */
-  public confirm (header: string, content: string[], immediate?: boolean): Dialog {
+  public confirm (header: string, content: any[], immediate?: boolean): Dialog {
     return this.create(header, content, DIALOG_TYPE_CONFIRM, immediate);
   }
 
@@ -93,7 +91,7 @@ export class DialogService {
       @param  args [any]
       @return void
    */
-  public complete (args?:any): void {
+  public complete (args?: any): void {
     let dialog = this.current();
     dialog.deactivate().then(() => {
       if (typeof args === 'boolean') {
@@ -109,7 +107,7 @@ export class DialogService {
       @type   public
       @return void
    */
-  public dismiss (args?:any): void {
+  public dismiss (args?: any): void {
     let dialog = this.current();
     dialog.deactivate().then(() => {
       dialog.deferred.resolve(args);
@@ -125,12 +123,11 @@ export class DialogService {
       @param  immediate [boolean !default = true]
       @return dialog [instance of Dialog]
    */
-  private create (header: string, content: string[], type: string, immediate: boolean = true): Dialog {
+  private create (header: string, content: any[], type: string, immediate: boolean = true): Dialog {
     let dialog = new Dialog(header, content, type);
     if (immediate) {
       this.add(dialog).then(d => d.activate());
     }
     return dialog;
   }
-
 }

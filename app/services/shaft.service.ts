@@ -8,9 +8,9 @@ import { Shaft } from '../interfaces/index';
 @Injectable()
 export class ShaftService {
 
-  private url     : string  = 'app/shafts';
-  private shafts  : Shaft[] = [];
-  private config  : (any)   = [];
+  private url: string = 'app/shafts';
+  private shafts: Shaft[] = [];
+  private config: (any) = [];
 
   constructor (private http: Http) {}
 
@@ -27,11 +27,11 @@ export class ShaftService {
       @return Promise [Shaft Array]
    */
   public buildShafts (): Promise<Shaft[]> {
-    let data;
     return this.http
       .get(this.url)
       .toPromise()
-      .then(res => (data = res.json().data, this.config = data.map(row => ({ 'id' : row.id, 'stories' : row.stories })), data))
+      .then(response => response.json().data)
+      .then(data => (this.config = data.map(row => ({ 'id' : row.id, 'stories' : row.stories }))))
       .then(data => (this.shafts = data.map(row => new Shaft(row.id, row.stories)), this.shafts))
       .catch(this.handleError);
   }
@@ -94,7 +94,11 @@ export class ShaftService {
       @return Promise [Shaft]
    */
   public save (shaft: Shaft): Promise<Shaft> {
-    return this[shaft.id ? 'put' : 'post'](shaft);
+    if (shaft.id) {
+      return this.post(shaft);
+    } else {
+      return this.put(shaft);
+    }
   }
 
   /*  Delete

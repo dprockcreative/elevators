@@ -8,6 +8,8 @@ import {
   ComponentFactoryResolver
 } from '@angular/core';
 
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Dialog } from '../../interfaces/index';
@@ -16,16 +18,15 @@ import { Dialog } from '../../interfaces/index';
  */
 @Component({
   selector: 'generic-content', 
-  template: `
-    <p>{{label}}</p>
-  `
+  template: `<div [innerHTML]="template"></div>`
 })
 class GenericContentComponent {
-  label: string = '';
+  template: SafeHtml = '';
   constructor (
-    private injector: Injector
+    private injector: Injector,
+    private sanitizer: DomSanitizer
   ) {
-    this.label = this.injector.get('label');
+    this.template = this.sanitizer.bypassSecurityTrustHtml(this.injector.get('template'));
   }
 }
 
@@ -100,10 +101,15 @@ class ContentComponent {
 
 }
 
-
 export const DYNAMIC_COMPONENTS = [ContentComponent, CONTENT_COMPONENTS];
 
 export const DYNAMIC_COMPONENTS_MAP = {
-  'generic-content'   : GenericContentComponent,
-  'input-text-content': InputTextContentComponent,
+  'generic-content': {
+    'component' : GenericContentComponent,
+    'inputs': { 'template' : null }
+  },
+  'input-text-content': {
+    'component' : InputTextContentComponent,
+    'inputs': { 'label' : null, 'name' : null }
+  },
 };

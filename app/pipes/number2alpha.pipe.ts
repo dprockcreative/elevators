@@ -8,7 +8,7 @@ const ALPHABET_UC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 })
 
 export class Number2AlphaPipe implements PipeTransform {
-  transform(value: number, lowercase: boolean = false) : string {
+  transform(value: number, lowercase: boolean = false): string {
     if (typeof value === 'number' && value < ALPHABET_UC.length) {
       return String(lowercase ? ALPHABET_LC : ALPHABET_UC).charAt(value - 1);
     }

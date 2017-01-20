@@ -26,7 +26,7 @@ export class LogService {
       window.console[method] = (...args) => {
         this.log(`${[...args].join('.\r\n\r\n')}.`);
       };
-    } catch(err) {
+    } catch (err) {
       console.error('LogService: ' + err);
     }
   }

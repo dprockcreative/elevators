@@ -2,22 +2,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Deferred } from '../extensions/deferred';
 
-import {
-  DIALOG_TYPES,
-  DIALOG_STRING_MAP,
-  DIALOG_TYPE_ALERT,
-  DIALOG_TYPE_CONFIRM,
-  DIALOG_TYPE_WIZARD
-} from '../constants/index';
-
-interface iDialog {
-  index     : number;
-  type      : string;
-  title     : string;
-  active    : boolean;
-  content   : any[];
-  form      : FormGroup;
-  deferred  : Deferred<any>;
+interface DialogI {
+  index: number;
+  type: string;
+  title: string;
+  active: boolean;
+  content: any[];
+  form: FormGroup;
+  deferred: Deferred<any>;
   prev      (): boolean;
   next      (): boolean;
   start     (): boolean;
@@ -29,16 +21,16 @@ interface iDialog {
   promise   (): Promise<any>;
 }
 
-export class Dialog implements iDialog {
-  index   : number    = 0;
-	type    : string    = '';
-  title   : string    = '';
-  active  : boolean   = false;
-  content : any[]     = [];
-  form    : FormGroup = new FormGroup({});
+export class Dialog implements DialogI {
+  index: number   = 0;
+  type: string    = '';
+  title: string   = '';
+  active: boolean = false;
+  content: any[]  = [];
+  form: FormGroup = new FormGroup({});
   deferred: Deferred<any>;
 
-	constructor (title?: string, content?: any[], type?: string) {
+  constructor (title?: string, content?: any[], type?: string) {
     if (title && content && type) {
       this.title    = title;
       this.content  = content;
@@ -46,7 +38,7 @@ export class Dialog implements iDialog {
       this.deferred = new Deferred<any>();
       this.contentToFormGroup();
     }
-	}
+  }
 
   /*  Previous
       @type   public
@@ -140,8 +132,8 @@ export class Dialog implements iDialog {
     let fcs = {};
 
     screens.forEach(screen => {
-      if(typeof screen === 'object' && ('model' in screen && 'name' in screen.model)) {
-        fcs[screen.model.name] = new FormControl(screen.model.value || '', Validators.required);
+      if (typeof screen === 'object' && ('inputs' in screen && 'name' in screen.inputs)) {
+        fcs[screen.inputs.name] = new FormControl(screen.inputs.value || '', Validators.required);
       }
     });
 
