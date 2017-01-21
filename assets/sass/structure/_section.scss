@@ -8,20 +8,24 @@
     width: auto;
     margin: 0 25rem 0 auto;
 
-    > ul, > ol {
+    ul, ol, foundation {
       display: inline-block;
       vertical-align: bottom;
     }
 
-    > ul {
-      @extend .building;
+    > shafts {
+      > ul {
+        @extend .building;
+      }
     }
 
-    > ol {
-      @extend .floors;
+    > floors {
+      > ol {
+        @extend .floors;
+      }
     }
 
-    > footer {
+    > foundation {
       @extend .foundation;
     }
   }

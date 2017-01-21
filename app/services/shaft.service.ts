@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
+import { Subject } from 'rxjs/Subject';
+
 import 'rxjs/add/operator/toPromise';
 
 import { Shaft } from '../interfaces/index';
@@ -10,28 +12,44 @@ export class ShaftService {
 
   private url: string = 'app/shafts';
   private shafts: Shaft[] = [];
-  private config: (any) = [];
 
-  constructor (private http: Http) {}
+  // Observable sources
+  private buildShaftsSource = new Subject<Shaft[]>();
 
-  /*  Get Config
-      @type   public
-      @return hashmap
+  // Observable streams
+  buildShaftsStream = this.buildShaftsSource.asObservable();
+
+  constructor (
+    private http: Http
+  ) {}
+
+  /*  Broadcast
+      @type   private
+      @param  shafts [Shaft[]]
+      @return void
    */
-  public getConfig (): {[key: string]: number}[] {
-    return this.config;
+  private broadcast (shafts: Shaft[]): void {
+    this.buildShaftsSource.next(shafts);
+  }
+
+  /*  Build
+      @type   public
+      @return void
+   */
+  public build (): void {
+    this.getShafts()
+      .then(shafts => this.broadcast(shafts));
   }
 
   /*  Build Shafts
       @type   public
       @return Promise [Shaft Array]
    */
-  public buildShafts (): Promise<Shaft[]> {
+  public getShafts (): Promise<Shaft[]> {
     return this.http
       .get(this.url)
       .toPromise()
       .then(response => response.json().data)
-      .then(data => (this.config = data.map(row => ({ 'id' : row.id, 'stories' : row.stories }))))
       .then(data => (this.shafts = data.map(row => new Shaft(row.id, row.stories)), this.shafts))
       .catch(this.handleError);
   }
@@ -56,7 +74,7 @@ export class ShaftService {
       @type   public
       @return Promise [Shaft Array]
    */
-  public getShafts (): Promise<Shaft[]> {
+  public getShaftsPromise (): Promise<Shaft[]> {
     return Promise.resolve(this.shafts as Shaft[]);
   }
 
@@ -65,9 +83,18 @@ export class ShaftService {
       @param  id [number]
       @return Promise [Shaft]
    */
-  public getShaft (id: number): Promise<Shaft> {
-    return this.getShafts()
+  public getShaftPromise (id: number): Promise<Shaft> {
+    return this.getShaftsPromise()
       .then(shafts => shafts.find(shaft => shaft.id === id));
+  }
+
+  /*  Find Shaft
+      @type   public
+      @param  id [number]
+      @return Promise [Shaft]
+   */
+  public findShaft (id: number): Shaft {
+    return this.shafts.find(shaft => shaft.id === id);
   }
 
   /*  Remove

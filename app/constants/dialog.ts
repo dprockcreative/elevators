@@ -1,14 +1,18 @@
 export const DIALOG_TYPES = ['alert', 'confirm', 'wizard'];
-
-export const DIALOG_TYPE_ALERT    = DIALOG_TYPES[0];
-export const DIALOG_TYPE_CONFIRM  = DIALOG_TYPES[1];
-export const DIALOG_TYPE_WIZARD   = DIALOG_TYPES[2];
+export const DIALOG_TYPE_ALERT = DIALOG_TYPES[0];
+export const DIALOG_TYPE_CONFIRM = DIALOG_TYPES[1];
+export const DIALOG_TYPE_WIZARD = DIALOG_TYPES[2];
 
 export const DIALOG_STRING_MAP = {
-  [DIALOG_TYPE_ALERT]   : { 'yes' : 'ok'},
-  [DIALOG_TYPE_CONFIRM] : { 'yes' : 'confirm', 'no' : 'cancel'},
-  [DIALOG_TYPE_WIZARD]  : { 'yes' : 'next', 'no' : 'prev', 'start' : 'cancel', 'end' : 'complete' },
+  [DIALOG_TYPE_ALERT]: { 'yes' : 'ok'},
+  [DIALOG_TYPE_CONFIRM]: { 'yes' : 'confirm', 'no' : 'cancel'},
+  [DIALOG_TYPE_WIZARD]: { 'yes' : 'next', 'no' : 'previous', 'start' : 'cancel', 'end' : 'complete' },
 };
+
+export const DIALOG_WIZARD_SET_SHAFTS_HEADER = 'Change the Building - Shafts';
+export const DIALOG_WIZARD_SET_SHAFTS_LABEL = 'How many Elevators Shafts does your new building have?';
+export const DIALOG_WIZARD_SET_STORIES_HEADER = 'Change the Building - Stories';
+export const DIALOG_WIZARD_SET_STORIES_LABEL = 'How many Stories high is Shaft {{ALPHA}}?';
 
 export const DIALOG_WIZARD_WELCOME = [
   'Hello & Welcome',
@@ -91,22 +95,3 @@ export const DIALOG_WIZARD_WELCOME = [
     },
   ]
 ];
-
-/*
-
-
-    {
-      'type' : 'input-text-content',
-      'inputs': {
-        'label': 'Screen One Label',
-        'name' : 'one'
-      }
-    },
-    {
-      'type': 'input-text-content',
-      'inputs': {
-        'label': 'Screen Two Label',
-        'name' : 'two'
-      }
-    },
-*/

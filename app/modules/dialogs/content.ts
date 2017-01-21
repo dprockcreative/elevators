@@ -1,10 +1,10 @@
 import {
-  Component, 
-  Input, 
-  Injector, 
-  ViewContainerRef, 
-  ViewChild, 
-  ReflectiveInjector, 
+  Component,
+  Input,
+  Injector,
+  ViewContainerRef,
+  ViewChild,
+  ReflectiveInjector,
   ComponentFactoryResolver
 } from '@angular/core';
 
@@ -17,7 +17,7 @@ import { Dialog } from '../../interfaces/index';
 /*  Generic Content Component
  */
 @Component({
-  selector: 'generic-content', 
+  selector: 'generic-content',
   template: `<div [innerHTML]="template"></div>`
 })
 class GenericContentComponent {
@@ -26,14 +26,14 @@ class GenericContentComponent {
     private injector: Injector,
     private sanitizer: DomSanitizer
   ) {
-    this.template = this.sanitizer.bypassSecurityTrustHtml(this.injector.get('template'));
+    this.template = this.sanitizer.bypassSecurityTrustHtml(this.injector.get('template', this.template));
   }
 }
 
 /*  Input Text Content Component
  */
 @Component({
-  selector: 'input-text-content', 
+  selector: 'input-text-content',
   template: `
     <label title="{{label}}" [formGroup]="form">
       <input type="text" [formControlName]="name" />
@@ -42,25 +42,71 @@ class GenericContentComponent {
 })
 class InputTextContentComponent {
 
-  form  : FormControl;
-  label : string = '';
-  name  : string = '';
+  form: FormControl;
+  label: string = '';
+  name: string = '';
 
   constructor (
     private injector: Injector
   ) {
-    this.form  = this.injector.get('form');
+    this.form = this.injector.get('form', this.form);
+    this.label = this.injector.get('label', this.label);
+    this.name = this.injector.get('name', this.name);
+  }
+}
+
+/*  Input Range Content Component
+ */
+@Component({
+  selector: 'input-range-content',
+  template: `
+    <label title="{{label}}"[formGroup]="form">
+      <span class="range">
+        {{data()}}
+      </span><input
+        type="range"
+        min="{{min}}"
+        max="{{max}}"
+        step="{{step}}"
+        value="{{value}}"
+        [formControlName]="name"
+      />
+    </label>
+  `
+})
+class InputRangeContentComponent {
+
+  form: FormControl;
+  label: string = '';
+  name: string = '';
+
+  min: number = 1;
+  max: number = 3;
+  step: number = 1;
+  value: number = 0;
+
+  constructor (
+    private injector: Injector
+  ) {
+    this.form = this.injector.get('form', this.form);
     this.label = this.injector.get('label');
-    this.name  = this.injector.get('name');
+    this.name = this.injector.get('name', this.name);
+    this.min = this.injector.get('min', this.min);
+    this.max = this.injector.get('max', this.max);
+    this.step = this.injector.get('step', this.step);
+    this.value = this.injector.get('value', this.min);
+  }
+
+  public data (): number {
+    return this.form.value[this.name] || this.value;
   }
 }
 
 const CONTENT_COMPONENTS = [
-  GenericContentComponent, 
-  InputTextContentComponent
+  GenericContentComponent,
+  InputTextContentComponent,
+  InputRangeContentComponent
 ];
-
-
 
 /*  Content Component
  */
@@ -98,8 +144,8 @@ class ContentComponent {
   constructor(
     private cfr: ComponentFactoryResolver
   ) {}
-
 }
+
 
 export const DYNAMIC_COMPONENTS = [ContentComponent, CONTENT_COMPONENTS];
 
@@ -110,6 +156,10 @@ export const DYNAMIC_COMPONENTS_MAP = {
   },
   'input-text-content': {
     'component' : InputTextContentComponent,
+    'inputs': { 'label' : null, 'name' : null }
+  },
+  'input-range-content': {
+    'component' : InputRangeContentComponent,
     'inputs': { 'label' : null, 'name' : null }
   },
 };

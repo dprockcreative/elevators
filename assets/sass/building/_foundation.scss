@@ -1,26 +1,40 @@
 .foundation {
-	margin: 0.2rem 0 0;
+	margin: 0;
 	padding: 0.5rem;
 	background-color: $white-005;
 	@include border(0.1rem solid $white-02, false);
 
-  > ul {
-    list-style: none;
-    text-align: left;
-    margin: 0;
-    padding: 0 1rem;
+  > label {
+    display: block;
 
-    li {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      font-weight: 200;
-      color: $white-05;
+    @include icon-button(true, 4rem) {
+      @extend .icons;
+      @extend .icon-cog;
 
-      &:first-child {
-        color: $white-08;
+      height: 4rem;
+      color: $black-03;
+      font-size: 3rem;
+      overflow: hidden;
+
+      &:hover, &:focus {
+        color: $white-05;
+        background: transparent;
       }
 
+      &:active {
+        color: $white-08;
+        background: transparent;
+      }
+
+      &[disabled] {
+        color: $black-02;
+        background: transparent;
+
+        &:hover, &:focus, &:active {
+          color: $black-02;
+          background: transparent;
+        }
+      }
     }
   }
-
 }

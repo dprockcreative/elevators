@@ -3,6 +3,7 @@ form {
 	text-align: left;
 
 	label {
+
 		&.inline {
 			display: inline-block;
 			margin: 0 0 0 0.6rem;
@@ -20,13 +21,40 @@ form {
 				display: block;
 				margin: 0;
 				padding: 0 0 0.2rem;
-				font-size: 1rem;
+				font-size: 1.2rem;
 				font-weight: 200;
 				font-style: normal;
 				color: $white-05;
 				text-align: left;
 			}
 		}
+
+    span {
+      &.range {
+				display: inline-block;
+				vertical-align: bottom;
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem 0 0;
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: $white-05;
+        line-height: normal;
+        background-color: $white-01;
+        text-align: center;
+        @include border(0.1rem solid $white-05, false);
+        @include border-radius(0.3rem);
+
+        + input[type="range"] {
+          display: inline-block;
+          vertical-align: top;
+          min-width: 30rem;
+          height: 3rem;
+          margin-left: 0.5rem;
+          padding: 0.1rem 0.5rem 0;
+        }
+      }
+    }
 	}
 }
 
@@ -53,15 +81,14 @@ input {
 	}
 }
 
-input[type="text"], 
-input[type="tel"], 
-input[type="email"], 
-input[type="search"], 
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
 input[type="url"] {
 	padding-top: 1rem;
 	padding-bottom: 0.9rem;
 }
-
 
 input[type="number"] {
 	width: 3.7rem;
@@ -70,7 +97,16 @@ input[type="number"] {
 	text-align: right;
 }
 
-button, 
+@include input-range-content {
+  width: auto;
+
+	&:active {
+		background-color: $white-02;
+		@include border(0.1rem solid $white-09, false);
+	}
+}
+
+button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
@@ -117,7 +153,7 @@ input[type="reset"] {
 	}
 }
 
-::-webkit-outer-spin-button, 
+::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button {
 	margin-left: 0.5rem;
 }

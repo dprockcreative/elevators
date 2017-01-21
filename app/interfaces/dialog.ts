@@ -35,9 +35,9 @@ export class Dialog implements DialogI {
       this.title    = title;
       this.content  = content;
       this.type     = type;
-      this.deferred = new Deferred<any>();
       this.contentToFormGroup();
     }
+    this.deferred = new Deferred<any>();
   }
 
   /*  Previous

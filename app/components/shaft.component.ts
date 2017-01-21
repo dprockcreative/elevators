@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, DoCheck } from '@angular/core';
-import { Elevator, Shaft, Task } from '../interfaces/index';
+
 import { TasksService } from '../services/index';
+import { Elevator, Shaft, Task } from '../interfaces/index';
 
 @Component({
   selector: '[shaft]',

@@ -73,7 +73,7 @@ export class DialogWizard extends DialogComponent implements OnInit {
    */
   protected reset (): void {
     if (!this.dialog.prev()) {
-      super.service().dismiss();
+      super.service().complete(false);
     }
   }
 

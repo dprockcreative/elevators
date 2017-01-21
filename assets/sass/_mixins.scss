@@ -102,6 +102,62 @@
   &:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]) { @content; }
 }
 
+@mixin input-range-thumb {
+  cursor: pointer;
+  height: 1.8rem;
+  width: 1.4rem;
+  background: $jumbo;
+  @include border(1px solid $black-07, false);
+  @include border-radius(0.3rem);
+}
+
+@mixin input-range-content {
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    margin: 0.5rem 0 0;
+
+    &:focus {
+      outline: 0;
+
+      &::-webkit-slider-runnable-track {
+        background: transparent;
+      }
+      &::-ms-fill-lower {
+        background: transparent;
+      }
+      &::-ms-fill-upper {
+        background: transparent;
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      height: 0.3rem;
+      background: $black-03;
+      @include border(1px solid $black-07, false);
+      @include border-radius(0.3rem);
+    }
+
+    &::-webkit-slider-thumb {
+      @include input-range-thumb;
+      -webkit-appearance: none;
+      margin-top: -0.9rem;
+    }
+
+    &::-moz-range-track {
+      background: $black-03;
+      @include border(1px solid $black-07, false);
+      @include border-radius(0.3rem);
+    }
+
+    &::-moz-range-thumb {
+      @include input-range-thumb;
+    }
+
+    @content;
+  }
+}
+
 @mixin label-button(){
   background-color: transparent;
   @include box-shadow(none);
@@ -131,21 +187,20 @@
 	}
 }
 
-@mixin icon-button($before:true) {
+@mixin icon-button($before:true, $width:inherit) {
 	button {
 		cursor: pointer;
 		min-width: unset;
+		width: $width;
 		margin: 0;
 		padding: 0;
 		background: none;
 		@include border(0 solid transparent, false);
 
     &:before, &:after {
-      display: block;
-      width: inherit;
-      height: inherit;
-      line-height: 1em;
-      line-height: -moz-block-height;
+      display: inline-block;
+      vertical-align: middle;
+      width: $width;
     }
 
     @if $before {

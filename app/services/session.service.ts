@@ -70,9 +70,7 @@ export class SessionService {
 
         if (DateTimeHasPassed(new Date(), this.start, SESSION_WELCOMED_DELAY)) {
 
-          let s = this.dialogService;
-
-          s.wizard.apply(s, DIALOG_WIZARD_WELCOME).promise()
+          this.dialogService.wizard(DIALOG_WIZARD_WELCOME).promise()
             .then(setWelcome)
             .catch(setWelcome);
 

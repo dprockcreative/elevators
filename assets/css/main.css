@@ -600,11 +600,36 @@ form {
       display: block;
       margin: 0;
       padding: 0 0 0.2rem;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 200;
       font-style: normal;
       color: rgba(255, 255, 255, 0.5);
       text-align: left; }
+  form label span.range {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: normal;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    border: 0.1rem solid rgba(255, 255, 255, 0.5);
+    outline: 0 none transparent;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    border-radius: 0.3rem; }
+    form label span.range + input[type="range"] {
+      display: inline-block;
+      vertical-align: top;
+      min-width: 30rem;
+      height: 3rem;
+      margin-left: 0.5rem;
+      padding: 0.1rem 0.5rem 0; }
 
 input {
   margin: 0;
@@ -643,6 +668,64 @@ input[type="number"] {
   padding-left: 0.1rem;
   padding-right: 0.1rem;
   text-align: right; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 0.5rem 0 0;
+  width: auto; }
+  input[type="range"]:focus {
+    outline: 0; }
+    input[type="range"]:focus::-webkit-slider-runnable-track {
+      background: transparent; }
+    input[type="range"]:focus::-ms-fill-lower {
+      background: transparent; }
+    input[type="range"]:focus::-ms-fill-upper {
+      background: transparent; }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 0.3rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    outline: 0 none transparent;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    border-radius: 0.3rem; }
+  input[type="range"]::-webkit-slider-thumb {
+    cursor: pointer;
+    height: 1.8rem;
+    width: 1.4rem;
+    background: #888;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    outline: 0 none transparent;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    border-radius: 0.3rem;
+    -webkit-appearance: none;
+    margin-top: -0.9rem; }
+  input[type="range"]::-moz-range-track {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    outline: 0 none transparent;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    border-radius: 0.3rem; }
+  input[type="range"]::-moz-range-thumb {
+    cursor: pointer;
+    height: 1.8rem;
+    width: 1.4rem;
+    background: #888;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    outline: 0 none transparent;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    border-radius: 0.3rem; }
+  input[type="range"]:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 0.1rem solid rgba(255, 255, 255, 0.9);
+    outline: 0 none transparent; }
 
 button,
 input[type="submit"],
@@ -755,7 +838,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
+.icons, body > header > hgroup h1, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -771,11 +854,50 @@ select:-moz-focusring {
 .icon-logo:before, body > header > hgroup h1:before, .icon-logo:after, body > header > hgroup h1:after {
   content: "\e900"; }
 
-.icon-up:before, .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .icon-up:after {
+.icon-up:before, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .icon-up:after {
   content: "\e901"; }
 
-.icon-down:before, .icon-down:after, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
+.icon-down:before, .icon-down:after, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
   content: "\e902"; }
+
+.icon-home:before, .icon-home:after {
+  content: "\e903"; }
+
+.icon-office:before, .icon-office:after {
+  content: "\e904"; }
+
+.icon-pencil:before, .icon-pencil:after {
+  content: "\e905"; }
+
+.icon-phone:before, .icon-phone:after {
+  content: "\e942"; }
+
+.icon-envelop:before, .icon-envelop:after {
+  content: "\e945"; }
+
+.icon-history:before, .icon-history:after {
+  content: "\e94d"; }
+
+.icon-equalizer:before, .icon-equalizer:after {
+  content: "\e992"; }
+
+.icon-cog:before, .foundation > label button:before, .section > article > foundation > label button:before, body > main > section > article > foundation > label button:before, .icon-cog:after, .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+  content: "\e994"; }
+
+.icon-meter:before, .icon-meter:after {
+  content: "\e9a6"; }
+
+.icon-cross:before, .icon-cross:after {
+  content: "\ea0f"; }
+
+.icon-checkmark:before, .icon-checkmark:after {
+  content: "\ea10"; }
+
+.icon-radio-checked:before, .icon-radio-checked:after {
+  content: "\ea54"; }
+
+.icon-radio-unchecked:before, .icon-radio-unchecked:after {
+  content: "\ea56"; }
 
 @font-face {
   font-family: Roboto;
@@ -1065,7 +1187,7 @@ body > main {
     display: inline-block;
     width: auto;
     margin: 0 25rem 0 auto; }
-    .section > article > ul, body > main > section > article > ul, .section > article > ol, body > main > section > article > ol {
+    .section > article ul, body > main > section > article ul, .section > article ol, body > main > section > article ol, .section > article foundation, body > main > section > article foundation {
       display: inline-block;
       vertical-align: bottom; }
 
@@ -1158,7 +1280,7 @@ body > footer {
       body > footer > ul li > a {
         cursor: pointer; }
 
-.building, .section > article > ul, body > main > section > article > ul {
+.building, .section > article > shafts > ul, body > main > section > article > shafts > ul {
   position: relative;
   z-index: 0;
   list-style: none;
@@ -1166,7 +1288,7 @@ body > footer {
   padding: 0;
   white-space: nowrap;
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2); }
-  .building li, .section > article > ul li, body > main > section > article > ul li {
+  .building li, .section > article > shafts > ul li, body > main > section > article > shafts > ul li {
     position: relative;
     display: inline-block;
     vertical-align: bottom;
@@ -1178,9 +1300,9 @@ body > footer {
     border-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) transparent rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.05);
     background-image: url("../images/mask.png"); }
-    .building li:last-child, .section > article > ul li:last-child, body > main > section > article > ul li:last-child {
+    .building li:last-child, .section > article > shafts > ul li:last-child, body > main > section > article > shafts > ul li:last-child {
       border-right-width: 0.1rem; }
-    .building li:before, .section > article > ul li:before, body > main > section > article > ul li:before {
+    .building li:before, .section > article > shafts > ul li:before, body > main > section > article > shafts > ul li:before {
       content: attr(shaft);
       position: absolute;
       top: 0;
@@ -1192,7 +1314,7 @@ body > footer {
       line-height: normal;
       color: rgba(0, 0, 0, 0.1); }
 
-.floors, .section > article > ol, body > main > section > article > ol {
+.floors, .section > article > floors > ol, body > main > section > article > floors > ol {
   position: relative;
   z-index: 1;
   list-style-position: inside;
@@ -1209,7 +1331,7 @@ body > footer {
   -ms-transition: height 500ms 0s ease-out;
   -o-transition: height 500ms 0s ease-out;
   transition: height 500ms 0s ease-out; }
-  .floors li, .section > article > ol li, body > main > section > article > ol li {
+  .floors li, .section > article > floors > ol li, body > main > section > article > floors > ol li {
     position: relative;
     width: 8rem;
     height: 5rem;
@@ -1218,9 +1340,9 @@ body > footer {
     font-size: 4.4rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.05); }
-    .floors li:first-child, .section > article > ol li:first-child, body > main > section > article > ol li:first-child {
+    .floors li:first-child, .section > article > floors > ol li:first-child, body > main > section > article > floors > ol li:first-child {
       border-top-color: rgba(255, 255, 255, 0.2); }
-    .floors li > section, .section > article > ol li > section, body > main > section > article > ol li > section {
+    .floors li > section, .section > article > floors > ol li > section, body > main > section > article > floors > ol li > section {
       position: absolute;
       top: 0.5rem;
       left: 5.5rem;
@@ -1238,7 +1360,7 @@ body > footer {
       -moz-border-radius: 0.3rem;
       -ms-border-radius: 0.3rem;
       border-radius: 0.3rem; }
-      .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before, .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
+      .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
         position: absolute;
         left: 0.15rem;
         z-index: 0;
@@ -1256,11 +1378,11 @@ body > footer {
         -ms-user-select: none;
         -ms-touch-action: none;
         pointer-events: none; }
-      .floors li > section:before, .section > article > ol li > section:before, body > main > section > article > ol li > section:before {
+      .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before {
         top: 0.6rem; }
-      .floors li > section:after, .section > article > ol li > section:after, body > main > section > article > ol li > section:after {
+      .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
         bottom: 0.3rem; }
-      .floors li > section > nav, .section > article > ol li > section > nav, body > main > section > article > ol li > section > nav {
+      .floors li > section > nav, .section > article > floors > ol li > section > nav, body > main > section > article > floors > ol li > section > nav {
         position: relative;
         z-index: 1;
         width: 0;
@@ -1297,13 +1419,13 @@ body > footer {
         -ms-transition-timing-function: ease;
         -o-transition-timing-function: ease;
         transition-timing-function: ease; }
-        .floors li > section > nav button, .section > article > ol li > section > nav button, body > main > section > article > ol li > section > nav button {
+        .floors li > section > nav button, .section > article > floors > ol li > section > nav button, body > main > section > article > floors > ol li > section > nav button {
           width: 2rem;
           padding: 0;
           line-height: 2rem; }
-      .floors li > section.active, .section > article > ol li > section.active, body > main > section > article > ol li > section.active, .floors li > section:hover, .section > article > ol li > section:hover, body > main > section > article > ol li > section:hover {
+      .floors li > section.active, .section > article > floors > ol li > section.active, body > main > section > article > floors > ol li > section.active, .floors li > section:hover, .section > article > floors > ol li > section:hover, body > main > section > article > floors > ol li > section:hover {
         background-color: rgba(0, 0, 0, 0.2); }
-        .floors li > section.active > nav, .section > article > ol li > section.active > nav, body > main > section > article > ol li > section.active > nav, .floors li > section:hover > nav, .section > article > ol li > section:hover > nav, body > main > section > article > ol li > section:hover > nav {
+        .floors li > section.active > nav, .section > article > floors > ol li > section.active > nav, body > main > section > article > floors > ol li > section.active > nav, .floors li > section:hover > nav, .section > article > floors > ol li > section:hover > nav, body > main > section > article > floors > ol li > section:hover > nav {
           opacity: 1;
           width: auto;
           margin-left: 2.5rem;
@@ -4147,24 +4269,45 @@ body > footer {
       -o-transform: perspective(4px) rotateX(20deg);
       transform: perspective(4px) rotateX(20deg); }
 
-.foundation, .section > article > footer, body > main > section > article > footer {
-  margin: 0.2rem 0 0;
+.foundation, .section > article > foundation, body > main > section > article > foundation {
+  margin: 0;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
-  .foundation > ul, .section > article > footer > ul, body > main > section > article > footer > ul {
-    list-style: none;
-    text-align: left;
-    margin: 0;
-    padding: 0 1rem; }
-    .foundation > ul li, .section > article > footer > ul li, body > main > section > article > footer > ul li {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      font-weight: 200;
-      color: rgba(255, 255, 255, 0.5); }
-      .foundation > ul li:first-child, .section > article > footer > ul li:first-child, body > main > section > article > footer > ul li:first-child {
-        color: rgba(255, 255, 255, 0.8); }
+  .foundation > label, .section > article > foundation > label, body > main > section > article > foundation > label {
+    display: block; }
+    .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
+      cursor: pointer;
+      min-width: unset;
+      width: 4rem;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border: 0 solid transparent;
+      outline: 0 none transparent;
+      height: 4rem;
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 3rem;
+      overflow: hidden; }
+      .foundation > label button:before, .section > article > foundation > label button:before, body > main > section > article > foundation > label button:before, .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+        display: inline-block;
+        vertical-align: middle;
+        width: 4rem; }
+      .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+        display: none; }
+      .foundation > label button:hover, .section > article > foundation > label button:hover, body > main > section > article > foundation > label button:hover, .foundation > label button:focus, .section > article > foundation > label button:focus, body > main > section > article > foundation > label button:focus {
+        color: rgba(255, 255, 255, 0.5);
+        background: transparent; }
+      .foundation > label button:active, .section > article > foundation > label button:active, body > main > section > article > foundation > label button:active {
+        color: rgba(255, 255, 255, 0.8);
+        background: transparent; }
+      .foundation > label button[disabled], .section > article > foundation > label button[disabled], body > main > section > article > foundation > label button[disabled] {
+        color: rgba(0, 0, 0, 0.2);
+        background: transparent; }
+        .foundation > label button[disabled]:hover, .section > article > foundation > label button[disabled]:hover, body > main > section > article > foundation > label button[disabled]:hover, .foundation > label button[disabled]:focus, .section > article > foundation > label button[disabled]:focus, body > main > section > article > foundation > label button[disabled]:focus, .foundation > label button[disabled]:active, .section > article > foundation > label button[disabled]:active, body > main > section > article > foundation > label button[disabled]:active {
+          color: rgba(0, 0, 0, 0.2);
+          background: transparent; }
 
 body {
   position: relative; }
@@ -4255,7 +4398,7 @@ body {
             font-weight: 200; }
           body > main > dialog > div > article header h5 {
             position: absolute;
-            bottom: 0;
+            bottom: 50%;
             right: 0;
             font-size: 1.2rem;
             font-weight: 300;
@@ -4283,6 +4426,8 @@ body {
             -moz-user-select: none;
             -ms-user-select: none;
             -ms-touch-action: none; }
+          body > main > dialog > div > article form input[type="range"] {
+            width: 32.5rem; }
           body > main > dialog > div > article form > alert footer,
           body > main > dialog > div > article form > confirm footer,
           body > main > dialog > div > article form > wizard footer {

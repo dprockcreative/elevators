@@ -37,3 +37,81 @@
     content: "\e902";
   }
 }
+.icon-home {
+  &:before,
+  &:after {
+    content: "\e903";
+  }
+}
+.icon-office {
+  &:before,
+  &:after {
+    content: "\e904";
+  }
+}
+.icon-pencil {
+  &:before,
+  &:after {
+    content: "\e905";
+  }
+}
+.icon-phone {
+  &:before,
+  &:after {
+    content: "\e942";
+  }
+}
+.icon-envelop {
+  &:before,
+  &:after {
+    content: "\e945";
+  }
+}
+.icon-history {
+  &:before,
+  &:after {
+    content: "\e94d";
+  }
+}
+.icon-equalizer {
+  &:before,
+  &:after {
+    content: "\e992";
+  }
+}
+.icon-cog {
+  &:before,
+  &:after {
+    content: "\e994";
+  }
+}
+.icon-meter {
+  &:before,
+  &:after {
+    content: "\e9a6";
+  }
+}
+.icon-cross {
+  &:before,
+  &:after {
+    content: "\ea0f";
+  }
+}
+.icon-checkmark {
+  &:before,
+  &:after {
+    content: "\ea10";
+  }
+}
+.icon-radio-checked {
+  &:before,
+  &:after {
+    content: "\ea54";
+  }
+}
+.icon-radio-unchecked {
+  &:before,
+  &:after {
+    content: "\ea56";
+  }
+}

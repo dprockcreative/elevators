@@ -17,35 +17,29 @@ export class DialogService {
 
   /*  Alert
       @type   public
-      @param  header [string]
-      @param  content [array]
-      @param  immediate [boolean !optional]
+      @param  args [rest - array]
       @return dialog [instance of Dialog]
    */
-  public alert (header: string, content: any[], immediate?: boolean): Dialog {
-    return this.create(header, content, DIALOG_TYPE_ALERT, immediate);
+  public alert (...args: any[]): Dialog {
+    return this.create(DIALOG_TYPE_ALERT, args[0]);
   }
 
   /*  Confirm
       @type   public
-      @param  header [string]
-      @param  content [array]
-      @param  immediate [boolean !optional]
+      @param  args [rest - array]
       @return dialog [instance of Dialog]
    */
-  public confirm (header: string, content: any[], immediate?: boolean): Dialog {
-    return this.create(header, content, DIALOG_TYPE_CONFIRM, immediate);
+  public confirm (...args: any[]): Dialog {
+    return this.create(DIALOG_TYPE_CONFIRM, args[0]);
   }
 
   /*  Wizard
       @type   public
-      @param  header [string]
-      @param  content [array]
-      @param  immediate [boolean !optional]
+      @param  args [rest - array]
       @return dialog [instance of Dialog]
    */
-  public wizard (header: string, content: any[], immediate?: boolean): Dialog {
-    return this.create(header, content, DIALOG_TYPE_WIZARD, immediate);
+  public wizard (...args: any[]): Dialog {
+    return this.create(DIALOG_TYPE_WIZARD, args[0]);
   }
 
   /*  Current
@@ -117,13 +111,14 @@ export class DialogService {
 
   /*  Create
       @type   private
-      @param  header [string]
-      @param  content [array]
       @param  type [string - constant]
-      @param  immediate [boolean !default = true]
+      @param  args [rest - array]
       @return dialog [instance of Dialog]
    */
-  private create (header: string, content: any[], type: string, immediate: boolean = true): Dialog {
+  private create (type: string, ...args: any[]): Dialog {
+    let header: string = args[0][0];
+    let content: any[] = args[0][1];
+    let immediate: boolean = args[0][2] ? Boolean(args[0][2]) : true;
     let dialog = new Dialog(header, content, type);
     if (immediate) {
       this.add(dialog).then(d => d.activate());

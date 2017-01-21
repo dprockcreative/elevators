@@ -1,8 +1,8 @@
 import { Component, AfterContentChecked } from '@angular/core';
 
-import { Dialog } from '../interfaces/index';
-
 import { DialogService } from '../services/index';
+
+import { Dialog } from '../interfaces/index';
 
 import {
   DIALOG_STRING_MAP
