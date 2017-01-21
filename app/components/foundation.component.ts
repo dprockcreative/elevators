@@ -22,7 +22,7 @@ import {
         type="button"
         (click)="start()"
         [disabled]="disabled()"
-      >&nbsp;</button>
+      ></button>
     </label>
   `
 })

@@ -48,6 +48,8 @@ export class SessionService {
    */
   private query (): void {
 
+    console.log('SessionService::query()');
+
     // Session Start DTG
     let start = sessionStorage.getItem(SESSION_START_NS);
     this.start = start ? new Date(start) : new Date();

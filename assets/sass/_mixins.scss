@@ -198,8 +198,6 @@
 		@include border(0 solid transparent, false);
 
     &:before, &:after {
-      display: inline-block;
-      vertical-align: middle;
       width: $width;
     }
 

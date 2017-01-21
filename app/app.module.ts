@@ -9,60 +9,43 @@ import './extensions/rxjs-extensions';
 
 import {
   AppComponent,
-  BuildingComponent,
   DialogComponent,
-  FloorsComponent,
-  FoundationComponent,
-  LogComponent,
-  ShaftsComponent
+  LogComponent
 } from './components/index';
+
+import {
+  BuildingModule,
+  DialogModule
+} from './modules/index';
+
+import {
+  InMemoryDataService,
+  LogService,
+  SessionService
+} from './services/index';
 
 import {
   MarkdownPipe,
   Number2AlphaPipe
 } from './pipes/index';
 
-import {
-  DialogModule,
-  FloorModule,
-  ShaftModule
-} from './modules/index';
-
-import {
-  InMemoryDataService,
-  FloorService,
-  LogService,
-  SessionService,
-  ShaftService,
-  TasksService
-} from './services/index';
-
 @NgModule({
   imports: [
     BrowserModule,
+    BuildingModule,
     DialogModule,
     FormsModule,
-    ShaftModule,
-    FloorModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })
   ],
   providers: [
-    FloorService,
     LogService,
-    SessionService,
-    ShaftService,
-    TasksService
+    SessionService
   ],
   declarations: [
     AppComponent,
-    BuildingComponent,
-    FoundationComponent,
-    FloorsComponent,
     LogComponent,
-    ShaftsComponent,
-    MarkdownPipe,
-    Number2AlphaPipe
+    MarkdownPipe
   ],
   bootstrap: [
     AppComponent

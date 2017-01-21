@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LogService, SessionService, ShaftService } from '../services/index';
+import { SessionService, ShaftService } from '../services/index';
 
 @Component({
   selector: 'section',
@@ -15,15 +15,12 @@ import { LogService, SessionService, ShaftService } from '../services/index';
 
 export class BuildingComponent implements OnInit {
 
-  constructor(
-    private sessionService: SessionService,
-    private logService: LogService,
+  constructor (
     private shaftService: ShaftService
-  ) {
-    logService.useConsole('info');
-  }
+  ) {}
 
   ngOnInit (): void {
+    console.log('BuildingComponent', this.shaftService);
     this.shaftService.build();
   }
 }

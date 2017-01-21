@@ -31,6 +31,3 @@ export class ShaftsComponent {
     this.shafts = shafts;
   }
 }
-
-
-

@@ -4291,8 +4291,6 @@ body > footer {
       font-size: 3rem;
       overflow: hidden; }
       .foundation > label button:before, .section > article > foundation > label button:before, body > main > section > article > foundation > label button:before, .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
-        display: inline-block;
-        vertical-align: middle;
         width: 4rem; }
       .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
         display: none; }

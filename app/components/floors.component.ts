@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Floor, Shaft } from '../interfaces/index';
+
 import { FloorService, ShaftService } from '../services/index';
+
+import { Floor, Shaft } from '../interfaces/index';
 
 @Component({
   selector: 'floors',
@@ -36,7 +38,9 @@ export class FloorsComponent {
       .buildFloors(stories)
       .then(floors => (this.floors = floors));
   }
-
 }
 
+/*
+
+*/
 

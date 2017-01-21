@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { LogService, SessionService } from '../services/index';
+
 @Component({
   selector: 'main',
   template: `
@@ -9,4 +11,13 @@ import { Component } from '@angular/core';
   `
 })
 
-export class AppComponent {}
+export class AppComponent {
+
+  constructor (
+    private sessionService: SessionService,
+    private logService: LogService
+  ) {
+    logService.useConsole('info');
+  }
+
+}
