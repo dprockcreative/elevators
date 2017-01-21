@@ -32,13 +32,29 @@ export class ShaftService {
     this.buildShaftsSource.next(shafts);
   }
 
-  /*  Build
-      @type   public
+  /*  Map Data To Shafts
+      @type   private
+      @param  shafts [Shaft[]]
       @return void
    */
-  public build (): void {
-    this.getShafts()
-      .then(shafts => this.broadcast(shafts));
+  private mapDataToShafts (data: any[]): Shaft[] {
+    return data.map(row => new Shaft(row.id, row.stories));
+  }
+
+  /*  Build
+      @type   public
+      #param  config [any[] !optional]
+      @return Promise [any]
+   */
+  public build (config?: any[]): Promise<any> {
+    if (config) {
+      this.shafts = this.mapDataToShafts(config);
+      this.broadcast(this.shafts);
+      return Promise.resolve();
+    } else {
+      return this.getShafts()
+        .then(shafts => this.broadcast(shafts));
+    }
   }
 
   /*  Build Shafts
@@ -50,7 +66,7 @@ export class ShaftService {
       .get(this.url)
       .toPromise()
       .then(response => response.json().data)
-      .then(data => (this.shafts = data.map(row => new Shaft(row.id, row.stories)), this.shafts))
+      .then(data => (this.shafts = this.mapDataToShafts(data), this.shafts))
       .catch(this.handleError);
   }
 
@@ -70,22 +86,14 @@ export class ShaftService {
     return this.shafts.length;
   }
 
-  /*  Get Shafts
+  /*  Get Top Story
       @type   public
-      @return Promise [Shaft Array]
+      @return length [number]
    */
-  public getShaftsPromise (): Promise<Shaft[]> {
-    return Promise.resolve(this.shafts as Shaft[]);
-  }
-
-  /*  Get Shaft
-      @type   public
-      @param  id [number]
-      @return Promise [Shaft]
-   */
-  public getShaftPromise (id: number): Promise<Shaft> {
-    return this.getShaftsPromise()
-      .then(shafts => shafts.find(shaft => shaft.id === id));
+  public getTopStory (): number {
+    let stories = 0;
+    this.shafts.forEach(shaft => (stories = (stories < shaft.stories) ? shaft.stories : stories));
+    return stories;
   }
 
   /*  Find Shaft
@@ -95,24 +103,6 @@ export class ShaftService {
    */
   public findShaft (id: number): Shaft {
     return this.shafts.find(shaft => shaft.id === id);
-  }
-
-  /*  Remove
-      @type   public
-      @param  shaft [Shaft]
-      @return Promise [Response]
-   */
-  public remove (shaft: Shaft): Promise<Response> {
-    return this.delete(shaft);
-  }
-
-  /*  Remove By Index
-      @type   public
-      @param  shaft [Shaft]
-      @return Promise [Response]
-   */
-  public removeByIndex (index: number): Promise<Response> {
-    return this.delete(this.shafts[index]);
   }
 
   /*  Save
@@ -158,7 +148,7 @@ export class ShaftService {
     return this.http
       .post(this.url, JSON.stringify(shaft), { 'headers' : headers })
       .toPromise()
-      .then(res => res.json().data)
+      .then(response => response.json().data)
       .catch(this.handleError);
   }
 
@@ -169,8 +159,9 @@ export class ShaftService {
       - Update existing Shaft
    */
   private put (shaft: Shaft): Promise<Shaft> {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
 
     let url = `${this.url}/${shaft.id}`;
 

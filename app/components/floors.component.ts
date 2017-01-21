@@ -8,7 +8,7 @@ import { Floor, Shaft } from '../interfaces/index';
   selector: 'floors',
   template: `
     <ol reversed="true">
-      <li *ngFor="let floor of floors" [floor]="floor"></li>
+      <li *ngFor="let floor of floors" [floor]="floor" [attr.value]="floor.id"></li>
     </ol>
   `
 })
@@ -31,16 +31,11 @@ export class FloorsComponent {
    */
   private setFloors (shafts: Shaft[]): void {
 
-    let stories = 0;
-    shafts.forEach(shaft => (stories = (stories < shaft.stories) ? shaft.stories : stories));
+    let stories = this.shaftService.getTopStory();
 
     this.floorService
       .buildFloors(stories)
       .then(floors => (this.floors = floors));
   }
 }
-
-/*
-
-*/
 

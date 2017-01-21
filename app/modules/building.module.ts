@@ -15,8 +15,7 @@ import {
   BuildingComponent,
   FloorsComponent,
   FoundationComponent,
-  ShaftsComponent,
-  ShaftComponent
+  ShaftsComponent
 } from '../components/index';
 
 import {

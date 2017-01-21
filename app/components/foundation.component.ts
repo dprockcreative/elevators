@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DialogService, ShaftService } from '../services/index';
+import { DialogService, ShaftService, TasksService } from '../services/index';
 import { Number2AlphaPipe } from '../pipes/index';
 
 import {
@@ -33,7 +33,8 @@ export class FoundationComponent {
 
   constructor(
     private dialogService: DialogService,
-    private shaftService: ShaftService
+    private shaftService: ShaftService,
+    private tasksService: TasksService
   ) {}
 
   /*  Disabled
@@ -70,9 +71,15 @@ export class FoundationComponent {
                   return { id, stories };
                 });
 
-                console.log('SAVE as new config', config);
+                this.tasksService.reset();
 
-                this.PROCESSING = false;
+                this.shaftService.build(config)
+                  .then(() => {
+                    this.PROCESSING = false;
+                    let length = this.shaftService.getLength();
+                    let top = this.shaftService.getTopStory();
+                    console.info(`Building Reconstructed`, `Shafts: *${length}*`, `Highest Floor: *${top}*`);
+                  });
               })
               .catch(() => {
                 this.PROCESSING = false;

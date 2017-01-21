@@ -10,7 +10,6 @@ import {
   DIALOG_WIZARD_WELCOME
 } from '../constants/index';
 
-
 // Date Utilities
 const DateToLocaleString = (date: Date): string => {
   return date.toLocaleString();
@@ -47,8 +46,6 @@ export class SessionService {
       @return void
    */
   private query (): void {
-
-    console.log('SessionService::query()');
 
     // Session Start DTG
     let start = sessionStorage.getItem(SESSION_START_NS);
@@ -100,35 +97,3 @@ export class SessionService {
 
   }
 }
-
-
-/*
-
-          let wizard = this.dialogService.wizard(
-            'The Wizard',
-            [
-              {
-                'label': 'Screen One Label',
-                'type' : 'input-text-content',
-                'model': {
-                  'name' : 'one'
-                }
-              },
-              {
-                'label': 'Screen Two Label',
-                'type': 'input-text-content',
-                'model': {
-                  'name' : 'two'
-                }
-              },
-            ]
-          );
-
-          wizard.promise()
-            .then((results) => {
-              console.log('results of wizard action', 'complete', results);
-            })
-            .catch(() => {
-              console.log('results of wizard action', 'cancelled');
-            });
-*/

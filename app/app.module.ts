@@ -25,8 +25,7 @@ import {
 } from './services/index';
 
 import {
-  MarkdownPipe,
-  Number2AlphaPipe
+  MarkdownPipe
 } from './pipes/index';
 
 @NgModule({

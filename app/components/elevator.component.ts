@@ -39,8 +39,8 @@ export class ElevatorComponent {
   TASK: null | Task = null;
 
   constructor (
-    private tasksService: TasksService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private tasksService: TasksService
   ) {
     tasksService.elevatorTaskStream.subscribe(task => this.queryTask(task));
     tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
@@ -159,7 +159,8 @@ export class ElevatorComponent {
         if (!this.TASK) {
 
           clearInterval(I);
-          reject('task jettison -> cycleStops');
+          console.log('task jettison -> cycleStops');
+          // reject('task jettison -> cycleStops');
 
         } else {
 
@@ -232,7 +233,8 @@ export class ElevatorComponent {
       let I = setInterval(() => {
         if (!this.TASK) {
           clearInterval(I);
-          reject('task jettison -> arrived');
+          console.log('task jettison -> arrived');
+          // reject('task jettison -> arrived');
         } else {
 
           if (this.elevator.floor === floor) {
@@ -260,7 +262,8 @@ export class ElevatorComponent {
 
         if (!this.TASK) {
           clearTimeout(T);
-          reject('task jettison -> loadUnload');
+          console.log('task jettison -> loadUnload');
+          // reject('task jettison -> loadUnload');
         } else {
 
           console.info(`Elevator ${this.elevator.shaft.id} Loading/Unloading`);
@@ -287,7 +290,8 @@ export class ElevatorComponent {
 
         if (!this.TASK) {
           clearTimeout(T);
-          reject('task jettison -> openDoors');
+          console.log('task jettison -> openDoors');
+          // reject('task jettison -> openDoors');
         } else {
           console.info(`Elevator ${this.elevator.shaft.id} Opening Doors`);
 

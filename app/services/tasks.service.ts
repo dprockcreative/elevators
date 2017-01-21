@@ -6,6 +6,8 @@ import { Floor, Shaft, Task } from '../interfaces/index';
 
 import { ShaftService } from '../services/index';
 
+import { Number2AlphaPipe } from '../pipes/index';
+
 import {
   TASK_CALLED_COMPLETE,
   TASK_STOPS_LIMIT,
@@ -143,10 +145,11 @@ export class TasksService {
 
     let task: Task = new Task(from, to);
     let shaft: Shaft = this.shaftForTask(task);
-
     let log = [`Request from Floor: *${from}* to Floor: *${to}*`];
-
     let mTasks = this.mergableTasks(task);
+
+    let pipe = new Number2AlphaPipe();
+    let alpha;
 
     // nothing to merge
     if (!mTasks.length) {
@@ -157,7 +160,9 @@ export class TasksService {
 
         t.assignShaft(shaft);
 
-        log.push(`Generated new Task using Shaft ${t.shaft.id}`, `Task ID: ${t.id}`);
+        alpha = pipe.transform(t.shaft.id);
+
+        log.push(`Generated new Task using *Shaft ${alpha}*`, `Task ID: ${t.id}`);
 
       } else {
 
@@ -168,8 +173,9 @@ export class TasksService {
     } else {
 
       let t = this.mergeTasks(task, mTasks[0]);
+      alpha = pipe.transform(t.shaft.id);
 
-      log.push(`Merged with existing Task using Shaft ${t.shaft.id}`, `Task ID: ${t.id}`);
+      log.push(`Merged with existing Task using *Shaft ${alpha}*`, `Task ID: ${t.id}`);
 
     }
 
@@ -236,24 +242,22 @@ export class TasksService {
 
     if (!this.INT) {
 
-      this.ngZone.runOutsideAngular(() => {
-        this.INT = setInterval(() => {
+      this.INT = setInterval(() => {
 
-          if (this.tasks.length !== this.LENGTH) {
-            this.LENGTH = this.tasks.length;
-            if (this.LENGTH !== 1) {
-              console.info(`${this.LENGTH} Tasks remain in Queue`);
-            } else {
-              console.info(`${this.LENGTH} Task remains in Queue`);
-            }
+        if (this.tasks.length !== this.LENGTH) {
+          this.LENGTH = this.tasks.length;
+          if (this.LENGTH !== 1) {
+            console.info(`${this.LENGTH} Tasks remain in Queue`);
+          } else {
+            console.info(`${this.LENGTH} Task remains in Queue`);
           }
+        }
 
-          if (!this.consolidateOpenTasks()) {
-            clearInterval(this.INT);
-            this.INT = 0;
-          }
-        }, TASKS_BROADCAST_INTERVAL);
-      });
+        if (!this.consolidateOpenTasks()) {
+          clearInterval(this.INT);
+          this.INT = 0;
+        }
+      }, TASKS_BROADCAST_INTERVAL);
     }
   }
 

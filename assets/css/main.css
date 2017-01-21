@@ -1422,6 +1422,7 @@ body > footer {
         .floors li > section > nav button, .section > article > floors > ol li > section > nav button, body > main > section > article > floors > ol li > section > nav button {
           width: 2rem;
           padding: 0;
+          font-size: 1rem;
           line-height: 2rem; }
       .floors li > section.active, .section > article > floors > ol li > section.active, body > main > section > article > floors > ol li > section.active, .floors li > section:hover, .section > article > floors > ol li > section:hover, body > main > section > article > floors > ol li > section:hover {
         background-color: rgba(0, 0, 0, 0.2); }

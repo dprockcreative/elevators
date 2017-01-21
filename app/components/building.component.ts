@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SessionService, ShaftService } from '../services/index';
+import { ShaftService } from '../services/index';
 
 @Component({
   selector: 'section',
@@ -20,13 +20,11 @@ export class BuildingComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    console.log('BuildingComponent', this.shaftService);
-    this.shaftService.build();
+    this.shaftService.build()
+      .then(() => {
+        let length = this.shaftService.getLength();
+        let top = this.shaftService.getTopStory();
+        console.info(`Building Rendered`, `Shafts: *${length}*`, `Highest Floor: *${top}*`);
+      });
   }
 }
-
-/*
-      <shafts></shafts>
-      <floors></floors>
-      <foundation></foundation>
-*/
