@@ -1,4 +1,4 @@
-import { Elevator } from '../modules/elevator/interface';
+import { Elevator } from '../elevator/interface';
 
 interface ShaftI {
   id: number;

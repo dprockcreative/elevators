@@ -9,7 +9,6 @@ import './extensions/rxjs-extensions';
 
 import {
   AppComponent,
-  DialogComponent,
   LogComponent
 } from './components/index';
 
