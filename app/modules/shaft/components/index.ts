@@ -1,0 +1,1 @@
+export { ShaftComponent } from './shaft';

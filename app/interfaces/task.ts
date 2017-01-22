@@ -1,4 +1,4 @@
-import { Shaft } from './shaft';
+import { Shaft } from '../modules/shaft/interface';
 
 import UUID from '../extensions/uuid';
 

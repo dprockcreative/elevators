@@ -1,0 +1,1 @@
+export { FloorComponent } from './floor';

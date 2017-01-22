@@ -2,10 +2,9 @@ import { Injectable, NgZone } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 
-import { Floor, Shaft, Task } from '../interfaces/index';
-
-import { ShaftService } from '../services/index';
-
+import { Task } from '../interfaces/index';
+import { Floor, Button, Shaft } from '../modules/index';
+import { ShaftService } from '../modules/shaft/service';
 import { Number2AlphaPipe } from '../pipes/index';
 
 import {
@@ -17,21 +16,21 @@ import {
 @Injectable()
 export class TasksService {
 
-  private tasks: Task[]  = [];
-  private INT: any     = 0;
-  private LENGTH: number  = 0;
+  private tasks: Task[] = [];
+  private INT: any = 0;
+  private LENGTH: number = 0;
 
   // Observable sources
-  private openTasksSource     = new Subject<Task[]>();
-  private destroyTaskSource   = new Subject<Task>();
-  private elevatorTaskSource  = new Subject<Task>();
-  private completeStopSource  = new Subject<{[key: string]: number}>();
+  private openTasksSource = new Subject<Task[]>();
+  private destroyTaskSource = new Subject<Task>();
+  private elevatorTaskSource = new Subject<Task>();
+  private completeStopSource = new Subject<{[key: string]: number}>();
 
   // Observable streams
-  openTasksStream     = this.openTasksSource.asObservable();
-  destroyTaskStream   = this.destroyTaskSource.asObservable();
-  elevatorTaskStream  = this.elevatorTaskSource.asObservable();
-  completeStopStream  = this.completeStopSource.asObservable();
+  openTasksStream = this.openTasksSource.asObservable();
+  destroyTaskStream = this.destroyTaskSource.asObservable();
+  elevatorTaskStream = this.elevatorTaskSource.asObservable();
+  completeStopStream = this.completeStopSource.asObservable();
 
   constructor (
     private ngZone: NgZone,
@@ -122,10 +121,10 @@ export class TasksService {
 
   /*  Floor Button Is Tasked
       @type   public
-      @param  button [Floor]
+      @param  button [Button]
       @return boolean
    */
-  public isFloorButtonTasked (button: Floor): boolean {
+  public isFloorButtonTasked (button: Button): boolean {
     for (let task of this.tasks) {
       if (!!~task.stops.indexOf(button.id)) {
         return true;

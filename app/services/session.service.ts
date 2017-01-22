@@ -1,13 +1,14 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { DialogService } from './dialog.service';
+import { DialogService } from '../modules/dialog/service';
+
+import { DIALOG_WIZARD_WELCOME } from '../modules/dialog/constants';
 
 import {
   SESSION_START_NS,
   SESSION_WELCOMED_NS,
   SESSION_QUERY_INTERVAL,
-  SESSION_WELCOMED_DELAY,
-  DIALOG_WIZARD_WELCOME
+  SESSION_WELCOMED_DELAY
 } from '../constants/index';
 
 // Date Utilities
