@@ -37,8 +37,41 @@ body {
         }
 
         > a {
+          position: relative;
       	  cursor: pointer;
+
+          &:before {
+            @extend .icons;
+            margin-right: 0.5rem;
+            color: $white-03;
+          }
+
+          &:after {
+            display: none;
+          }
+
+          &[href^="tel:"] {
+            @extend .icon-phone;
+          }
+
+          &[href^="mailto:"] {
+            @extend .icon-envelop;
+          }
+
+          &:hover, &:focus {
+            color: $white;
+
+            &:before {
+              color: $white-06;
+            }
+          }
+
+          &:active {
+            color: $white-03;
+          }
+
         }
+
       }
     }
   }

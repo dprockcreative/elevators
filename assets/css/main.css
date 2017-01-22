@@ -838,7 +838,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
+.icons, body > header > hgroup h1, body > footer > ul li > a:before, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -869,10 +869,10 @@ select:-moz-focusring {
 .icon-pencil:before, .icon-pencil:after {
   content: "\e905"; }
 
-.icon-phone:before, .icon-phone:after {
+.icon-phone:before, body > footer > ul li > a[href^="tel:"]:before, .icon-phone:after, body > footer > ul li > a[href^="tel:"]:after {
   content: "\e942"; }
 
-.icon-envelop:before, .icon-envelop:after {
+.icon-envelop:before, body > footer > ul li > a[href^="mailto:"]:before, .icon-envelop:after, body > footer > ul li > a[href^="mailto:"]:after {
   content: "\e945"; }
 
 .icon-history:before, .icon-history:after {
@@ -1278,7 +1278,19 @@ body > footer {
         padding-left: 0;
         border-left: none; }
       body > footer > ul li > a {
+        position: relative;
         cursor: pointer; }
+        body > footer > ul li > a:before {
+          margin-right: 0.5rem;
+          color: rgba(255, 255, 255, 0.3); }
+        body > footer > ul li > a:after {
+          display: none; }
+        body > footer > ul li > a:hover, body > footer > ul li > a:focus {
+          color: #fff; }
+          body > footer > ul li > a:hover:before, body > footer > ul li > a:focus:before {
+            color: rgba(255, 255, 255, 0.6); }
+        body > footer > ul li > a:active {
+          color: rgba(255, 255, 255, 0.3); }
 
 .building, .section > article > shafts > ul, body > main > section > article > shafts > ul {
   position: relative;
