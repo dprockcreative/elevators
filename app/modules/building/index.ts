@@ -1,2 +1,3 @@
-export { BuildingModule } from './module';
-export { BuildingComponent, FloorsComponent, ShaftsComponent } from './components/index';
+export * from '../barrel';
+export * from './constants';
+export * from './components/index';

@@ -1,5 +1,7 @@
-export { DialogModule } from './module';
-export { DialogService } from './service';
-export { Dialog } from './interface';
-
-export { DYNAMIC_COMPONENTS, DYNAMIC_COMPONENTS_MAP } from './factories';
+export * from '../barrel';
+export * from './constants';
+export * from './extensions';
+export * from './factories';
+export * from './interface';
+export * from './service';
+export * from './components/index';

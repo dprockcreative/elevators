@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
-import { TasksService } from '../../../services/index';
-
-import { ShaftService } from '../../shaft/service';
-
-import { DialogService } from '../../dialog/service';
-
-import { Number2AlphaPipe } from '../../../pipes/index';
+import {
+  DialogService,
+  ShaftService,
+  TasksService,
+  Number2AlphaPipe,
+  DIALOG_WIZARD_SET_SHAFTS_HEADER,
+  DIALOG_WIZARD_SET_SHAFTS_LABEL,
+  DIALOG_WIZARD_SET_STORIES_HEADER,
+  DIALOG_WIZARD_SET_STORIES_LABEL
+} from '../index';
 
 import {
   BUILDING_SHAFTS_MIN,
@@ -14,13 +17,6 @@ import {
   BUILDING_STORIES_MIN,
   BUILDING_STORIES_MAX
 } from '../constants';
-
-import {
-  DIALOG_WIZARD_SET_SHAFTS_HEADER,
-  DIALOG_WIZARD_SET_SHAFTS_LABEL,
-  DIALOG_WIZARD_SET_STORIES_HEADER,
-  DIALOG_WIZARD_SET_STORIES_LABEL
-} from '../../dialog/constants';
 
 @Component({
   selector: 'foundation',

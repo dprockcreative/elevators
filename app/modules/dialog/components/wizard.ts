@@ -1,19 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Dialog } from '../interface';
-
-import { DialogService } from '../service';
-
-import { DialogComponent } from './dialog';
-
 import {
-  DIALOG_STRING_MAP
-} from '../constants';
-
-import {
+  DialogService,
+  Dialog,
+  DIALOG_STRING_MAP,
   DYNAMIC_COMPONENTS,
   DYNAMIC_COMPONENTS_MAP
-} from '../factories';
+} from '../index';
+
+import { DialogComponent } from './dialog';
 
 @Component({
   selector: 'wizard',

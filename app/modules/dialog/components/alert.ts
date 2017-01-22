@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Dialog } from '../interface';
-
-import { DialogService } from '../service';
+import {
+  DialogService,
+  Dialog
+} from '../index';
 
 import { DialogComponent } from './dialog';
 

@@ -1,4 +1,4 @@
-import { Shaft } from '../../interfaces/index';
+import { Shaft } from '../shaft/interface';
 
 interface ElevatorI {
   shaft: Shaft;

@@ -2,30 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  ShaftModule,
-  ShaftService
-} from '../shaft/index';
-
-import {
   FloorModule,
-  FloorService
-} from '../floor/index';
-
-import {
+  ShaftModule,
+  FloorService,
+  ShaftService,
   SessionService,
-  TasksService
-} from '../../services/index';
-
-import {
+  TasksService,
+  Number2AlphaPipe,
   BuildingComponent,
   FloorsComponent,
   FoundationComponent,
   ShaftsComponent
-} from './components/index';
-
-import {
-  Number2AlphaPipe
-} from '../../pipes/index';
+} from './index';
 
 @NgModule({
   imports:      [ CommonModule, ShaftModule, FloorModule ],

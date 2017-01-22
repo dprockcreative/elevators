@@ -3,11 +3,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { Task } from '../interfaces/index';
+import { Floor, Shaft } from '../modules/index';
 
-import { Shaft } from '../modules/shaft/interface';
-import { Floor } from '../modules/floor/interface';
 import { ShaftService } from '../modules/shaft/service';
-
 import { Number2AlphaPipe } from '../pipes/index';
 
 import {

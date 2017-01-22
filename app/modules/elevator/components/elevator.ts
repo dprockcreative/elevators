@@ -1,12 +1,13 @@
 import { Component, Input, NgZone } from '@angular/core';
 
-import { Task } from '../../../interfaces/index';
-
-import { Elevator } from '../interface';
-
-import { TasksService } from '../../../services/index';
+import { TasksService } from '../../../services/tasks.service';
 
 import {
+  Task,
+  Elevator,
+  ELEVATOR_CHECK_INTERVAL,
+  ELEVATOR_DOOR_DELAY,
+  ELEVATOR_LOAD_DELAY,
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
   TASK_CALLED_LOADING,
@@ -17,13 +18,7 @@ import {
   TASK_DELIVERED_COMPLETE,
   TASK_COMPLETE,
   TASK_STOPS_INTERVAL
-} from '../../../constants/index';
-
-import {
-  ELEVATOR_CHECK_INTERVAL,
-  ELEVATOR_DOOR_DELAY,
-  ELEVATOR_LOAD_DELAY
-} from '../constants';
+} from '../index';
 
 @Component({
   selector: 'elevator',

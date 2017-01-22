@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ElevatorModule } from '../elevator/module';
-import { ShaftComponent } from './components/index';
+import {
+  ShaftComponent,
+  ElevatorModule
+} from './index';
 
 @NgModule({
   imports:      [ CommonModule, ElevatorModule ],

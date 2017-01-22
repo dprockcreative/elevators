@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ElevatorDirective } from './directives/index';
-import { ElevatorComponent } from './components/index';
+import {
+  ElevatorDirective,
+  ElevatorComponent
+} from './index';
 
 @NgModule({
   imports:      [ CommonModule ],

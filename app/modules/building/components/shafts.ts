@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { ShaftService } from '../../shaft/service';
-
-import { Shaft } from '../../shaft/interface';
+import {
+  ShaftService,
+  Shaft
+} from '../index';
 
 @Component({
   selector: 'shafts',

@@ -1,4 +1,4 @@
-export { ShaftModule } from './module';
-export { ShaftService } from './service';
-export { ShaftComponent } from './components/index';
-export { Shaft } from './interface';
+export * from '../barrel';
+export * from './interface';
+export * from './service';
+export * from './components/index';

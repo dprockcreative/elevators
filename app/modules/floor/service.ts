@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Floor } from './interface';
+import { Floor } from './index';
 
 @Injectable()
 export class FloorService {

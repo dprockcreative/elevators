@@ -12,7 +12,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Dialog } from './interface';
+import {
+  Dialog
+} from './index';
 
 /*  Generic Content Component
  */
