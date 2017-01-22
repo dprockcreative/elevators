@@ -1,6 +1,8 @@
 import { Directive, Inject, ElementRef, OnInit, AfterViewChecked } from '@angular/core';
 
-import { ElevatorComponent } from '../components/index';
+import {
+  ElevatorComponent
+} from '../components/elevator';
 
 import { Elevator } from '../interface';
 

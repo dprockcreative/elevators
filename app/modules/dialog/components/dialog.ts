@@ -1,12 +1,10 @@
 import { Component, AfterContentChecked } from '@angular/core';
 
-import { DialogService } from '../service';
-
-import { Dialog } from '../interface';
-
 import {
+  DialogService,
+  Dialog,
   DIALOG_STRING_MAP
-} from '../constants';
+} from '../index';
 
 @Component({
   selector: 'dialog',

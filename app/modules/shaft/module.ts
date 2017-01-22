@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import {
   ShaftComponent,
-  ElevatorModule
-} from './index';
+} from './components/shaft';
+
+import { ElevatorModule } from '../elevator/module';
 
 @NgModule({
   imports:      [ CommonModule, ElevatorModule ],

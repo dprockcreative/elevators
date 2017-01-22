@@ -114,11 +114,11 @@ const CONTENT_COMPONENTS = [
  */
 @Component({
   selector: 'content-component',
-  entryComponents: CONTENT_COMPONENTS,
+  entryComponents: [CONTENT_COMPONENTS],
   template: `<span #dcc></span>`
 })
 
-class ContentComponent {
+export class ContentComponent {
 
   component = null;
 

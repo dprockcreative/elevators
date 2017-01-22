@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 
 import {
   ShaftService,
-  Shaft,
+  Shaft
+} from '../../shaft/index';
+
+import {
   FloorService,
   Floor
-} from '../index';
+} from '../../floor/index';
 
 @Component({
   selector: 'floors',
