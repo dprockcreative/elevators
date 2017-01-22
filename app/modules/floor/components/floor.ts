@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Button, Floor } from '../interface';
+import {
+  Button,
+  Floor,
+  FloorService
+} from '../index';
 
-import { TasksService } from '../../../services/index';
-
-import { FloorService } from '../service';
+import { TasksService } from '../../../services/tasks.service';
 
 @Component({
   selector: 'li[floor]',
