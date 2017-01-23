@@ -22,7 +22,7 @@ import {
   selector: 'generic-content',
   template: `<div [innerHTML]="template"></div>`
 })
-class GenericContentComponent {
+export class GenericContentComponent {
   template: SafeHtml = '';
   constructor (
     private injector: Injector,
@@ -42,7 +42,7 @@ class GenericContentComponent {
     </label>
   `
 })
-class InputTextContentComponent {
+export class InputTextContentComponent {
 
   form: FormControl;
   label: string = '';
@@ -76,7 +76,7 @@ class InputTextContentComponent {
     </label>
   `
 })
-class InputRangeContentComponent {
+export class InputRangeContentComponent {
 
   form: FormControl;
   label: string = '';
@@ -104,7 +104,7 @@ class InputRangeContentComponent {
   }
 }
 
-const CONTENT_COMPONENTS = [
+export const CONTENT_COMPONENTS = [
   GenericContentComponent,
   InputTextContentComponent,
   InputRangeContentComponent

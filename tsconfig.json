@@ -8,14 +8,13 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "lib": [ "es2015", "dom" ],
-    "typeRoots": [
-      "../../node_modules/@types/"
-    ]
+    "allowSyntheticDefaultImports": true,
+    "lib": [ "es2015", "dom" ]
   },
   "compileOnSave": true,
   "exclude": [
     "node_modules/*",
+    "aot/**/*",
     "**/*-aot.ts"
   ]
 }
