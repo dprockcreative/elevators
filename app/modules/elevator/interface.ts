@@ -8,14 +8,16 @@ interface ElevatorI {
   next: number;
   goTo (floor: number): void;
   ready (): boolean;
+  subscribe: any;
 }
 
 export class Elevator implements ElevatorI {
   shaft: Shaft;
-  open: boolean   = false;
-  floor: number   = 0;
+  open: boolean = false;
+  floor: number = 0;
   current: number = 1;
-  next: number    = 1;
+  next: number = 1;
+  subscribe: any;
 
   constructor (shaft: Shaft) {
     this.shaft = shaft;

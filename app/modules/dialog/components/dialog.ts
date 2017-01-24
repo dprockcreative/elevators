@@ -1,20 +1,18 @@
 import { Component, AfterContentChecked } from '@angular/core';
 
-import { DialogService } from '../service';
-
-import { Dialog } from '../interface';
-
 import {
+  DialogService,
+  Dialog,
   DIALOG_STRING_MAP
-} from '../constants';
+} from '../index';
 
 @Component({
-  selector: 'dialog',
+  selector: 'dialogs',
   template: `
-    <div [ngClass]="{'active':service().active()}">
+    <dialog [attr.open]="open()">
       <article>
         <header>
-          <h3>{{dialog.header()}}</h3>
+          <h3>{{header()}}</h3>
           <h5>{{count()}}</h5>
         </header>
         <form (ngSubmit)="submit()" [formGroup]="dialog.form">
@@ -23,7 +21,7 @@ import {
           <wizard *ngIf="dialog.type === 'wizard'"></wizard>
         </form>
       </article>
-    </div>
+    </dialog>
   `
 })
 
@@ -32,7 +30,7 @@ import {
  */
 export class DialogComponent implements AfterContentChecked {
 
-  protected dialog: Dialog;
+  dialog: Dialog;
 
   constructor (
     private dialogService: DialogService
@@ -40,62 +38,78 @@ export class DialogComponent implements AfterContentChecked {
     this.dialog = dialogService.current();
   }
 
-  /*  Count
-      @type     protected
+  /*  Open
+      @type     public
+      @return   boolean | null
+   */
+  public open (): boolean | null {
+    return this.service().active() ? true : null;
+  }
+
+  /*  Header
+      @type     public
       @return   string
    */
-  protected count (): string {
+  public header (): string {
+    return this.dialog.header();
+  }
+
+  /*  Count
+      @type     public
+      @return   string
+   */
+  public count (): string {
     return `${this.dialog.index + 1} of ${this.dialog.content.length}`;
   }
 
   /*  Service
       @override true
-      @type     protected
+      @type     public
       @return   DialogService
       - default functions occur if not overridden by sub class
    */
-  protected service (): DialogService {
+  public  service (): DialogService {
     return this.dialogService;
   }
 
   /*  Content
-      @type     protected
+      @type     public
       @return   any
       - default functions occur if not overridden by sub class
    */
-  protected content (): any {
+  public  content (): any {
     return this.dialog.screen();
   }
 
   /*  Label
       @override true
-      @type     protected
+      @type     public
       @param    key [string]
       @param    alt [string !optional]
       @return   string
       - default functions occur if not overridden by sub class
    */
-  protected label (key: string, alt?: string): string {
+  public  label (key: string, alt?: string): string {
     return DIALOG_STRING_MAP[this.dialog.type][key];
   }
 
   /*  Reset
       @override true
-      @type     protected
+      @type     public
       @return   void
       - default functions occur if not overridden by sub class
    */
-  protected reset (): void {
+  public  reset (): void {
     this.dialogService.dismiss();
   }
 
   /*  Submit
       @override true
-      @type     protected
+      @type     public
       @return   void
       - default functions occur if not overridden by sub class
    */
-  protected submit (): void {
+  public  submit (): void {
     this.dialogService.dismiss();
   }
 

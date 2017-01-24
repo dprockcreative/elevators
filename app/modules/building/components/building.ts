@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ShaftService } from '../index';
+import { ShaftService } from '../../shaft/service';
 
 @Component({
   selector: 'section',

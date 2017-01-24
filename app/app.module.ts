@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import './extensions/rxjs-extensions';

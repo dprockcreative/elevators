@@ -1,8 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { DialogService } from '../modules/dialog/service';
-
-import { DIALOG_WIZARD_WELCOME } from '../modules/dialog/constants';
+import {
+  DialogService,
+  DIALOG_WIZARD_WELCOME
+} from '../modules/dialog/index';
 
 import {
   SESSION_START_NS,

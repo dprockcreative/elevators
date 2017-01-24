@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import {
   ShaftService,
   Shaft
-} from '../index';
+} from '../../shaft/index';
 
 @Component({
   selector: 'shafts',

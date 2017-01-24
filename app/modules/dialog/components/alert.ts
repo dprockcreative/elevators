@@ -21,8 +21,6 @@ import { DialogComponent } from './dialog';
 
 export class DialogAlert extends DialogComponent implements OnInit {
 
-  protected dialog: Dialog;
-
   constructor (
     dialogService: DialogService
   ) {
@@ -31,11 +29,11 @@ export class DialogAlert extends DialogComponent implements OnInit {
   }
 
   /*  Submit
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected submit (): void {
+  public submit (): void {
     if (!this.dialog.next()) {
       super.service().dismiss();
     }

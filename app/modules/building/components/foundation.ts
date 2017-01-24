@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
 
 import {
-  DialogService,
-  ShaftService,
-  TasksService,
+  TasksService
+} from '../../../services/tasks.service';
+
+import {
+  DialogService
+} from '../../dialog/service';
+
+import {
+  ShaftService
+} from '../../shaft/service';
+
+import {
   Number2AlphaPipe,
   DIALOG_WIZARD_SET_SHAFTS_HEADER,
   DIALOG_WIZARD_SET_SHAFTS_LABEL,

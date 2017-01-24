@@ -3,7 +3,7 @@ body {
 
   > main {
 
-    > dialog {
+    > dialogs {
     	position: fixed;
     	top: 50%;
     	right: 50%;
@@ -28,9 +28,11 @@ body {
         @include box-sizing(content-box);
 			}
 
-			> div {
+			> dialog {
 			  @extend .flex-center-container;
 				position: fixed;
+				padding: 0;
+				border: none;
 				overflow: hidden;
 				text-align: center;
 

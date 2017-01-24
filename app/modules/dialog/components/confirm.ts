@@ -24,8 +24,6 @@ import { DialogComponent } from './dialog';
 
 export class DialogConfirm extends DialogComponent implements OnInit {
 
-  protected dialog: Dialog;
-
   constructor (
     dialogService: DialogService
   ) {
@@ -34,22 +32,22 @@ export class DialogConfirm extends DialogComponent implements OnInit {
   }
 
   /*  Reset
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected reset (): void {
+  public reset (): void {
     if (!this.dialog.prev()) {
       super.service().complete(false);
     }
   }
 
   /*  Submit
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected submit (): void {
+  public submit (): void {
     if (!this.dialog.next()) {
       super.service().complete(true);
     }

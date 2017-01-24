@@ -29,9 +29,7 @@ import { DialogComponent } from './dialog';
 
 export class DialogWizard extends DialogComponent implements OnInit {
 
-  protected dialog: Dialog;
-
-  protected dcds: any[] = [];
+  dcds: any[] = [];
 
   constructor (
     dialogService: DialogService
@@ -41,20 +39,20 @@ export class DialogWizard extends DialogComponent implements OnInit {
   }
 
   /*  Disabled
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected disabled (): boolean {
+  public disabled (): boolean {
     return this.dialog.end() && (this.dialog.form.valid === false) || false;
   }
 
   /*  Label
-      @type     protected
+      @type     public
       @return   string
       - overrides DialogComponent
    */
-  protected label (key: string, alt?: string): string {
+  public label (key: string, alt?: string): string {
     if (this.dialog.start() && key === 'no') {
       return DIALOG_STRING_MAP[this.dialog.type]['start'];
     } else if (this.dialog.end() && key === 'yes') {
@@ -65,32 +63,32 @@ export class DialogWizard extends DialogComponent implements OnInit {
   }
 
   /*  Reset
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected reset (): void {
+  public reset (): void {
     if (!this.dialog.prev()) {
       super.service().complete(false);
     }
   }
 
   /*  Submit
-      @type     protected
+      @type     public
       @return   void
       - overrides DialogComponent
    */
-  protected submit (): void {
+  public submit (): void {
     if (!this.dialog.next()) {
       super.service().complete(this.dialog.form.value);
     }
   }
 
   /*  Dynamic Component Definitions
-      @type     protected
+      @type     public
       @return   dcds [Array object]
    */
-  private dynamicComponentDefinitions (): any[] {
+  public dynamicComponentDefinitions (): any[] {
 
     let tdcds: any[] = [];
 
