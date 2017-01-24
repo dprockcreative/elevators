@@ -1,13 +1,16 @@
 const gulp = require('gulp');
 const del  = require('del');
+const fs   = require('fs');
 const $    = require('gulp-load-plugins')({lazy : true});
 
 const BUILD   = './dist/build.js';
 const DEST    = './dist';
 const BASE    = 'index.html';
-const DEV     = 'index-dev.html';
-const STAGE   = 'index-stage.html';
-const PROD    = 'index-prod.html';
+const HEAD    = 'view/head.tmpl';
+const BODY    = 'view/body.tmpl';
+const DEV     = 'view/dev.tmpl';
+const STAGE   = 'view/stage.tmpl';
+const PROD    = 'view/prod.tmpl';
 const ROOT    = './';
 const VENDORS = [
   'node_modules/core-js/client/shim.min.js',
@@ -15,7 +18,13 @@ const VENDORS = [
 ];
 
 function copyIndex(source) {
-  return gulp.src(source).pipe($.rename(BASE)).pipe(gulp.dest(ROOT));
+  let head = fs.readFileSync(HEAD, 'utf8');
+  let body = fs.readFileSync(BODY, 'utf8');
+  return gulp.src(source)
+    .pipe($.replace("{{HEAD}}", head))
+    .pipe($.replace("{{BODY}}", body))
+    .pipe($.rename(BASE))
+    .pipe(gulp.dest(ROOT));
 }
 
 function output(msg) {
@@ -36,19 +45,19 @@ gulp.task('gzip', function () {
   return gulp.src(source).pipe($.gzip()).pipe(gulp.dest(DEST));
 });
 
-gulp.task('copy-prod', ['gzip', 'clean'], function () {
-  output('copy prod');
+gulp.task('build:prod', ['gzip', 'clean'], function () {
+  output('build prod');
   return copyIndex(PROD);
 });
 
-gulp.task('copy-stage', ['clean'], function () {
-  output('copy stage');
+gulp.task('build:stage', ['clean'], function () {
+  output('build stage');
   return copyIndex(STAGE);
 });
 
 
-gulp.task('copy-dev', ['clean'], function () {
-  output('copy dev');
+gulp.task('build:dev', ['clean'], function () {
+  output('build dev');
   return copyIndex(DEV);
 });
 
@@ -59,6 +68,5 @@ gulp.task('clean', function (done) {
     done()
   });
 });
-
 
 module.exports = gulp;

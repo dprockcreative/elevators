@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UI/UX | dprockcreative</title>
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -11,12 +11,13 @@
       <link rel="shortcut icon" href="favicon.ico" />
     <![endif]-->
 
-    <script src="dist/shim.min.js.gz"></script>
-    <script src="dist/zone.js.gz"></script>
-
-	<!-- #docregion moduleId -->
-	<script>window.module = 'aot';</script>
-	<!-- #enddocregion moduleId -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
   </head>
   <body>
     <header>
@@ -40,5 +41,4 @@
       </ul>
     </footer>
   </body>
-  <script src="dist/build.js.gz"></script>
 </html>

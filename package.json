@@ -9,7 +9,10 @@
   ],
   "author": "dp@dprockcreative.com",
   "scripts": {
-    "start": "gulp copy-dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "build:dev": "gulp build:dev",
+    "build:stage": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && gulp build:stage",
+    "build:prod": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && gulp build:prod",
+    "start": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "sass": "sass --watch assets/sass:assets/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
@@ -17,10 +20,7 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "stage": "ngc -p tsconfig-aot.json",
-    "rollup": "rollup -c rollup-config.js",
-    "start-stage": "npm run stage && npm run rollup && gulp copy-stage && npm run lite"
+    "tsc:w": "tsc -w"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
@@ -48,10 +48,12 @@
     "canonical-path": "0.0.2",
     "concurrently": "^3.1.0",
     "del": "^2.2.2",
+    "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-gzip": "^1.4.0",
     "gulp-load-plugins": "^1.3.0",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-task-listing": "^1.0.1",
     "gulp-util": "^3.0.7",
     "http-server": "^0.9.0",

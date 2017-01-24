@@ -1,4 +1,4 @@
-import { Component, Input, NgZone } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { TasksService } from '../../../services/tasks.service';
 import { Task } from '../../../interfaces/index';
@@ -32,14 +32,13 @@ import {
   `
 })
 
-export class ElevatorComponent {
+export class ElevatorComponent implements OnInit {
 
   @Input() elevator: Elevator;
 
   TASK: null | Task = null;
 
   constructor (
-    private ngZone: NgZone,
     private tasksService: TasksService
   ) {
     tasksService.elevatorTaskStream.subscribe(task => this.queryTask(task));
@@ -52,11 +51,14 @@ export class ElevatorComponent {
       @return void
    */
   private queryTask (task: Task): void {
+
     if (this.elevator.shaft.id === task.shaft.id) {
 
       //  Blocking Action
       //  prevents duplicate requests from executing...
       if (!this.TASK) {
+
+        console.log('queryTask->no task', task.shaft.id, this.elevator.shaft.id);
 
         this.TASK = task;
         this.runTask();
@@ -83,6 +85,8 @@ export class ElevatorComponent {
 
     console.info(`Elevator ${this.elevator.shaft.id} starting on Task to Floor ${floor}`, this.TASK.id);
 
+    console.debug('runTask');
+
     this.callProcedure(floor)
       .then(() => this.cycleStops())
       .then(() => this.completeTask())
@@ -100,6 +104,8 @@ export class ElevatorComponent {
     return new Promise((resolve, reject) => {
 
       console.info(`Elevator ${this.elevator.shaft.id} starting call procedure ${this.TASK.floor}`);
+
+      console.debug('callProcedure');
 
       this.elevator.goTo(floor);
       this.setTaskStatus(TASK_CALLED);
@@ -135,6 +141,7 @@ export class ElevatorComponent {
         before moving on to the next set.
    */
   private cycleStops (): Promise<any> {
+
     return new Promise((resolve, reject) => {
 
       console.info(`Elevator ${this.elevator.shaft.id} cycling stops ${this.TASK.floor}`);
@@ -228,10 +235,13 @@ export class ElevatorComponent {
       @return Promise [any]
    */
   private arrived (floor: number, status?: number): Promise<any> {
+
     return new Promise((resolve, reject) => {
 
       let I = setInterval(() => {
+
         if (!this.TASK) {
+
           clearInterval(I);
           console.log('task jettison -> arrived');
           // reject('task jettison -> arrived');
@@ -324,4 +334,8 @@ export class ElevatorComponent {
     });
   };
 
+
+  ngOnInit (): void {
+    //console.log('ElevatorComponent::ngOnInit', this.elevator, this.TASK);
+  }
 }

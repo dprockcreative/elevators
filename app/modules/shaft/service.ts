@@ -47,13 +47,39 @@ export class ShaftService {
       @return Promise [any]
    */
   public build (config?: any[]): Promise<any> {
+    let changes = false;
     if (config) {
-      this.shafts = this.mapDataToShafts(config);
-      this.broadcast(this.shafts);
-      return Promise.resolve();
+
+      this.shafts.forEach((s, i, a) => {
+        let shaft = config.find(row => row.id === s.id);
+
+        if (shaft) {
+
+          if (shaft.stories !== s.stories) {
+            console.info(`Shaft ${s.id} updated.`);
+            this.save(shaft);
+            changes = true;
+          }
+
+        } else {
+          console.info(`Shaft ${s.id} removed.`);
+          this.delete(s);
+          changes = true;
+        }
+
+      });
+
+      if (changes) {
+        this.build();
+      }
+
+      return Promise.resolve(changes);
+
     } else {
+
       return this.getShafts()
-        .then(shafts => this.broadcast(shafts));
+        .then(shafts => this.broadcast(shafts))
+        .then(() => changes);
     }
   }
 
