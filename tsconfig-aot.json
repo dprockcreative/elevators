@@ -17,5 +17,11 @@
   "angularCompilerOptions": {
    "genDir": "aot",
    "skipMetadataEmit" : true
- }
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules/*",
+    "aot/**/*",
+    "**/*-aot.ts"
+  ]
 }

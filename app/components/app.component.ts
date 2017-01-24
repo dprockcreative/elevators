@@ -7,7 +7,7 @@ import { LogService, SessionService } from '../services/index';
   template: `
     <aside></aside>
     <section></section>
-    <dialog></dialog>
+    <dialogs></dialogs>
   `
 })
 

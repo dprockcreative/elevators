@@ -7,12 +7,12 @@ import {
 } from '../index';
 
 @Component({
-  selector: 'dialog',
+  selector: 'dialogs',
   template: `
-    <div [ngClass]="{'active':service().active()}">
+    <dialog [attr.open]="open()">
       <article>
         <header>
-          <h3>{{dialog.header()}}</h3>
+          <h3>{{header()}}</h3>
           <h5>{{count()}}</h5>
         </header>
         <form (ngSubmit)="submit()" [formGroup]="dialog.form">
@@ -21,7 +21,7 @@ import {
           <wizard *ngIf="dialog.type === 'wizard'"></wizard>
         </form>
       </article>
-    </div>
+    </dialog>
   `
 })
 
@@ -38,11 +38,27 @@ export class DialogComponent implements AfterContentChecked {
     this.dialog = dialogService.current();
   }
 
-  /*  Count
-      @type     protected
+  /*  Open
+      @type     private
+      @return   boolean | null
+   */
+  private open (): boolean | null {
+    return this.service().active() ? true : null;
+  }
+
+  /*  Header
+      @type     private
       @return   string
    */
-  protected count (): string {
+  private header (): string {
+    return this.dialog.header();
+  }
+
+  /*  Count
+      @type     private
+      @return   string
+   */
+  private count (): string {
     return `${this.dialog.index + 1} of ${this.dialog.content.length}`;
   }
 

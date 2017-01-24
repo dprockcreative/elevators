@@ -24,9 +24,7 @@ export {
 	MarkdownPipe,
 	Number2AlphaPipe,
 	InMemoryDataService,
-	LogService,
-	SessionService,
-	TasksService
+	LogService
 } from '../barrel';
 
 export {
@@ -39,7 +37,7 @@ export {
 export {
   BuildingComponent,
   FloorsComponent,
-  FoundationComponent
+  FoundationComponent,
   ShaftsComponent
 } from './components/index';
 
@@ -68,3 +66,4 @@ export { ShaftModule } from '../shaft/module';
 
 export { SessionService } from '../../services/session.service';
 export { TasksService } from '../../services/tasks.service';
+

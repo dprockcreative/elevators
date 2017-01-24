@@ -540,7 +540,7 @@ template {
   -ms-flex-item-align: stretch;
   align-self: stretch; }
 
-.flex-center-container, body > main > dialog > div {
+.flex-center-container, body > main > dialogs > dialog {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -570,7 +570,7 @@ template {
   -ms-flex-align: center;
   align-items: center; }
 
-.flex-center-box, body > main > dialog > div > article {
+.flex-center-box, body > main > dialogs > dialog > article {
   -webkit-box-ordinal-group: 1;
   -moz-box-ordinal-group: 1;
   -webkit-order: 0;
@@ -4322,7 +4322,7 @@ body > footer {
 
 body {
   position: relative; }
-  body > main > dialog {
+  body > main > dialogs {
     position: fixed;
     top: 50%;
     right: 50%;
@@ -4344,13 +4344,13 @@ body {
     -ms-user-select: auto;
     -ms-touch-action: auto;
     pointer-events: none; }
-    body > main > dialog::backdrop {
+    body > main > dialogs::backdrop {
       background: transparent; }
-    body > main > dialog:before, body > main > dialog:after {
+    body > main > dialogs:before, body > main > dialogs:after {
       -webkit-box-sizing: content-box;
       -moz-box-sizing: content-box;
       box-sizing: content-box; }
-    body > main > dialog > div {
+    body > main > dialogs > dialog {
       position: fixed;
       overflow: hidden;
       text-align: center;
@@ -4364,7 +4364,7 @@ body {
       -ms-transition-timing-function: ease-in-out;
       -o-transition-timing-function: ease-in-out;
       transition-timing-function: ease-in-out; }
-      body > main > dialog > div > article {
+      body > main > dialogs > dialog > article {
         opacity: inherit;
         width: 40rem;
         margin: auto;
@@ -4389,7 +4389,7 @@ body {
         -ms-transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275);
         -o-transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        body > main > dialog > div > article header {
+        body > main > dialogs > dialog > article header {
           position: relative;
           cursor: default;
           padding: 0 0 2rem;
@@ -4400,36 +4400,36 @@ body {
           -moz-user-select: none;
           -ms-user-select: none;
           -ms-touch-action: none; }
-          body > main > dialog > div > article header h3, body > main > dialog > div > article header h5 {
+          body > main > dialogs > dialog > article header h3, body > main > dialogs > dialog > article header h5 {
             margin: 0;
             padding: 0;
             line-height: normal; }
-          body > main > dialog > div > article header h3 {
+          body > main > dialogs > dialog > article header h3 {
             font-size: 2rem;
             font-weight: 200; }
-          body > main > dialog > div > article header h5 {
+          body > main > dialogs > dialog > article header h5 {
             position: absolute;
             bottom: 50%;
             right: 0;
             font-size: 1.2rem;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.4); }
-        body > main > dialog > div > article form {
+        body > main > dialogs > dialog > article form {
           margin: 0;
           padding: 0;
           font-size: 1.2rem; }
-          body > main > dialog > div > article form > alert > label,
-          body > main > dialog > div > article form > confirm > label,
-          body > main > dialog > div > article form > wizard > label {
+          body > main > dialogs > dialog > article form > alert > label,
+          body > main > dialogs > dialog > article form > confirm > label,
+          body > main > dialogs > dialog > article form > wizard > label {
             display: block;
             margin: 2rem 0; }
-          body > main > dialog > div > article form h4 {
+          body > main > dialogs > dialog > article form h4 {
             font-size: 1.6rem;
             font-weight: 100; }
-          body > main > dialog > div > article form p {
+          body > main > dialogs > dialog > article form p {
             font-weight: 200;
             line-height: 1.8rem; }
-          body > main > dialog > div > article form div {
+          body > main > dialogs > dialog > article form div {
             user-select: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -4437,27 +4437,27 @@ body {
             -moz-user-select: none;
             -ms-user-select: none;
             -ms-touch-action: none; }
-          body > main > dialog > div > article form input[type="range"] {
+          body > main > dialogs > dialog > article form input[type="range"] {
             width: 32.5rem; }
-          body > main > dialog > div > article form > alert footer,
-          body > main > dialog > div > article form > confirm footer,
-          body > main > dialog > div > article form > wizard footer {
+          body > main > dialogs > dialog > article form > alert footer,
+          body > main > dialogs > dialog > article form > confirm footer,
+          body > main > dialogs > dialog > article form > wizard footer {
             margin: 2rem 0 0;
             text-align: right; }
-            body > main > dialog > div > article form > alert footer label,
-            body > main > dialog > div > article form > confirm footer label,
-            body > main > dialog > div > article form > wizard footer label {
+            body > main > dialogs > dialog > article form > alert footer label,
+            body > main > dialogs > dialog > article form > confirm footer label,
+            body > main > dialogs > dialog > article form > wizard footer label {
               display: inline-block;
               margin: 0 0 0 0.3rem; }
-              body > main > dialog > div > article form > alert footer label input,
-              body > main > dialog > div > article form > confirm footer label input,
-              body > main > dialog > div > article form > wizard footer label input {
+              body > main > dialogs > dialog > article form > alert footer label input,
+              body > main > dialogs > dialog > article form > confirm footer label input,
+              body > main > dialogs > dialog > article form > wizard footer label input {
                 background-color: rgba(255, 255, 255, 0.1) !important; }
-                body > main > dialog > div > article form > alert footer label input:hover,
-                body > main > dialog > div > article form > confirm footer label input:hover,
-                body > main > dialog > div > article form > wizard footer label input:hover {
+                body > main > dialogs > dialog > article form > alert footer label input:hover,
+                body > main > dialogs > dialog > article form > confirm footer label input:hover,
+                body > main > dialogs > dialog > article form > wizard footer label input:hover {
                   background-color: rgba(255, 255, 255, 0.3) !important; }
-      body > main > dialog > div:not(.active), body > main > dialog > div:not([open]) {
+      body > main > dialogs > dialog:not(.active), body > main > dialogs > dialog:not([open]) {
         z-index: -1;
         top: 50%;
         right: 50%;
@@ -4483,7 +4483,7 @@ body {
         -ms-transition-delay: 250ms;
         -o-transition-delay: 250ms;
         transition-delay: 250ms; }
-        body > main > dialog > div:not(.active) > article, body > main > dialog > div:not([open]) > article {
+        body > main > dialogs > dialog:not(.active) > article, body > main > dialogs > dialog:not([open]) > article {
           transform: scale(0.1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;
@@ -4495,7 +4495,7 @@ body {
           -ms-transition-delay: 0s;
           -o-transition-delay: 0s;
           transition-delay: 0s; }
-      body > main > dialog > div.active, body > main > dialog > div[open] {
+      body > main > dialogs > dialog.active, body > main > dialogs > dialog[open] {
         z-index: 1;
         top: 0;
         right: 0;
@@ -4521,7 +4521,7 @@ body {
         -ms-transition-delay: 0s;
         -o-transition-delay: 0s;
         transition-delay: 0s; }
-        body > main > dialog > div.active > article, body > main > dialog > div[open] > article {
+        body > main > dialogs > dialog.active > article, body > main > dialogs > dialog[open] > article {
           transform: scale(1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;
