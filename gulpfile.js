@@ -1,68 +1,26 @@
-var gulp = require('gulp');
-var del = require('del');
-var $ = require('gulp-load-plugins')({ lazy: true });
-var lite = require('lite-server');
+const gulp = require('gulp');
+const del  = require('del');
+const $    = require('gulp-load-plugins')({lazy : true});
 
-var config = {
-  build: './dist/build.js',
-  plugins: [
-    'node_modules/core-js/client/shim.min.js',
-    'node_modules/zone.js/dist/zone.js'
-  ],
-  index: {
-    run: 'index.html',
-    aot: 'index-aot.html',
-    aotgz: 'index-aot-gzip.html',
-    jit: 'index-jit.html'
-  },
-  dest: './dist',
-  root: './'
-};
-
-gulp.task('help', $.taskListing);
-gulp.task('default', ['help']);
-
-gulp.task('gzip', function () {
-  log('gzipping');
-  var source = [].concat(config.plugins, config.build);
-
-  return gulp.src(source)
-    .pipe($.gzip())
-    .pipe(gulp.dest(config.dest));
-});
-
-gulp.task('copy-aot-gzip', ['gzip', 'clean'], function () {
-  log('copy aot gzip');
-  return copyIndex(config.index.aotgz);
-});
-
-gulp.task('copy-aot', ['clean'], function () {
-  log('copy aot');
-  return copyIndex(config.index.aot);
-});
+const BUILD   = './dist/build.js';
+const DEST    = './dist';
+const BASE    = 'index.html';
+const DEV     = 'index-dev.html';
+const STAGE   = 'index-stage.html';
+const PROD    = 'index-prod.html';
+const ROOT    = './';
+const VENDORS = [
+  'node_modules/core-js/client/shim.min.js',
+  'node_modules/zone.js/dist/zone.js'
+];
 
 function copyIndex(source) {
-  return gulp.src(source)
-    .pipe($.rename(config.index.run))
-    .pipe(gulp.dest(config.root));
+  return gulp.src(source).pipe($.rename(BASE)).pipe(gulp.dest(ROOT));
 }
 
-gulp.task('copy-jit', ['clean'], function () {
-  log('copy jit');
-  return copyIndex(config.index.jit);
-});
-
-gulp.task('clean', function (done) {
-  log('clean');
-  del([config.index.run]).then(paths => {
-    console.log('Deleted files and folders:\n', paths.join('\n'));
-    done()
-  });
-});
-
-function log(msg) {
-  if (typeof (msg) === 'object') {
-    for (var item in msg) {
+function output(msg) {
+  if (typeof msg === 'object') {
+    for (let item in msg) {
       if (msg.hasOwnProperty(item)) {
         $.util.log($.util.colors.blue(msg[item]));
       }
@@ -71,5 +29,36 @@ function log(msg) {
     $.util.log($.util.colors.blue(msg));
   }
 }
+
+gulp.task('gzip', function () {
+  output('gzipping');
+  let source = [].concat(VENDORS, BUILD);
+  return gulp.src(source).pipe($.gzip()).pipe(gulp.dest(DEST));
+});
+
+gulp.task('copy-prod', ['gzip', 'clean'], function () {
+  output('copy prod');
+  return copyIndex(PROD);
+});
+
+gulp.task('copy-stage', ['clean'], function () {
+  output('copy stage');
+  return copyIndex(STAGE);
+});
+
+
+gulp.task('copy-dev', ['clean'], function () {
+  output('copy dev');
+  return copyIndex(DEV);
+});
+
+gulp.task('clean', function (done) {
+  output('clean');
+  del([BASE]).then(paths => {
+    console.log('Deleted files and folders:\n', paths.join('\n'));
+    done()
+  });
+});
+
 
 module.exports = gulp;

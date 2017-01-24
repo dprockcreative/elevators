@@ -9,7 +9,7 @@
   ],
   "author": "dp@dprockcreative.com",
   "scripts": {
-    "start": "gulp copy-jit && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "gulp copy-dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "sass": "sass --watch assets/sass:assets/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
@@ -18,9 +18,9 @@
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "aot": "ngc -p tsconfig-aot.json",
+    "stage": "ngc -p tsconfig-aot.json",
     "rollup": "rollup -c rollup-config.js",
-    "start-aot": "npm run aot && npm run rollup && gulp copy-aot && npm run lite"
+    "start-stage": "npm run stage && npm run rollup && gulp copy-stage && npm run lite"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
