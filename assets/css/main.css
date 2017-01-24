@@ -4352,6 +4352,8 @@ body {
       box-sizing: content-box; }
     body > main > dialogs > dialog {
       position: fixed;
+      padding: 0;
+      border: none;
       overflow: hidden;
       text-align: center;
       -webkit-transition-property: opacity, top, right, bottom, left;

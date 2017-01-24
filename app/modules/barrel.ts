@@ -27,13 +27,13 @@ export {
  } from '../interfaces/index';
 
 export {
-	MarkdownPipe,
-	Number2AlphaPipe
+  MarkdownPipe,
+  Number2AlphaPipe
 } from '../pipes/index';
 
 export {
-	InMemoryDataService,
-	LogService,
-	SessionService,
-	TasksService
+  InMemoryDataService,
+  LogService,
+  SessionService,
+  TasksService
 } from '../services/index';

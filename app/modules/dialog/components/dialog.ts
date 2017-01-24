@@ -30,7 +30,7 @@ import {
  */
 export class DialogComponent implements AfterContentChecked {
 
-  protected dialog: Dialog;
+  dialog: Dialog;
 
   constructor (
     private dialogService: DialogService
@@ -39,77 +39,77 @@ export class DialogComponent implements AfterContentChecked {
   }
 
   /*  Open
-      @type     private
+      @type     public
       @return   boolean | null
    */
-  private open (): boolean | null {
+  public open (): boolean | null {
     return this.service().active() ? true : null;
   }
 
   /*  Header
-      @type     private
+      @type     public
       @return   string
    */
-  private header (): string {
+  public header (): string {
     return this.dialog.header();
   }
 
   /*  Count
-      @type     private
+      @type     public
       @return   string
    */
-  private count (): string {
+  public count (): string {
     return `${this.dialog.index + 1} of ${this.dialog.content.length}`;
   }
 
   /*  Service
       @override true
-      @type     protected
+      @type     public
       @return   DialogService
       - default functions occur if not overridden by sub class
    */
-  protected service (): DialogService {
+  public  service (): DialogService {
     return this.dialogService;
   }
 
   /*  Content
-      @type     protected
+      @type     public
       @return   any
       - default functions occur if not overridden by sub class
    */
-  protected content (): any {
+  public  content (): any {
     return this.dialog.screen();
   }
 
   /*  Label
       @override true
-      @type     protected
+      @type     public
       @param    key [string]
       @param    alt [string !optional]
       @return   string
       - default functions occur if not overridden by sub class
    */
-  protected label (key: string, alt?: string): string {
+  public  label (key: string, alt?: string): string {
     return DIALOG_STRING_MAP[this.dialog.type][key];
   }
 
   /*  Reset
       @override true
-      @type     protected
+      @type     public
       @return   void
       - default functions occur if not overridden by sub class
    */
-  protected reset (): void {
+  public  reset (): void {
     this.dialogService.dismiss();
   }
 
   /*  Submit
       @override true
-      @type     protected
+      @type     public
       @return   void
       - default functions occur if not overridden by sub class
    */
-  protected submit (): void {
+  public  submit (): void {
     this.dialogService.dismiss();
   }
 

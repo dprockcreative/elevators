@@ -31,6 +31,8 @@ body {
 			> dialog {
 			  @extend .flex-center-container;
 				position: fixed;
+				padding: 0;
+				border: none;
 				overflow: hidden;
 				text-align: center;
 

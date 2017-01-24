@@ -1,8 +1,10 @@
 module.exports = {
-  logLevel: "silent",
-  server: {
-    middleware: {
-      0: null
-    }
+  "port": 3000,
+  // "files": ["./src/**/*.{html,htm,css,js}"],
+  "server": {
+    "baseDir": [
+      // "./src",
+      "./"
+    ]
   }
 };

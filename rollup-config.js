@@ -4,17 +4,21 @@ import commonjs    from 'rollup-plugin-commonjs';
 import uglify      from 'rollup-plugin-uglify';
 
 export default {
-  entry: 'app/main.js',
+  entry: 'app/main-aot.js',
   dest: 'dist/build.js', // output a single application bundle
-  sourceMap: false,
+  sourceMap: true,
+  sourceMapFile: 'dist/build.js.map',
   format: 'iife',
   plugins: [
-      nodeResolve({jsnext: true, module: true}),
-      commonjs({
-        include: 'node_modules/rxjs/**',
-        include: 'node_modules/md-jml/**',
-        include: 'node_modules/jml-h/**',
-      }),
-      uglify()
+    nodeResolve({jsnext: true, module: true}),
+    commonjs({
+      include: [
+        'node_modules/rxjs/**',
+        'node_modules/angular-in-memory-web-api/**',
+        'node_modules/md-jml/**',
+        'node_modules/jml-h/**',
+      ],
+    }),
+    uglify()
   ]
 }

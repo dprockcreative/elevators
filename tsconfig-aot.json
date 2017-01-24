@@ -6,22 +6,15 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es2015", "dom"]
+    "removeComments": false,
+    "noImplicitAny": false
   },
   "files": [
     "app/app.module.ts",
-    "app/main.ts"
+    "app/main-aot.ts"
   ],
   "angularCompilerOptions": {
    "genDir": "aot",
    "skipMetadataEmit" : true
-  },
-  "compileOnSave": true,
-  "exclude": [
-    "node_modules/*",
-    "aot/**/*",
-    "**/*-aot.ts"
-  ]
+ }
 }
