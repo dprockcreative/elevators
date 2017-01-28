@@ -1,8 +1,16 @@
+app
+aot
 node_modules
+templates
 gulpfile.js
 bs-config.js
 rollup.config.js
 systemjs.config.js
-
+package.json
+tsconfig-aot.json
+tsconfig.json
+tslint.json
+install.js
+uninstall.js
 index.htm
 README.md
