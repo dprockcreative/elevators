@@ -4,7 +4,7 @@
   "licenses": "UNLICENSED",
   "private": true,
   "engines": {
-    "node": "5.9.1"
+    "node": "7.1.0"
   },
   "main": "server.js",
   "keywords": [
@@ -16,8 +16,7 @@
     "build:dev": "node uninstall.js && gulp build:dev",
     "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
     "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
-    "start": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "restart": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "sass": "sass --watch assets/sass:assets/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
