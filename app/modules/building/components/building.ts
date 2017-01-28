@@ -25,14 +25,6 @@ export class BuildingComponent implements OnInit {
         let length = this.shaftService.getLength();
         let top = this.shaftService.getTopStory();
         console.info(`Building Rendered`, `Shafts: *${length}*`, `Highest Floor: *${top}*`);
-
-
-        setTimeout(() => {
-          console.debug('testing');
-
-          this.shaftService.build([{ id: 1, stories: 7 },{ id: 2, stories: 7 },{ id: 3, stories: 7 }]);
-
-        }, 4000);
       });
   }
 }

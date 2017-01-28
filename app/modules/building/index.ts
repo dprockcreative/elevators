@@ -1,4 +1,5 @@
 export {
+  TASK_PENDING,
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
   TASK_CALLED_LOADING,
@@ -63,6 +64,7 @@ export { ShaftService } from '../shaft/service';
 
 export { FloorModule } from '../floor/module';
 export { ShaftModule } from '../shaft/module';
+export { TooltipModule } from '../tooltip/module';
 
 export { SessionService } from '../../services/session.service';
 export { TasksService } from '../../services/tasks.service';

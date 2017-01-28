@@ -1,4 +1,5 @@
 export {
+  TASK_PENDING,
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
   TASK_CALLED_LOADING,
@@ -26,3 +27,4 @@ export {
   SESSION_QUERY_INTERVAL,
   SESSION_WELCOMED_DELAY
 } from './session';
+

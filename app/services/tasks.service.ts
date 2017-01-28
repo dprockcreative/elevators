@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -8,6 +8,7 @@ import { ShaftService } from '../modules/shaft/service';
 import { Number2AlphaPipe } from '../pipes/index';
 
 import {
+  TASK_PENDING,
   TASK_CALLED_COMPLETE,
   TASK_STOPS_LIMIT,
   TASKS_BROADCAST_INTERVAL
@@ -21,10 +22,10 @@ export class TasksService {
   private LENGTH: number = 0;
 
   // Observable sources
-  private openTasksSource = new Subject<Task[]>();
-  private destroyTaskSource = new Subject<Task>();
-  private elevatorTaskSource = new Subject<Task>();
-  private completeStopSource = new Subject<{[key: string]: number}>();
+  public openTasksSource = new Subject<Task[]>();
+  public destroyTaskSource = new Subject<Task>();
+  public elevatorTaskSource = new Subject<Task>();
+  public completeStopSource = new Subject<{[key: string]: number}>();
 
   // Observable streams
   openTasksStream = this.openTasksSource.asObservable();
@@ -33,7 +34,6 @@ export class TasksService {
   completeStopStream = this.completeStopSource.asObservable();
 
   constructor (
-    private ngZone: NgZone,
     private shaftService: ShaftService
   ) {}
 
@@ -79,10 +79,10 @@ export class TasksService {
   /*  Task For Shaft
       @type   public
       @param  shaft [Shaft]
-      @return Task
+      @return Task | null
    */
-  public taskForShaft (shaft: Shaft): null | Task {
-    return this.tasks.find(task => task.shaft && task.shaft.id === shaft.id) || null;
+  public taskForShaft (shaft: Shaft): Task | null {
+    return this.tasks.find(task => task.shaft && task.shaft.id === shaft.id && task.status === TASK_PENDING) || null;
   }
 
   /*  Set Task Status
@@ -285,7 +285,7 @@ export class TasksService {
       @return void
       - Adds stop to existing Task
    */
-  private mergeTasks(src: Task, dest: Task): Task {
+  private mergeTasks (src: Task, dest: Task): Task {
     dest.addStop(src.stops);
     return dest;
   }

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
 
 import {
   Button,
@@ -25,17 +27,19 @@ import { TasksService } from '../../../services/tasks.service';
   `
 })
 
-export class FloorComponent implements OnInit {
+export class FloorComponent implements OnInit, OnDestroy {
 
   @Input() floor: Floor;
 
   buttons: Button[];
 
+  cTaskSubscription: Subscription;
+
   constructor (
     private floorService: FloorService,
     private tasksService: TasksService
   ) {
-    tasksService.completeStopStream.subscribe((H) => this.completeStop(H));
+    this.cTaskSubscription = tasksService.completeStopStream.subscribe((H) => this.completeStop(H));
   }
 
   /*  Call For Elevator
@@ -95,6 +99,10 @@ export class FloorComponent implements OnInit {
 
   ngOnInit (): void {
     this.buildButtons();
+  }
+
+  ngOnDestroy (): void {
+    this.cTaskSubscription.unsubscribe();
   }
 }
 

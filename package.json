@@ -9,10 +9,11 @@
   ],
   "author": "dp@dprockcreative.com",
   "scripts": {
-    "build:dev": "gulp build:dev",
-    "build:stage": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && gulp build:stage",
-    "build:prod": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && gulp build:prod",
+    "build:dev": "node uninstall.js && gulp build:dev",
+    "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
+    "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
     "start": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "restart": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "sass": "sass --watch assets/sass:assets/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
@@ -20,7 +21,9 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "aot": "ngc -p tsconfig-aot.json",
+    "rollup": "rollup -c rollup-config.js"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
@@ -41,14 +44,11 @@
     "zone.js": "^0.7.4"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.36",
     "@types/node": "^6.0.46",
     "@types/selenium-webdriver": "2.53.33",
     "canonical-path": "0.0.2",
     "concurrently": "^3.1.0",
-    "del": "^2.2.2",
-    "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-gzip": "^1.4.0",
     "gulp-load-plugins": "^1.3.0",
@@ -73,7 +73,7 @@
     "rollup-plugin-uglify": "^1.0.1",
     "source-map-explorer": "^1.3.3",
     "tslint": "^3.15.1",
-    "typescript": "~2.0.10"
+    "typescript": "~2.1.5"
   },
   "repository": {}
 }

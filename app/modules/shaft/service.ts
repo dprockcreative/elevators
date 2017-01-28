@@ -56,30 +56,25 @@ export class ShaftService {
         if (shaft) {
 
           if (shaft.stories !== s.stories) {
-            console.info(`Shaft ${s.id} updated.`);
+            console.info(`Shaft ${s.id} updated`);
             this.save(shaft);
             changes = true;
           }
 
         } else {
-          console.info(`Shaft ${s.id} removed.`);
+          console.info(`Shaft ${s.id} removed`);
           this.delete(s);
           changes = true;
         }
 
       });
 
-      if (changes) {
-        this.build();
-      }
-
-      return Promise.resolve(changes);
+      return (changes) ? this.build() : Promise.reject(false);
 
     } else {
 
       return this.getShafts()
-        .then(shafts => this.broadcast(shafts))
-        .then(() => changes);
+        .then(shafts => this.broadcast(shafts));
     }
   }
 

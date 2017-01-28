@@ -7,10 +7,12 @@
     display: inline-block;
     width: auto;
     margin: 0 25rem 0 auto;
+    white-space: nowrap;
 
     ul, ol, foundation {
       display: inline-block;
       vertical-align: bottom;
+      white-space: normal;
     }
 
     > shafts {

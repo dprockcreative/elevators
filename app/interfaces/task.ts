@@ -1,5 +1,9 @@
 import { Shaft } from '../modules/shaft/interface';
 
+import {
+  TASK_PENDING
+} from '../constants/index';
+
 import UUID from '../extensions/uuid';
 
 interface TaskI {
@@ -19,7 +23,7 @@ interface TaskI {
 
 export class Task implements TaskI {
   id: string      = '';
-  status: number  = 0;
+  status: number  = TASK_PENDING;
   floor: number   = 0;
   stops: number[] = [];
   up: boolean;

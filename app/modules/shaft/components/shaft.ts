@@ -1,6 +1,9 @@
-import { Component, Input, Output, OnInit, DoCheck } from '@angular/core';
+import { Component, Input, Output, OnDestroy, DoCheck } from '@angular/core';
 
-import { TasksService } from '../../../services/index';
+import { Subscription } from 'rxjs/Subscription';
+
+import { TasksService } from '../../../services/tasks.service';
+
 import { Task } from '../../../interfaces/index';
 
 import { Shaft } from '../interface';
@@ -11,20 +14,22 @@ import { Elevator } from '../../elevator/interface';
   selector: '[shaft]',
   template: `
     <div class="shaft" [attr.stories]="shaft.stories">
-      <elevator [elevator]="elevator"></elevator>
+      <elevator [parent]="shaft"></elevator>
     </div>
   `
 })
 
-export class ShaftComponent implements OnInit, DoCheck {
+export class ShaftComponent implements OnDestroy, DoCheck {
 
   @Input() shaft: Shaft;
-  @Output() elevator: Elevator;
+  @Output() parent: Shaft;
+
+  oTaskSubscription: Subscription;
 
   constructor (
     private tasksService: TasksService
   ) {
-    tasksService.openTasksStream.subscribe(tasks => this.queryOpenTasks(tasks));
+    this.oTaskSubscription = tasksService.openTasksStream.subscribe(tasks => this.queryOpenTasks(tasks));
   }
 
   /*  Query Open Tasks - Event Stream listener
@@ -71,9 +76,8 @@ export class ShaftComponent implements OnInit, DoCheck {
       - Initiates Elevator Operations
    */
   ngDoCheck (): void {
-    if (this.elevator.ready()) {
-
-      let task = this.tasksService.taskForShaft(this.shaft);
+    if (this.shaft.elevator && this.shaft.elevator.ready()) {
+      let task: Task | null = this.tasksService.taskForShaft(this.shaft);
 
       if (task) {
         this.tasksService.startElevatorOperations(task);
@@ -81,8 +85,8 @@ export class ShaftComponent implements OnInit, DoCheck {
     }
   }
 
-  ngOnInit (): void {
-    this.elevator = this.shaft.elevator;
+  ngOnDestroy (): void {
+    this.oTaskSubscription.unsubscribe();
   }
 }
 
