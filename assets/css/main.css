@@ -405,67 +405,7 @@ template {
 /*
   Media Queries
 */
-.flex-body-container, html body {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-box-align: stretch;
-  -moz-box-align: stretch;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch; }
-
-.flex-body-header, body > header {
-  -webkit-box-ordinal-group: 1;
-  -moz-box-ordinal-group: 1;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0;
-  -webkit-flex: 0 1 6rem;
-  -ms-flex: 0 1 6rem;
-  flex: 0 1 6rem;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch; }
-
-.flex-body-main, body > main {
-  -webkit-box-ordinal-group: 2;
-  -moz-box-ordinal-group: 2;
-  -webkit-order: 1;
-  -ms-flex-order: 1;
-  order: 1;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 0 60rem;
-  -ms-flex: 1 0 60rem;
-  flex: 1 0 60rem;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch; }
-
-.flex-body-main-container, body > main {
+.flex-body-main-container, html body > main {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -495,7 +435,7 @@ template {
   -ms-flex-align: stretch;
   align-items: stretch; }
 
-.flex-body-main-aside, body > main > aside {
+.flex-body-main-aside, html body > main > aside {
   -webkit-box-ordinal-group: 1;
   -moz-box-ordinal-group: 1;
   -webkit-order: 0;
@@ -510,7 +450,7 @@ template {
   -ms-flex-item-align: stretch;
   align-self: stretch; }
 
-.flex-body-main-section, body > main > section {
+.flex-body-main-section, html body > main > section {
   -webkit-box-ordinal-group: 2;
   -moz-box-ordinal-group: 2;
   -webkit-order: 1;
@@ -521,21 +461,6 @@ template {
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch; }
-
-.flex-body-footer, body > footer {
-  -webkit-box-ordinal-group: 3;
-  -moz-box-ordinal-group: 3;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0;
-  -webkit-flex: 0 1 4rem;
-  -ms-flex: 0 1 4rem;
-  flex: 0 1 4rem;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch; }
@@ -838,7 +763,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, body > footer > ul li > a:before, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
+.icons, .floors li > section:before, .section > article > floors > ol li > section:before, html body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, html body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, html body > main > section > article > foundation > label button {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -851,13 +776,13 @@ select:-moz-focusring {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-logo:before, body > header > hgroup h1:before, .icon-logo:after, body > header > hgroup h1:after {
+.icon-logo:before, .icon-logo:after {
   content: "\e900"; }
 
-.icon-up:before, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .icon-up:after {
+.icon-up:before, .floors li > section:before, .section > article > floors > ol li > section:before, html body > main > section > article > floors > ol li > section:before, .icon-up:after {
   content: "\e901"; }
 
-.icon-down:before, .icon-down:after, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
+.icon-down:before, .icon-down:after, .floors li > section:after, .section > article > floors > ol li > section:after, html body > main > section > article > floors > ol li > section:after {
   content: "\e902"; }
 
 .icon-home:before, .icon-home:after {
@@ -869,10 +794,10 @@ select:-moz-focusring {
 .icon-pencil:before, .icon-pencil:after {
   content: "\e905"; }
 
-.icon-phone:before, body > footer > ul li > a[href^="tel:"]:before, .icon-phone:after, body > footer > ul li > a[href^="tel:"]:after {
+.icon-phone:before, .icon-phone:after {
   content: "\e942"; }
 
-.icon-envelop:before, body > footer > ul li > a[href^="mailto:"]:before, .icon-envelop:after, body > footer > ul li > a[href^="mailto:"]:after {
+.icon-envelop:before, .icon-envelop:after {
   content: "\e945"; }
 
 .icon-history:before, .icon-history:after {
@@ -881,7 +806,7 @@ select:-moz-focusring {
 .icon-equalizer:before, .icon-equalizer:after {
   content: "\e992"; }
 
-.icon-cog:before, .foundation > label button:before, .section > article > foundation > label button:before, body > main > section > article > foundation > label button:before, .icon-cog:after, .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+.icon-cog:before, .foundation > label button:before, .section > article > foundation > label button:before, html body > main > section > article > foundation > label button:before, .icon-cog:after, .foundation > label button:after, .section > article > foundation > label button:after, html body > main > section > article > foundation > label button:after {
   content: "\e994"; }
 
 .icon-meter:before, .icon-meter:after {
@@ -899,7 +824,7 @@ select:-moz-focusring {
 .icon-radio-unchecked:before, .icon-radio-unchecked:after {
   content: "\ea56"; }
 
-.icon-github:before, body > footer > ul li > a[href^="https://github.com"]:before, .icon-github:after, body > footer > ul li > a[href^="https://github.com"]:after {
+.icon-github:before, .icon-github:after {
   content: "\eab0"; }
 
 @font-face {
@@ -1025,27 +950,10 @@ html {
       color: inherit;
       overflow: inherit;
       background-color: inherit; }
-  html.debug body:after {
-    content: "ALL";
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    display: block;
-    margin: 0;
-    padding: 0.3rem 0.5rem;
-    font-size: 9px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(0, 0, 0, 0.2);
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -ms-touch-action: none;
-    pointer-events: none; }
+    html body > main {
+      position: relative;
+      min-height: 60rem;
+      text-align: left; }
 
 *,
 :after,
@@ -1102,202 +1010,21 @@ small {
   .text-align.center {
     text-align: center; }
 
-body > header {
-  text-align: center; }
-  body > header * {
-    cursor: default;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -ms-touch-action: none; }
-  body > header > hgroup {
-    position: relative;
-    display: block;
-    max-width: 80rem;
-    margin: 2rem auto;
-    padding: 0;
-    text-align: left; }
-    body > header > hgroup h1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5rem;
-      height: 5rem;
-      margin: 0;
-      padding: 0;
-      font-size: 5rem;
-      color: rgba(255, 255, 255, 0.6); }
-      body > header > hgroup h1:after {
-        display: none; }
-      body > header > hgroup h1 > span {
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        width: 1px;
-        height: 1px;
-        font-size: 7px;
-        opacity: 0;
-        overflow: hidden; }
-    body > header > hgroup h2, body > header > hgroup h3 {
-      padding: 0;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 100; }
-    body > header > hgroup h2 {
-      margin: 0 0 0 5rem;
-      font-size: 2.4rem; }
-    body > header > hgroup h3 {
-      margin: 0.7rem 0 0 5rem;
-      font-size: 1.2rem; }
-    body > header > hgroup h1, body > header > hgroup h2, body > header > hgroup h3 {
-      text-shadow: 0 0 0 transparent;
-      -webkit-transition-property: color, text-shadow;
-      -moz-transition-property: color, text-shadow;
-      -ms-transition-property: color, text-shadow;
-      -o-transition-property: color, text-shadow;
-      transition-property: color, text-shadow;
-      -webkit-transition-duration: 250ms;
-      -moz-transition-duration: 250ms;
-      -ms-transition-duration: 250ms;
-      -o-transition-duration: 250ms;
-      transition-duration: 250ms;
-      -webkit-transition-delay: 0s;
-      -moz-transition-delay: 0s;
-      -ms-transition-delay: 0s;
-      -o-transition-delay: 0s;
-      transition-delay: 0s;
-      -webkit-transition-timing-function: linear;
-      -moz-transition-timing-function: linear;
-      -ms-transition-timing-function: linear;
-      -o-transition-timing-function: linear;
-      transition-timing-function: linear; }
-    body > header > hgroup:hover h1, body > header > hgroup:hover h2, body > header > hgroup:hover h3 {
-      color: #fff;
-      text-shadow: 0 0 1rem rgba(255, 255, 255, 0.5); }
-
-body > main {
-  position: relative;
-  min-height: 60rem;
-  text-align: left; }
-
-.section, body > main > section {
+.section, html body > main > section {
   margin: 0;
   padding: 5rem 0;
   text-align: center; }
-  .section > article, body > main > section > article {
+  .section > article, html body > main > section > article {
     display: inline-block;
     width: auto;
     margin: 0 25rem 0 auto;
     white-space: nowrap; }
-    .section > article ul, body > main > section > article ul, .section > article ol, body > main > section > article ol, .section > article foundation, body > main > section > article foundation {
+    .section > article ul, html body > main > section > article ul, .section > article ol, html body > main > section > article ol, .section > article foundation, html body > main > section > article foundation {
       display: inline-block;
       vertical-align: bottom;
       white-space: normal; }
 
-.aside, body > main > aside {
-  height: 100%;
-  padding: 5rem 0;
-  margin: 0; }
-  .aside > ul, body > main > aside > ul {
-    list-style: none;
-    text-align: left;
-    width: 22rem;
-    height: inherit;
-    margin: 0;
-    padding: 0 1rem;
-    overflow-y: auto;
-    overflow-x: hidden; }
-    .aside > ul li, body > main > aside > ul li {
-      margin: 0 0 0.5rem 0;
-      padding: 0.5rem 1rem;
-      font-size: 1.1rem;
-      font-weight: 200;
-      color: rgba(255, 255, 255, 0.4);
-      line-height: 1.4rem;
-      opacity: 1;
-      background-color: rgba(0, 0, 0, 0.05);
-      border: 0.1rem dotted rgba(255, 255, 255, 0.2);
-      outline: 0 none transparent;
-      -webkit-border-radius: 0.3rem;
-      -moz-border-radius: 0.3rem;
-      -ms-border-radius: 0.3rem;
-      border-radius: 0.3rem;
-      -webkit-transition: opacity 1000ms 0s ease-out;
-      -moz-transition: opacity 1000ms 0s ease-out;
-      -ms-transition: opacity 1000ms 0s ease-out;
-      -o-transition: opacity 1000ms 0s ease-out;
-      transition: opacity 1000ms 0s ease-out; }
-      .aside > ul li.expired, body > main > aside > ul li.expired {
-        opacity: 0; }
-      .aside > ul li p, body > main > aside > ul li p {
-        margin: 0;
-        padding: 0.5rem 0;
-        font-size: inherit;
-        font-weight: inherit;
-        color: inherit;
-        line-height: inherit; }
-      .aside > ul li em, body > main > aside > ul li em {
-        font-style: normal;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.6); }
-      .aside > ul li:first-child, body > main > aside > ul li:first-child {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(0, 0, 0, 0.2); }
-        .aside > ul li:first-child em, body > main > aside > ul li:first-child em {
-          color: rgba(255, 255, 255, 0.8); }
-
-body > footer {
-  position: relative;
-  text-align: left; }
-  body > footer > ul {
-    list-style: none;
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 2rem 0;
-    text-align: left;
-    white-space: nowrap; }
-    body > footer > ul li {
-      cursor: default;
-      display: inline-block;
-      vertical-align: middle;
-      margin: 0 0 0 1.4rem;
-      padding: 0 0 0 1.4rem;
-      font-size: 1.2rem;
-      font-weight: 200;
-      font-style: normal;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.5);
-      text-align: left;
-      border-left: 1px solid rgba(255, 255, 255, 0.3);
-      user-select: none;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -ms-touch-action: none; }
-      body > footer > ul li:first-child {
-        margin-left: 0;
-        padding-left: 0;
-        border-left: none; }
-      body > footer > ul li > a {
-        position: relative;
-        cursor: pointer; }
-        body > footer > ul li > a:before {
-          margin-right: 0.5rem;
-          color: rgba(255, 255, 255, 0.3); }
-        body > footer > ul li > a:after {
-          display: none; }
-        body > footer > ul li > a:hover, body > footer > ul li > a:focus {
-          color: #fff; }
-          body > footer > ul li > a:hover:before, body > footer > ul li > a:focus:before {
-            color: rgba(255, 255, 255, 0.6); }
-        body > footer > ul li > a:active {
-          color: rgba(255, 255, 255, 0.3); }
-
-.building, .section > article > shafts > ul, body > main > section > article > shafts > ul {
+.building, .section > article > shafts > ul, html body > main > section > article > shafts > ul {
   position: relative;
   z-index: 0;
   list-style: none;
@@ -1305,7 +1032,7 @@ body > footer {
   padding: 0;
   white-space: nowrap;
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2); }
-  .building li, .section > article > shafts > ul li, body > main > section > article > shafts > ul li {
+  .building li, .section > article > shafts > ul li, html body > main > section > article > shafts > ul li {
     position: relative;
     display: inline-block;
     vertical-align: bottom;
@@ -1317,9 +1044,9 @@ body > footer {
     border-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) transparent rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.05);
     background-image: url("../images/mask.png"); }
-    .building li:last-child, .section > article > shafts > ul li:last-child, body > main > section > article > shafts > ul li:last-child {
+    .building li:last-child, .section > article > shafts > ul li:last-child, html body > main > section > article > shafts > ul li:last-child {
       border-right-width: 0.1rem; }
-    .building li:before, .section > article > shafts > ul li:before, body > main > section > article > shafts > ul li:before {
+    .building li:before, .section > article > shafts > ul li:before, html body > main > section > article > shafts > ul li:before {
       content: attr(shaft);
       position: absolute;
       top: 0;
@@ -1331,7 +1058,7 @@ body > footer {
       line-height: normal;
       color: rgba(0, 0, 0, 0.1); }
 
-.floors, .section > article > floors > ol, body > main > section > article > floors > ol {
+.floors, .section > article > floors > ol, html body > main > section > article > floors > ol {
   position: relative;
   z-index: 1;
   list-style-position: inside;
@@ -1348,7 +1075,7 @@ body > footer {
   -ms-transition: height 500ms 0s ease-out;
   -o-transition: height 500ms 0s ease-out;
   transition: height 500ms 0s ease-out; }
-  .floors li, .section > article > floors > ol li, body > main > section > article > floors > ol li {
+  .floors li, .section > article > floors > ol li, html body > main > section > article > floors > ol li {
     position: relative;
     width: 8rem;
     height: 5rem;
@@ -1357,9 +1084,9 @@ body > footer {
     font-size: 4.4rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.05); }
-    .floors li:first-child, .section > article > floors > ol li:first-child, body > main > section > article > floors > ol li:first-child {
+    .floors li:first-child, .section > article > floors > ol li:first-child, html body > main > section > article > floors > ol li:first-child {
       border-top-color: rgba(255, 255, 255, 0.2); }
-    .floors li > section, .section > article > floors > ol li > section, body > main > section > article > floors > ol li > section {
+    .floors li > section, .section > article > floors > ol li > section, html body > main > section > article > floors > ol li > section {
       position: absolute;
       top: 0.5rem;
       left: 5.5rem;
@@ -1377,7 +1104,7 @@ body > footer {
       -moz-border-radius: 0.3rem;
       -ms-border-radius: 0.3rem;
       border-radius: 0.3rem; }
-      .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
+      .floors li > section:before, .section > article > floors > ol li > section:before, html body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, html body > main > section > article > floors > ol li > section:after {
         position: absolute;
         left: 0.15rem;
         z-index: 0;
@@ -1395,11 +1122,11 @@ body > footer {
         -ms-user-select: none;
         -ms-touch-action: none;
         pointer-events: none; }
-      .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before {
+      .floors li > section:before, .section > article > floors > ol li > section:before, html body > main > section > article > floors > ol li > section:before {
         top: 0.6rem; }
-      .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after {
+      .floors li > section:after, .section > article > floors > ol li > section:after, html body > main > section > article > floors > ol li > section:after {
         bottom: 0.3rem; }
-      .floors li > section > nav, .section > article > floors > ol li > section > nav, body > main > section > article > floors > ol li > section > nav {
+      .floors li > section > nav, .section > article > floors > ol li > section > nav, html body > main > section > article > floors > ol li > section > nav {
         position: relative;
         z-index: 1;
         width: 0;
@@ -1436,14 +1163,14 @@ body > footer {
         -ms-transition-timing-function: ease;
         -o-transition-timing-function: ease;
         transition-timing-function: ease; }
-        .floors li > section > nav button, .section > article > floors > ol li > section > nav button, body > main > section > article > floors > ol li > section > nav button {
+        .floors li > section > nav button, .section > article > floors > ol li > section > nav button, html body > main > section > article > floors > ol li > section > nav button {
           width: 2rem;
           padding: 0;
           font-size: 1rem;
           line-height: 2rem; }
-      .floors li > section.active, .section > article > floors > ol li > section.active, body > main > section > article > floors > ol li > section.active, .floors li > section:hover, .section > article > floors > ol li > section:hover, body > main > section > article > floors > ol li > section:hover {
+      .floors li > section.active, .section > article > floors > ol li > section.active, html body > main > section > article > floors > ol li > section.active, .floors li > section:hover, .section > article > floors > ol li > section:hover, html body > main > section > article > floors > ol li > section:hover {
         background-color: rgba(0, 0, 0, 0.2); }
-        .floors li > section.active > nav, .section > article > floors > ol li > section.active > nav, body > main > section > article > floors > ol li > section.active > nav, .floors li > section:hover > nav, .section > article > floors > ol li > section:hover > nav, body > main > section > article > floors > ol li > section:hover > nav {
+        .floors li > section.active > nav, .section > article > floors > ol li > section.active > nav, html body > main > section > article > floors > ol li > section.active > nav, .floors li > section:hover > nav, .section > article > floors > ol li > section:hover > nav, html body > main > section > article > floors > ol li > section:hover > nav {
           opacity: 1;
           width: auto;
           margin-left: 2.5rem;
@@ -4287,16 +4014,16 @@ body > footer {
       -o-transform: perspective(4px) rotateX(20deg);
       transform: perspective(4px) rotateX(20deg); }
 
-.foundation, .section > article > foundation, body > main > section > article > foundation {
+.foundation, .section > article > foundation, html body > main > section > article > foundation {
   margin: 0;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
-  .foundation > label, .section > article > foundation > label, body > main > section > article > foundation > label {
+  .foundation > label, .section > article > foundation > label, html body > main > section > article > foundation > label {
     position: relative;
     display: block; }
-    .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
+    .foundation > label button, .section > article > foundation > label button, html body > main > section > article > foundation > label button {
       cursor: pointer;
       min-width: unset;
       width: 4rem;
@@ -4309,20 +4036,20 @@ body > footer {
       color: rgba(0, 0, 0, 0.3);
       font-size: 3rem;
       overflow: hidden; }
-      .foundation > label button:before, .section > article > foundation > label button:before, body > main > section > article > foundation > label button:before, .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+      .foundation > label button:before, .section > article > foundation > label button:before, html body > main > section > article > foundation > label button:before, .foundation > label button:after, .section > article > foundation > label button:after, html body > main > section > article > foundation > label button:after {
         width: 4rem; }
-      .foundation > label button:after, .section > article > foundation > label button:after, body > main > section > article > foundation > label button:after {
+      .foundation > label button:after, .section > article > foundation > label button:after, html body > main > section > article > foundation > label button:after {
         display: none; }
-      .foundation > label button:hover, .section > article > foundation > label button:hover, body > main > section > article > foundation > label button:hover, .foundation > label button:focus, .section > article > foundation > label button:focus, body > main > section > article > foundation > label button:focus {
+      .foundation > label button:hover, .section > article > foundation > label button:hover, html body > main > section > article > foundation > label button:hover, .foundation > label button:focus, .section > article > foundation > label button:focus, html body > main > section > article > foundation > label button:focus {
         color: rgba(255, 255, 255, 0.5);
         background: transparent; }
-      .foundation > label button:active, .section > article > foundation > label button:active, body > main > section > article > foundation > label button:active {
+      .foundation > label button:active, .section > article > foundation > label button:active, html body > main > section > article > foundation > label button:active {
         color: rgba(255, 255, 255, 0.8);
         background: transparent; }
-      .foundation > label button[disabled], .section > article > foundation > label button[disabled], body > main > section > article > foundation > label button[disabled] {
+      .foundation > label button[disabled], .section > article > foundation > label button[disabled], html body > main > section > article > foundation > label button[disabled] {
         color: rgba(0, 0, 0, 0.2);
         background: transparent; }
-        .foundation > label button[disabled]:hover, .section > article > foundation > label button[disabled]:hover, body > main > section > article > foundation > label button[disabled]:hover, .foundation > label button[disabled]:focus, .section > article > foundation > label button[disabled]:focus, body > main > section > article > foundation > label button[disabled]:focus, .foundation > label button[disabled]:active, .section > article > foundation > label button[disabled]:active, body > main > section > article > foundation > label button[disabled]:active {
+        .foundation > label button[disabled]:hover, .section > article > foundation > label button[disabled]:hover, html body > main > section > article > foundation > label button[disabled]:hover, .foundation > label button[disabled]:focus, .section > article > foundation > label button[disabled]:focus, html body > main > section > article > foundation > label button[disabled]:focus, .foundation > label button[disabled]:active, .section > article > foundation > label button[disabled]:active, html body > main > section > article > foundation > label button[disabled]:active {
           color: rgba(0, 0, 0, 0.2);
           background: transparent; }
 
@@ -4600,5 +4327,57 @@ tooltip > i {
 *:hover + tooltip > i {
   z-index: 9999;
   opacity: 1; }
+
+.aside, html body > main > aside {
+  height: 100%;
+  padding: 5rem 0;
+  margin: 0; }
+  .aside > ul, html body > main > aside > ul {
+    list-style: none;
+    text-align: left;
+    width: 22rem;
+    height: inherit;
+    margin: 0;
+    padding: 0 1rem;
+    overflow-y: auto;
+    overflow-x: hidden; }
+    .aside > ul li, html body > main > aside > ul li {
+      margin: 0 0 0.5rem 0;
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
+      font-weight: 200;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.4rem;
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.05);
+      border: 0.1rem dotted rgba(255, 255, 255, 0.2);
+      outline: 0 none transparent;
+      -webkit-border-radius: 0.3rem;
+      -moz-border-radius: 0.3rem;
+      -ms-border-radius: 0.3rem;
+      border-radius: 0.3rem;
+      -webkit-transition: opacity 1000ms 0s ease-out;
+      -moz-transition: opacity 1000ms 0s ease-out;
+      -ms-transition: opacity 1000ms 0s ease-out;
+      -o-transition: opacity 1000ms 0s ease-out;
+      transition: opacity 1000ms 0s ease-out; }
+      .aside > ul li.expired, html body > main > aside > ul li.expired {
+        opacity: 0; }
+      .aside > ul li p, html body > main > aside > ul li p {
+        margin: 0;
+        padding: 0.5rem 0;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        line-height: inherit; }
+      .aside > ul li em, html body > main > aside > ul li em {
+        font-style: normal;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6); }
+      .aside > ul li:first-child, html body > main > aside > ul li:first-child {
+        color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(0, 0, 0, 0.2); }
+        .aside > ul li:first-child em, html body > main > aside > ul li:first-child em {
+          color: rgba(255, 255, 255, 0.8); }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,3 +1,39 @@
+.section {
+  margin: 0;
+  padding: 5rem 0;
+  text-align: center;
+
+  > article {
+    display: inline-block;
+    width: auto;
+    margin: 0 25rem 0 auto;
+    white-space: nowrap;
+
+    ul, ol, foundation {
+      display: inline-block;
+      vertical-align: bottom;
+      white-space: normal;
+    }
+
+    > shafts {
+      > ul {
+        @extend .building;
+      }
+    }
+
+    > floors {
+      > ol {
+        @extend .floors;
+      }
+    }
+
+    > foundation {
+      @extend .foundation;
+    }
+  }
+}
+
+
 .building {
   position: relative;
   z-index: 0;
