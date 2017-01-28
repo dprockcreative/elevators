@@ -7,5 +7,4 @@ app/*.map
 app/**/*.js
 app/**/*.map
 aot
-dist
 node_modules
