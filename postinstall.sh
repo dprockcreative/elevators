@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ -w elevators ]; then
-  echo "./dist is writable"
+  echo "./elevators is writable"
 else
   chmod +x elevators
-  echo "changed perms on ./dist"
+  echo "changed perms on ./elevators"
 fi
 
 echo "Building Elevator Directories"
@@ -28,4 +28,4 @@ echo "Installing Images"
 
 echo "Installing JavaScript"
 
-	cp -R ./src/js/ elevators/js
+	cp -R ./dist/js/ elevators/js
