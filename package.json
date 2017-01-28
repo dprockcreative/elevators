@@ -6,7 +6,22 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "preinstall": "npm install -g typings",
+    "start": "node server.js",
+    "build:dev": "node uninstall.js && gulp build:dev",
+    "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
+    "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
+    "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "sass": "sass --watch assets/sass:assets/css",
+    "lint": "tslint ./app/**/*.ts -t verbose",
+    "lite": "lite-server",
+    "pree2e": "webdriver-manager update",
+    "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "test-once": "tsc && karma start karma.conf.js --single-run",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "aot": "ngc -p tsconfig-aot.json",
+    "rollup": "rollup -c rollup-config.js"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
