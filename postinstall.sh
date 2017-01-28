@@ -28,4 +28,4 @@ echo "Installing Images"
 
 echo "Installing JavaScript"
 
-	cp -R ./dist/js/ elevators/js
+	cp -R ./dist/ elevators/js
