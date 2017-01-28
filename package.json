@@ -1,33 +1,12 @@
 {
   "name": "elevators",
   "version": "1.0.0",
-  "licenses": "UNLICENSED",
-  "private": true,
   "engines": {
     "node": "7.1.0"
   },
   "main": "server.js",
-  "keywords": [
-    "UI",
-    "UX"
-  ],
-  "author": "dp@dprockcreative.com",
   "scripts": {
-    "preinstall": "npm install -g typings",
-    "build:dev": "node uninstall.js && gulp build:dev",
-    "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
-    "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
-    "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "sass": "sass --watch assets/sass:assets/css",
-    "lint": "tslint ./app/**/*.ts -t verbose",
-    "lite": "lite-server",
-    "pree2e": "webdriver-manager update",
-    "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "test-once": "tsc && karma start karma.conf.js --single-run",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "aot": "ngc -p tsconfig-aot.json",
-    "rollup": "rollup -c rollup-config.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "@angular/common": "~2.4.0",
@@ -80,5 +59,15 @@
     "tslint": "^3.15.1",
     "typescript": "~2.1.5"
   },
-  "repository": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dprockcreative/elevators"
+  },
+  "keywords": [
+    "UI",
+    "UX"
+  ],
+  "author": "dp@dprockcreative.com",
+  "licenses": "UNLICENSED",
+  "private": true
 }
