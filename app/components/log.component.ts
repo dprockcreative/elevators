@@ -3,7 +3,6 @@ import { Component, DoCheck } from '@angular/core';
 import { Log } from '../interfaces/index';
 import { LogService } from '../services/index';
 
-
 @Component({
   selector: 'aside',
   template: `

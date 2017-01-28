@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import './extensions/rxjs-extensions';
 
 import {
   AppComponent,
-  DialogComponent,
   LogComponent
 } from './components/index';
 
 import {
   BuildingModule,
-  DialogModule
+  DialogModule,
+  TooltipModule
 } from './modules/index';
 
 import {
   InMemoryDataService,
   LogService,
-  SessionService
+  SessionService,
+  TasksService
 } from './services/index';
 
 import {
@@ -35,11 +35,13 @@ import {
     DialogModule,
     FormsModule,
     HttpModule,
+    TooltipModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })
   ],
   providers: [
     LogService,
-    SessionService
+    SessionService,
+    TasksService
   ],
   declarations: [
     AppComponent,

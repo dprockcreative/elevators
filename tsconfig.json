@@ -9,5 +9,12 @@
     "removeComments": false,
     "noImplicitAny": false,
     "lib": [ "es2015", "dom" ]
-  }
+  },
+  "exclude": [
+    "./node_modules/*",
+    "./aot/*",
+    "./app/*-aot.ts"
+  ],
+  "typeRoots": [ "./node_modules/@types/jasmine", "./node_modules/@types/node" ],
+  "types": []
 }

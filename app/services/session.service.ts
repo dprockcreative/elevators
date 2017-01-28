@@ -1,13 +1,15 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { DialogService } from './dialog.service';
+import {
+  DialogService,
+  DIALOG_WIZARD_WELCOME
+} from '../modules/dialog/index';
 
 import {
   SESSION_START_NS,
   SESSION_WELCOMED_NS,
   SESSION_QUERY_INTERVAL,
-  SESSION_WELCOMED_DELAY,
-  DIALOG_WIZARD_WELCOME
+  SESSION_WELCOMED_DELAY
 } from '../constants/index';
 
 // Date Utilities
@@ -83,8 +85,6 @@ export class SessionService {
         this.ngZone.runOutsideAngular(() => {
           let INT = setInterval(() => {
 
-            console.log(this.start, this.welcomed);
-
             if (this.welcomed || check()) {
               clearInterval(INT);
             }
@@ -92,8 +92,6 @@ export class SessionService {
           }, SESSION_QUERY_INTERVAL);
         });
       }
-
     }
-
   }
 }

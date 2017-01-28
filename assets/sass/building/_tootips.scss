@@ -1,0 +1,54 @@
+tooltip {
+  > i {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    width: auto;
+    min-width: 12rem;
+    padding: 0.7rem 1rem 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 200;
+    font-style: normal;
+    color: $white-05;
+    background-color: $black-05;
+    @include no-select();
+
+    @include border(0.1rem $white-02 solid, false);
+
+    @include transition(opacity, 250ms 0s, linear);
+
+    &.top-left {
+      bottom: 100%;
+      right: 100%;
+      @include border-radius(0.5rem 0.5rem 0 0.5rem);
+    }
+    &.top-right {
+      bottom: 100%;
+      left: 100%;
+      @include border-radius(0.5rem 0.5rem 0.5rem 0);
+    }
+    &.bottom-left {
+      top: 100%;
+      right: 100%;
+      @include border-radius(0.5rem 0 0.5rem 0.5rem);
+    }
+    &.bottom-right {
+      top: 100%;
+      left: 100%;
+      @include border-radius(0 0.5rem 0.5rem 0.5rem);
+    }
+
+  }
+}
+
+* {
+  &:hover {
+    + tooltip {
+      > i {
+        z-index: 9999;
+        opacity: 1;
+      }
+    }
+  }
+}

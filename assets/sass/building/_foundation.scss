@@ -5,6 +5,7 @@
 	@include border(0.1rem solid $white-02, false);
 
   > label {
+    position: relative;
     display: block;
 
     @include icon-button(true, 4rem) {

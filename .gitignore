@@ -1,6 +1,8 @@
 *.DS_Store
 .sass*
 *.log
+aot
+dist
 app/*.js
 app/*.map
 app/**/*.js

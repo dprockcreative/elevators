@@ -3,9 +3,9 @@ const GETRANDOMVALUES = (
   typeof (window.crypto.getRandomValues) !== 'undefined'
 );
 
-export default function UUID() {
+export default function UUID () {
 
-  const pad4 = (num): string => {
+  const pad4 = (num: number): string => {
     let ret = num.toString(16);
     while (ret.length < 4) {
       ret = '0' + ret;

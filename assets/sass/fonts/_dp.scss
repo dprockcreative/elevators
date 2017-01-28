@@ -115,3 +115,9 @@
     content: "\ea56";
   }
 }
+.icon-github {
+  &:before,
+  &:after {
+    content: "\eab0";
+  }
+}

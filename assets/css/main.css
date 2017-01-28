@@ -540,7 +540,7 @@ template {
   -ms-flex-item-align: stretch;
   align-self: stretch; }
 
-.flex-center-container, body > main > dialog > div {
+.flex-center-container, body > main > dialogs > dialog {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -570,7 +570,7 @@ template {
   -ms-flex-align: center;
   align-items: center; }
 
-.flex-center-box, body > main > dialog > div > article {
+.flex-center-box, body > main > dialogs > dialog > article {
   -webkit-box-ordinal-group: 1;
   -moz-box-ordinal-group: 1;
   -webkit-order: 0;
@@ -838,7 +838,7 @@ select:-moz-focusring {
   font-style: normal;
   src: url("../fonts/dp/dp.eot");
   src: url("../fonts/dp/dp.eot?#iefix") format("embedded-opentype"), url("../fonts/dp/dp.woff") format("woff"), url("../fonts/dp/dp.ttf") format("truetype"), url("../fonts/dp/dp.svg#dp") format("svg"); }
-.icons, body > header > hgroup h1, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
+.icons, body > header > hgroup h1, body > footer > ul li > a:before, .floors li > section:before, .section > article > floors > ol li > section:before, body > main > section > article > floors > ol li > section:before, .floors li > section:after, .section > article > floors > ol li > section:after, body > main > section > article > floors > ol li > section:after, .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
   font-family: 'dp' !important;
   speak: none;
   font-size: inherit;
@@ -869,10 +869,10 @@ select:-moz-focusring {
 .icon-pencil:before, .icon-pencil:after {
   content: "\e905"; }
 
-.icon-phone:before, .icon-phone:after {
+.icon-phone:before, body > footer > ul li > a[href^="tel:"]:before, .icon-phone:after, body > footer > ul li > a[href^="tel:"]:after {
   content: "\e942"; }
 
-.icon-envelop:before, .icon-envelop:after {
+.icon-envelop:before, body > footer > ul li > a[href^="mailto:"]:before, .icon-envelop:after, body > footer > ul li > a[href^="mailto:"]:after {
   content: "\e945"; }
 
 .icon-history:before, .icon-history:after {
@@ -898,6 +898,9 @@ select:-moz-focusring {
 
 .icon-radio-unchecked:before, .icon-radio-unchecked:after {
   content: "\ea56"; }
+
+.icon-github:before, body > footer > ul li > a[href^="https://github.com"]:before, .icon-github:after, body > footer > ul li > a[href^="https://github.com"]:after {
+  content: "\eab0"; }
 
 @font-face {
   font-family: Roboto;
@@ -1186,10 +1189,12 @@ body > main {
   .section > article, body > main > section > article {
     display: inline-block;
     width: auto;
-    margin: 0 25rem 0 auto; }
+    margin: 0 25rem 0 auto;
+    white-space: nowrap; }
     .section > article ul, body > main > section > article ul, .section > article ol, body > main > section > article ol, .section > article foundation, body > main > section > article foundation {
       display: inline-block;
-      vertical-align: bottom; }
+      vertical-align: bottom;
+      white-space: normal; }
 
 .aside, body > main > aside {
   height: 100%;
@@ -1278,7 +1283,19 @@ body > footer {
         padding-left: 0;
         border-left: none; }
       body > footer > ul li > a {
+        position: relative;
         cursor: pointer; }
+        body > footer > ul li > a:before {
+          margin-right: 0.5rem;
+          color: rgba(255, 255, 255, 0.3); }
+        body > footer > ul li > a:after {
+          display: none; }
+        body > footer > ul li > a:hover, body > footer > ul li > a:focus {
+          color: #fff; }
+          body > footer > ul li > a:hover:before, body > footer > ul li > a:focus:before {
+            color: rgba(255, 255, 255, 0.6); }
+        body > footer > ul li > a:active {
+          color: rgba(255, 255, 255, 0.3); }
 
 .building, .section > article > shafts > ul, body > main > section > article > shafts > ul {
   position: relative;
@@ -4277,6 +4294,7 @@ body > footer {
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
   .foundation > label, .section > article > foundation > label, body > main > section > article > foundation > label {
+    position: relative;
     display: block; }
     .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
       cursor: pointer;
@@ -4310,7 +4328,7 @@ body > footer {
 
 body {
   position: relative; }
-  body > main > dialog {
+  body > main > dialogs {
     position: fixed;
     top: 50%;
     right: 50%;
@@ -4332,14 +4350,16 @@ body {
     -ms-user-select: auto;
     -ms-touch-action: auto;
     pointer-events: none; }
-    body > main > dialog::backdrop {
+    body > main > dialogs::backdrop {
       background: transparent; }
-    body > main > dialog:before, body > main > dialog:after {
+    body > main > dialogs:before, body > main > dialogs:after {
       -webkit-box-sizing: content-box;
       -moz-box-sizing: content-box;
       box-sizing: content-box; }
-    body > main > dialog > div {
+    body > main > dialogs > dialog {
       position: fixed;
+      padding: 0;
+      border: none;
       overflow: hidden;
       text-align: center;
       -webkit-transition-property: opacity, top, right, bottom, left;
@@ -4352,7 +4372,7 @@ body {
       -ms-transition-timing-function: ease-in-out;
       -o-transition-timing-function: ease-in-out;
       transition-timing-function: ease-in-out; }
-      body > main > dialog > div > article {
+      body > main > dialogs > dialog > article {
         opacity: inherit;
         width: 40rem;
         margin: auto;
@@ -4377,7 +4397,7 @@ body {
         -ms-transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275);
         -o-transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-timing-function: ease, cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        body > main > dialog > div > article header {
+        body > main > dialogs > dialog > article header {
           position: relative;
           cursor: default;
           padding: 0 0 2rem;
@@ -4388,36 +4408,36 @@ body {
           -moz-user-select: none;
           -ms-user-select: none;
           -ms-touch-action: none; }
-          body > main > dialog > div > article header h3, body > main > dialog > div > article header h5 {
+          body > main > dialogs > dialog > article header h3, body > main > dialogs > dialog > article header h5 {
             margin: 0;
             padding: 0;
             line-height: normal; }
-          body > main > dialog > div > article header h3 {
+          body > main > dialogs > dialog > article header h3 {
             font-size: 2rem;
             font-weight: 200; }
-          body > main > dialog > div > article header h5 {
+          body > main > dialogs > dialog > article header h5 {
             position: absolute;
             bottom: 50%;
             right: 0;
             font-size: 1.2rem;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.4); }
-        body > main > dialog > div > article form {
+        body > main > dialogs > dialog > article form {
           margin: 0;
           padding: 0;
           font-size: 1.2rem; }
-          body > main > dialog > div > article form > alert > label,
-          body > main > dialog > div > article form > confirm > label,
-          body > main > dialog > div > article form > wizard > label {
+          body > main > dialogs > dialog > article form > alert > label,
+          body > main > dialogs > dialog > article form > confirm > label,
+          body > main > dialogs > dialog > article form > wizard > label {
             display: block;
             margin: 2rem 0; }
-          body > main > dialog > div > article form h4 {
+          body > main > dialogs > dialog > article form h4 {
             font-size: 1.6rem;
             font-weight: 100; }
-          body > main > dialog > div > article form p {
+          body > main > dialogs > dialog > article form p {
             font-weight: 200;
             line-height: 1.8rem; }
-          body > main > dialog > div > article form div {
+          body > main > dialogs > dialog > article form div {
             user-select: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -4425,27 +4445,27 @@ body {
             -moz-user-select: none;
             -ms-user-select: none;
             -ms-touch-action: none; }
-          body > main > dialog > div > article form input[type="range"] {
+          body > main > dialogs > dialog > article form input[type="range"] {
             width: 32.5rem; }
-          body > main > dialog > div > article form > alert footer,
-          body > main > dialog > div > article form > confirm footer,
-          body > main > dialog > div > article form > wizard footer {
+          body > main > dialogs > dialog > article form > alert footer,
+          body > main > dialogs > dialog > article form > confirm footer,
+          body > main > dialogs > dialog > article form > wizard footer {
             margin: 2rem 0 0;
             text-align: right; }
-            body > main > dialog > div > article form > alert footer label,
-            body > main > dialog > div > article form > confirm footer label,
-            body > main > dialog > div > article form > wizard footer label {
+            body > main > dialogs > dialog > article form > alert footer label,
+            body > main > dialogs > dialog > article form > confirm footer label,
+            body > main > dialogs > dialog > article form > wizard footer label {
               display: inline-block;
               margin: 0 0 0 0.3rem; }
-              body > main > dialog > div > article form > alert footer label input,
-              body > main > dialog > div > article form > confirm footer label input,
-              body > main > dialog > div > article form > wizard footer label input {
+              body > main > dialogs > dialog > article form > alert footer label input,
+              body > main > dialogs > dialog > article form > confirm footer label input,
+              body > main > dialogs > dialog > article form > wizard footer label input {
                 background-color: rgba(255, 255, 255, 0.1) !important; }
-                body > main > dialog > div > article form > alert footer label input:hover,
-                body > main > dialog > div > article form > confirm footer label input:hover,
-                body > main > dialog > div > article form > wizard footer label input:hover {
+                body > main > dialogs > dialog > article form > alert footer label input:hover,
+                body > main > dialogs > dialog > article form > confirm footer label input:hover,
+                body > main > dialogs > dialog > article form > wizard footer label input:hover {
                   background-color: rgba(255, 255, 255, 0.3) !important; }
-      body > main > dialog > div:not(.active), body > main > dialog > div:not([open]) {
+      body > main > dialogs > dialog:not(.active), body > main > dialogs > dialog:not([open]) {
         z-index: -1;
         top: 50%;
         right: 50%;
@@ -4471,7 +4491,7 @@ body {
         -ms-transition-delay: 250ms;
         -o-transition-delay: 250ms;
         transition-delay: 250ms; }
-        body > main > dialog > div:not(.active) > article, body > main > dialog > div:not([open]) > article {
+        body > main > dialogs > dialog:not(.active) > article, body > main > dialogs > dialog:not([open]) > article {
           transform: scale(0.1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;
@@ -4483,7 +4503,7 @@ body {
           -ms-transition-delay: 0s;
           -o-transition-delay: 0s;
           transition-delay: 0s; }
-      body > main > dialog > div.active, body > main > dialog > div[open] {
+      body > main > dialogs > dialog.active, body > main > dialogs > dialog[open] {
         z-index: 1;
         top: 0;
         right: 0;
@@ -4509,7 +4529,7 @@ body {
         -ms-transition-delay: 0s;
         -o-transition-delay: 0s;
         transition-delay: 0s; }
-        body > main > dialog > div.active > article, body > main > dialog > div[open] > article {
+        body > main > dialogs > dialog.active > article, body > main > dialogs > dialog[open] > article {
           transform: scale(1);
           -webkit-transition-duration: 250ms;
           -moz-transition-duration: 250ms;
@@ -4521,5 +4541,64 @@ body {
           -ms-transition-delay: 250ms;
           -o-transition-delay: 250ms;
           transition-delay: 250ms; }
+
+tooltip > i {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: auto;
+  min-width: 12rem;
+  padding: 0.7rem 1rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 200;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -ms-touch-action: none;
+  border: 0.1rem rgba(255, 255, 255, 0.2) solid;
+  outline: 0 none transparent;
+  -webkit-transition: opacity, 250ms 0s, linear;
+  -moz-transition: opacity, 250ms 0s, linear;
+  -ms-transition: opacity, 250ms 0s, linear;
+  -o-transition: opacity, 250ms 0s, linear;
+  transition: opacity, 250ms 0s, linear; }
+  tooltip > i.top-left {
+    bottom: 100%;
+    right: 100%;
+    -webkit-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    -moz-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    -ms-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0.5rem; }
+  tooltip > i.top-right {
+    bottom: 100%;
+    left: 100%;
+    -webkit-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    -moz-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    -ms-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    border-radius: 0.5rem 0.5rem 0.5rem 0; }
+  tooltip > i.bottom-left {
+    top: 100%;
+    right: 100%;
+    -webkit-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    -moz-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    -ms-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    border-radius: 0.5rem 0 0.5rem 0.5rem; }
+  tooltip > i.bottom-right {
+    top: 100%;
+    left: 100%;
+    -webkit-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    -moz-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    -ms-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0.5rem; }
+
+*:hover + tooltip > i {
+  z-index: 9999;
+  opacity: 1; }
 
 /*# sourceMappingURL=main.css.map */
