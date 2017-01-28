@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "gulpfile.js",
   "scripts": {
-    "preinstall": "npm install -g typings",
     "build:dev": "node uninstall.js && gulp build:dev",
     "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
     "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",

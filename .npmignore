@@ -2,10 +2,12 @@ app
 aot
 node_modules
 templates
+favicon.ico
 gulpfile.js
 bs-config.js
-rollup.config.js
+rollup-config.js
 systemjs.config.js
+karma.conf.js
 package.json
 tsconfig-aot.json
 tsconfig.json
