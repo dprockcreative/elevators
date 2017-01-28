@@ -1,1 +1,0 @@
-{"summaries":[{"symbol":{"__symbol":0},"metadata":{"__symbolic":"class"},"type":{"summaryKind":0,"type":{"reference":{"__symbol":0},"diDeps":[],"lifecycleHooks":[]},"name":"number2alpha","pure":true}}],"symbols":[{"__symbol":0,"name":"Number2AlphaPipe","filePath":"/Users/davidprock/repo/www/elevators/app/pipes/number2alpha.pipe.d.ts"}]}

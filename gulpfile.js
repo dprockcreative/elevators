@@ -2,15 +2,16 @@ const gulp = require('gulp');
 const del  = require('del');
 const fs   = require('fs');
 const $    = require('gulp-load-plugins')({lazy : true});
+const lite = require('lite-server');
 
 const BUILD   = './dist/build.js';
 const DEST    = './dist';
-const BASE    = 'index.html';
-const HEAD    = 'view/head.tmpl';
-const BODY    = 'view/body.tmpl';
-const DEV     = 'view/dev.tmpl';
-const STAGE   = 'view/stage.tmpl';
-const PROD    = 'view/prod.tmpl';
+const BASE    = 'index.htm';
+const HEAD    = 'templates/head.tmpl';
+const BODY    = 'templates/body.tmpl';
+const DEV     = 'templates/dev.tmpl';
+const STAGE   = 'templates/stage.tmpl';
+const PROD    = 'templates/prod.tmpl';
 const ROOT    = './';
 const VENDORS = [
   'node_modules/core-js/client/shim.min.js',
@@ -52,9 +53,12 @@ gulp.task('build:prod', ['gzip', 'clean'], function () {
 
 gulp.task('build:stage', ['clean'], function () {
   output('build stage');
+
+  gulp.src(VENDORS)
+    .pipe(gulp.dest(DEST));
+
   return copyIndex(STAGE);
 });
-
 
 gulp.task('build:dev', ['clean'], function () {
   output('build dev');

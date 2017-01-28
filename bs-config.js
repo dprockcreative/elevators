@@ -1,10 +1,17 @@
+const fallback = require('connect-history-api-fallback');
+
 module.exports = {
-  "port": 3000,
-  // "files": ["./src/**/*.{html,htm,css,js}"],
-  "server": {
-    "baseDir": [
-      // "./src",
-      "./"
+  open: false,
+  filters: [ './**/*.{htm,css,js}' ],
+  logLevel: 'silent',
+  port: 3000,
+  server: {
+    baseDir: './',
+    middleware: [
+      fallback({
+        index: '/index.htm',
+        htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] // systemjs workaround
+      })
     ]
   }
 };

@@ -6,4 +6,4 @@ import { enableProdMode } from '@angular/core';
 
 enableProdMode();
 
-platformBrowser().bootstrapModuleFactory(AppModuleNgFactory).catch(error => console.log(error));
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory).catch(error => console.error(error));

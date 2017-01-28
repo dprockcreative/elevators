@@ -1,5 +1,6 @@
 export { BuildingModule } from './building/module';
 export { DialogModule } from './dialog/module';
+export { TooltipModule } from './tooltip/module';
 
 export { ShaftService } from './shaft/service';
 

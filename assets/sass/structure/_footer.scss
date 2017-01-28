@@ -58,6 +58,10 @@ body {
             @extend .icon-envelop;
           }
 
+          &[href^="https://github.com"] {
+            @extend .icon-github;
+          }
+
           &:hover, &:focus {
             color: $white;
 

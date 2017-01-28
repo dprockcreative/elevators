@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import {
   FloorModule,
   ShaftModule,
+  TooltipModule,
   FloorService,
   ShaftService,
-  SessionService,
-  TasksService,
   Number2AlphaPipe,
   BuildingComponent,
   FloorsComponent,
@@ -15,9 +14,10 @@ import {
   ShaftsComponent
 } from './index';
 
+
 @NgModule({
-  imports:      [ CommonModule, ShaftModule, FloorModule ],
-  providers:    [ FloorService, ShaftService, SessionService, TasksService ],
+  imports:      [ CommonModule, FloorModule, ShaftModule, TooltipModule ],
+  providers:    [ FloorService, ShaftService ],
   declarations: [ BuildingComponent, FloorsComponent, FoundationComponent, ShaftsComponent, Number2AlphaPipe ],
   exports:      [ BuildingComponent ]
 })

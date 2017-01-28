@@ -899,6 +899,9 @@ select:-moz-focusring {
 .icon-radio-unchecked:before, .icon-radio-unchecked:after {
   content: "\ea56"; }
 
+.icon-github:before, body > footer > ul li > a[href^="https://github.com"]:before, .icon-github:after, body > footer > ul li > a[href^="https://github.com"]:after {
+  content: "\eab0"; }
+
 @font-face {
   font-family: Roboto;
   font-style: normal;
@@ -1186,10 +1189,12 @@ body > main {
   .section > article, body > main > section > article {
     display: inline-block;
     width: auto;
-    margin: 0 25rem 0 auto; }
+    margin: 0 25rem 0 auto;
+    white-space: nowrap; }
     .section > article ul, body > main > section > article ul, .section > article ol, body > main > section > article ol, .section > article foundation, body > main > section > article foundation {
       display: inline-block;
-      vertical-align: bottom; }
+      vertical-align: bottom;
+      white-space: normal; }
 
 .aside, body > main > aside {
   height: 100%;
@@ -4289,6 +4294,7 @@ body > footer {
   border: 0.1rem solid rgba(255, 255, 255, 0.2);
   outline: 0 none transparent; }
   .foundation > label, .section > article > foundation > label, body > main > section > article > foundation > label {
+    position: relative;
     display: block; }
     .foundation > label button, .section > article > foundation > label button, body > main > section > article > foundation > label button {
       cursor: pointer;
@@ -4535,5 +4541,64 @@ body {
           -ms-transition-delay: 250ms;
           -o-transition-delay: 250ms;
           transition-delay: 250ms; }
+
+tooltip > i {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: auto;
+  min-width: 12rem;
+  padding: 0.7rem 1rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 200;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -ms-touch-action: none;
+  border: 0.1rem rgba(255, 255, 255, 0.2) solid;
+  outline: 0 none transparent;
+  -webkit-transition: opacity, 250ms 0s, linear;
+  -moz-transition: opacity, 250ms 0s, linear;
+  -ms-transition: opacity, 250ms 0s, linear;
+  -o-transition: opacity, 250ms 0s, linear;
+  transition: opacity, 250ms 0s, linear; }
+  tooltip > i.top-left {
+    bottom: 100%;
+    right: 100%;
+    -webkit-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    -moz-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    -ms-border-radius: 0.5rem 0.5rem 0 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0.5rem; }
+  tooltip > i.top-right {
+    bottom: 100%;
+    left: 100%;
+    -webkit-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    -moz-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    -ms-border-radius: 0.5rem 0.5rem 0.5rem 0;
+    border-radius: 0.5rem 0.5rem 0.5rem 0; }
+  tooltip > i.bottom-left {
+    top: 100%;
+    right: 100%;
+    -webkit-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    -moz-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    -ms-border-radius: 0.5rem 0 0.5rem 0.5rem;
+    border-radius: 0.5rem 0 0.5rem 0.5rem; }
+  tooltip > i.bottom-right {
+    top: 100%;
+    left: 100%;
+    -webkit-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    -moz-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    -ms-border-radius: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0.5rem; }
+
+*:hover + tooltip > i {
+  z-index: 9999;
+  opacity: 1; }
 
 /*# sourceMappingURL=main.css.map */

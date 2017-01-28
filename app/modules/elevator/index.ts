@@ -1,4 +1,5 @@
 export {
+  TASK_PENDING,
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
   TASK_CALLED_LOADING,
@@ -46,4 +47,3 @@ export {
 export {
   ElevatorDirective
 } from './directives/index';
-

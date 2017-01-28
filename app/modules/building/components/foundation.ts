@@ -36,6 +36,9 @@ import {
         (click)="start()"
         [disabled]="disabled()"
       ></button>
+      <tooltip>
+        Click to change the Building's Structure
+      </tooltip>
     </label>
   `
 })
@@ -133,7 +136,6 @@ export class FoundationComponent {
       @return definition [array]
    */
   private buildStoriesDialogDefinition (shafts: number): any[] {
-
     let content: any[] = [];
     let label: string = '';
     let name: string = '';

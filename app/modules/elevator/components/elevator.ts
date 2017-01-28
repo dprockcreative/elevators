@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
 
 import { TasksService } from '../../../services/tasks.service';
+
 import { Task } from '../../../interfaces/index';
 
 import {
@@ -14,7 +17,11 @@ import {
   TASK_DELIVERED_COMPLETE,
   TASK_COMPLETE,
   TASK_STOPS_INTERVAL
-}from '../../../constants/index';
+} from '../../barrel';
+
+import {
+  Shaft
+} from '../../shaft/interface';
 
 import {
   Elevator,
@@ -26,23 +33,26 @@ import {
 @Component({
   selector: 'elevator',
   template: `
-    <div class="elevator" [attr.current]="elevator.current" [attr.next]="elevator.next" [ngClass]="{'open':(elevator.open === true)}">
+    <div class="elevator" [attr.current]="parent.elevator.current" [attr.next]="parent.elevator.next" [ngClass]="{'open':(parent.elevator.open === true)}">
       <span class="cube"></span>
     </div>
   `
 })
 
-export class ElevatorComponent implements OnInit {
+export class ElevatorComponent implements OnInit, OnDestroy {
 
-  @Input() elevator: Elevator;
+  @Input() parent: Shaft;
 
-  TASK: null | Task = null;
+  TASK: Task | null = null;
+
+  eTaskSubscription: Subscription;
+  dTaskSubscription: Subscription;
 
   constructor (
     private tasksService: TasksService
   ) {
-    tasksService.elevatorTaskStream.subscribe(task => this.queryTask(task));
-    tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
+    this.eTaskSubscription = tasksService.elevatorTaskStream.subscribe(task => this.queryTask(task));
+    this.dTaskSubscription = tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
   }
 
   /*  Query Task - Event Listener
@@ -52,13 +62,11 @@ export class ElevatorComponent implements OnInit {
    */
   private queryTask (task: Task): void {
 
-    if (this.elevator.shaft.id === task.shaft.id) {
+    if (this.parent.id === task.shaft.id) {
 
       //  Blocking Action
       //  prevents duplicate requests from executing...
       if (!this.TASK) {
-
-        console.log('queryTask->no task', task.shaft.id, this.elevator.shaft.id);
 
         this.TASK = task;
         this.runTask();
@@ -83,10 +91,9 @@ export class ElevatorComponent implements OnInit {
 
     let floor: number = this.TASK.floor;
 
-    console.info(`Elevator ${this.elevator.shaft.id} starting on Task to Floor ${floor}`, this.TASK.id);
+    console.info(`Elevator ${this.parent.id} starting on Task to Floor ${floor}`, this.TASK.id);
 
-    console.debug('runTask');
-
+    this.setTaskStatus(TASK_CALLED);
     this.callProcedure(floor)
       .then(() => this.cycleStops())
       .then(() => this.completeTask())
@@ -103,12 +110,9 @@ export class ElevatorComponent implements OnInit {
   private callProcedure (floor: number): Promise<any> {
     return new Promise((resolve, reject) => {
 
-      console.info(`Elevator ${this.elevator.shaft.id} starting call procedure ${this.TASK.floor}`);
+      console.info(`Elevator ${this.parent.id} starting call procedure ${this.TASK.floor}`);
 
-      console.debug('callProcedure');
-
-      this.elevator.goTo(floor);
-      this.setTaskStatus(TASK_CALLED);
+      this.parent.elevator.goTo(floor);
       this.arrived(floor, TASK_CALLED_ARRIVED)
         .then(() => this.openDoors(TASK_CALLED_LOADING))
         .then(() => this.loadUnload(TASK_CALLED_COMPLETE))
@@ -144,7 +148,7 @@ export class ElevatorComponent implements OnInit {
 
     return new Promise((resolve, reject) => {
 
-      console.info(`Elevator ${this.elevator.shaft.id} cycling stops ${this.TASK.floor}`);
+      console.info(`Elevator ${this.parent.id} cycling stops ${this.TASK.floor}`);
 
       let tick = 0;
       let stop;
@@ -154,7 +158,7 @@ export class ElevatorComponent implements OnInit {
       let ask = () => {
         if (!SP) {
           stop = stops[tick];
-          this.elevator.goTo(stop);
+          this.parent.elevator.goTo(stop);
           this.setTaskStatus(TASK_DELIVERED);
           SP = this.stopProcedure(stop);
           SP.then(() => (tick++, SP = undefined));
@@ -166,8 +170,7 @@ export class ElevatorComponent implements OnInit {
         if (!this.TASK) {
 
           clearInterval(I);
-          console.log('task jettison -> cycleStops');
-          // reject('task jettison -> cycleStops');
+          reject('task jettison -> cycleStops');
 
         } else {
 
@@ -212,7 +215,7 @@ export class ElevatorComponent implements OnInit {
       @return void
    */
   private completeTask (): void {
-    console.info(`Elevator ${this.elevator.shaft.id} marking Task complete`, `Task ID: ${this.TASK.id}`);
+    console.info(`Elevator ${this.parent.id} marking Task complete`, `Task ID: ${this.TASK.id}`);
 
     this.tasksService.destroyTask(this.TASK);
   }
@@ -243,13 +246,13 @@ export class ElevatorComponent implements OnInit {
         if (!this.TASK) {
 
           clearInterval(I);
-          console.log('task jettison -> arrived');
-          // reject('task jettison -> arrived');
+          reject('task jettison -> arrived');
+
         } else {
 
-          if (this.elevator.floor === floor) {
+          if (this.parent.elevator.floor === floor) {
 
-            console.info(`Elevator ${this.elevator.shaft.id} Arrived Floor ${this.elevator.floor}`);
+            console.info(`Elevator ${this.parent.id} Arrived Floor ${this.parent.elevator.floor}`);
 
             this.setTaskStatus(status);
             clearInterval(I);
@@ -271,12 +274,13 @@ export class ElevatorComponent implements OnInit {
       let T = setTimeout(() => {
 
         if (!this.TASK) {
+
           clearTimeout(T);
-          console.log('task jettison -> loadUnload');
-          // reject('task jettison -> loadUnload');
+          reject('task jettison -> loadUnload');
+
         } else {
 
-          console.info(`Elevator ${this.elevator.shaft.id} Loading/Unloading`);
+          console.info(`Elevator ${this.parent.id} Loading/Unloading`);
 
           this.setTaskStatus(status);
           clearTimeout(T);
@@ -294,16 +298,17 @@ export class ElevatorComponent implements OnInit {
   private openDoors (status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
 
-      this.elevator.open = true;
+      this.parent.elevator.open = true;
 
       let T = setTimeout(() => {
 
         if (!this.TASK) {
+
           clearTimeout(T);
-          console.log('task jettison -> openDoors');
-          // reject('task jettison -> openDoors');
+          reject('task jettison -> openDoors');
+
         } else {
-          console.info(`Elevator ${this.elevator.shaft.id} Opening Doors`);
+          console.info(`Elevator ${this.parent.id} Opening Doors`);
 
           this.setTaskStatus(status);
           clearTimeout(T);
@@ -321,11 +326,11 @@ export class ElevatorComponent implements OnInit {
   private closeDoors (status?: number): Promise<any> {
     return new Promise((resolve, reject) => {
 
-      this.elevator.open = false;
+      this.parent.elevator.open = false;
 
       let T = setTimeout(() => {
 
-        console.info(`Elevator ${this.elevator.shaft.id} Closing Doors`);
+        console.info(`Elevator ${this.parent.id} Closing Doors`);
 
         this.setTaskStatus(status);
         clearTimeout(T);
@@ -334,8 +339,12 @@ export class ElevatorComponent implements OnInit {
     });
   };
 
-
   ngOnInit (): void {
-    //console.log('ElevatorComponent::ngOnInit', this.elevator, this.TASK);
+    this.parent.elevator = new Elevator();
+  }
+
+  ngOnDestroy (): void {
+    this.eTaskSubscription.unsubscribe();
+    this.dTaskSubscription.unsubscribe();
   }
 }

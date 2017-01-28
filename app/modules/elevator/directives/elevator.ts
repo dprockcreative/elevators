@@ -4,23 +4,20 @@ import {
   ElevatorComponent
 } from '../components/elevator';
 
-import { Elevator } from '../interface';
-
 @Directive({
   selector: '.elevator'
 })
 
 export class ElevatorDirective implements OnInit, AfterViewChecked {
 
-  private elevator: Elevator;
+  private elem: any;
   private height: number = 0;
   private shaftHeight: number = 0;
   private floorHeight: number = 0;
-  private elem: any;
 
   constructor (
     public element: ElementRef,
-    @Inject(ElevatorComponent) public parent: ElevatorComponent
+    @Inject(ElevatorComponent) public ec: ElevatorComponent
   ) {}
 
   /*  Get Current Floor
@@ -38,7 +35,7 @@ export class ElevatorDirective implements OnInit, AfterViewChecked {
       - Fired because the ElevatorComponent::arrived (and sibling methods employ Zone Functions)
    */
   ngAfterViewChecked (): void {
-    this.elevator.floor = this.getCurrentFloor();
+    this.ec.parent.elevator.floor = this.getCurrentFloor();
   }
 
   /*  OnInit - Lifecycle Hook
@@ -47,10 +44,9 @@ export class ElevatorDirective implements OnInit, AfterViewChecked {
    */
   ngOnInit (): void {
     this.elem         = this.element.nativeElement;
-    this.elevator     = this.parent.elevator;
     this.height       = this.elem.offsetHeight;
     this.shaftHeight  = this.elem.offsetParent.offsetHeight;
-    this.floorHeight  = this.shaftHeight / this.elevator.shaft.stories;
+    this.floorHeight  = this.shaftHeight / this.ec.parent.stories;
   }
 
 }

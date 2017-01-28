@@ -13,13 +13,15 @@ import {
 
 import {
   BuildingModule,
-  DialogModule
+  DialogModule,
+  TooltipModule
 } from './modules/index';
 
 import {
   InMemoryDataService,
   LogService,
-  SessionService
+  SessionService,
+  TasksService
 } from './services/index';
 
 import {
@@ -33,11 +35,13 @@ import {
     DialogModule,
     FormsModule,
     HttpModule,
+    TooltipModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })
   ],
   providers: [
     LogService,
-    SessionService
+    SessionService,
+    TasksService
   ],
   declarations: [
     AppComponent,
