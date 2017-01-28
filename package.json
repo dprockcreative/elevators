@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "licenses": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "server.js",
   "keywords": [
     "UI",
     "UX"
@@ -37,6 +41,7 @@
     "@angular/platform-server": "^2.4.4",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
+    "express": "^4.14.0",
     "jml-h": "^1.0.7",
     "md-jml": "^2.0.1",
     "rxjs": "5.0.1",

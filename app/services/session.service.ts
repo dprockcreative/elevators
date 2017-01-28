@@ -85,8 +85,6 @@ export class SessionService {
         this.ngZone.runOutsideAngular(() => {
           let INT = setInterval(() => {
 
-            console.log(this.start, this.welcomed);
-
             if (this.welcomed || check()) {
               clearInterval(INT);
             }
@@ -94,8 +92,6 @@ export class SessionService {
           }, SESSION_QUERY_INTERVAL);
         });
       }
-
     }
-
   }
 }
