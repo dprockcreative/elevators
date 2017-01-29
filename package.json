@@ -1,18 +1,13 @@
 {
   "name": "elevators",
   "version": "1.0.0",
-  "engines": {
-    "node": "7.1.0"
-  },
-  "main": "server.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "preinstall": "npm install -g typings",
-    "start": "node server.js",
     "build:dev": "node uninstall.js && gulp build:dev",
     "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
     "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
     "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "sass": "sass --watch assets/sass:assets/css",
+    "sass": "sass --watch src/sass:src/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "pree2e": "webdriver-manager update",
@@ -35,7 +30,6 @@
     "@angular/platform-server": "^2.4.4",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
-    "express": "^4.14.0",
     "jml-h": "^1.0.7",
     "md-jml": "^2.0.1",
     "rxjs": "5.0.1",
@@ -79,10 +73,9 @@
     "url": "https://github.com/dprockcreative/elevators"
   },
   "keywords": [
-    "UI",
-    "UX"
+    "elevators"
   ],
   "author": "dp@dprockcreative.com",
-  "licenses": "UNLICENSED",
+  "license": "UNLICENSED",
   "private": true
 }
