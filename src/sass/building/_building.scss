@@ -1,3 +1,17 @@
+html {
+  body {
+    > main {
+      > aside {
+        @extend .aside;
+      }
+      > section {
+        @extend .section;
+      }
+    }
+  }
+}
+
+
 .section {
   margin: 0;
   padding: 5rem 0;
@@ -32,7 +46,6 @@
     }
   }
 }
-
 
 .building {
   position: relative;

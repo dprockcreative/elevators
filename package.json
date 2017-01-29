@@ -7,7 +7,7 @@
     "build:stage": "node install.js && npm run aot && npm run rollup && gulp build:stage",
     "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
     "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "sass": "sass --watch assets/sass:assets/css",
+    "sass": "sass --watch src/sass:src/css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "pree2e": "webdriver-manager update",

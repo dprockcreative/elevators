@@ -38,12 +38,10 @@ html {
 
       > aside {
         @extend .flex-body-main-aside;
-        @extend .aside;
       }
 
       > section {
         @extend .flex-body-main-section;
-        @extend .section;
       }
     }
   }
