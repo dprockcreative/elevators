@@ -6,6 +6,8 @@ import { TasksService } from '../../../services/tasks.service';
 
 import { Task } from '../../../interfaces/index';
 
+import { Number2AlphaPipe } from '../../../pipes/index';
+
 import {
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
@@ -33,7 +35,13 @@ import {
 @Component({
   selector: 'elevator',
   template: `
-    <div class="elevator" [attr.current]="parent.elevator.current" [attr.next]="parent.elevator.next" [ngClass]="{'open':(parent.elevator.open === true)}">
+    <div
+      class="elevator"
+      (click)="stats()"
+      [attr.current]="parent.elevator.current"
+      [attr.next]="parent.elevator.next"
+      [ngClass]="{'open':(parent.elevator.open === true)}"
+    >
       <span class="cube"></span>
     </div>
   `
@@ -45,6 +53,8 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
   TASK: Task | null = null;
 
+  pipe: Number2AlphaPipe = new Number2AlphaPipe();
+
   eTaskSubscription: Subscription;
   dTaskSubscription: Subscription;
 
@@ -55,13 +65,17 @@ export class ElevatorComponent implements OnInit, OnDestroy {
     this.dTaskSubscription = tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
   }
 
+  stats (): void {
+    console.debug('Elevator stats');
+    console.dir(this.parent);
+  }
+
   /*  Query Task - Event Listener
       @type   private
       @param  task [Task]
       @return void
    */
   private queryTask (task: Task): void {
-
     if (this.parent.id === task.shaft.id) {
 
       //  Blocking Action
@@ -91,7 +105,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
     let floor: number = this.TASK.floor;
 
-    console.info(`Elevator ${this.parent.id} starting on Task to Floor ${floor}`, this.TASK.id);
+    console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* starting on Task to *Floor ${floor}*`, this.TASK.id);
 
     this.setTaskStatus(TASK_CALLED);
     this.callProcedure(floor)
@@ -110,7 +124,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
   private callProcedure (floor: number): Promise<any> {
     return new Promise((resolve, reject) => {
 
-      console.info(`Elevator ${this.parent.id} starting call procedure ${this.TASK.floor}`);
+      console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* starting call procedure ${this.TASK.floor}`);
 
       this.parent.elevator.goTo(floor);
       this.arrived(floor, TASK_CALLED_ARRIVED)
@@ -148,7 +162,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
     return new Promise((resolve, reject) => {
 
-      console.info(`Elevator ${this.parent.id} cycling stops ${this.TASK.floor}`);
+      console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* cycling stop on *Floor ${this.TASK.floor}*`);
 
       let tick = 0;
       let stop;
@@ -215,8 +229,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
       @return void
    */
   private completeTask (): void {
-    console.info(`Elevator ${this.parent.id} marking Task complete`, `Task ID: ${this.TASK.id}`);
-
+    console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* marking Task complete`, `Task ID: ${this.TASK.id}`);
     this.tasksService.destroyTask(this.TASK);
   }
 
@@ -252,7 +265,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
           if (this.parent.elevator.floor === floor) {
 
-            console.info(`Elevator ${this.parent.id} Arrived Floor ${this.parent.elevator.floor}`);
+            console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Arrived *Floor ${this.parent.elevator.floor}*`);
 
             this.setTaskStatus(status);
             clearInterval(I);
@@ -280,7 +293,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
         } else {
 
-          console.info(`Elevator ${this.parent.id} Loading/Unloading`);
+          console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Loading/Unloading`);
 
           this.setTaskStatus(status);
           clearTimeout(T);
@@ -308,7 +321,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
           reject('task jettison -> openDoors');
 
         } else {
-          console.info(`Elevator ${this.parent.id} Opening Doors`);
+          console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Opening Doors`);
 
           this.setTaskStatus(status);
           clearTimeout(T);
@@ -330,7 +343,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
 
       let T = setTimeout(() => {
 
-        console.info(`Elevator ${this.parent.id} Closing Doors`);
+        console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Closing Doors`);
 
         this.setTaskStatus(status);
         clearTimeout(T);

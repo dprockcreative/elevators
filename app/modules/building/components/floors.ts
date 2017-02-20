@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
 
 import {
   ShaftService,
@@ -19,15 +21,17 @@ import {
   `
 })
 
-export class FloorsComponent {
+export class FloorsComponent implements OnDestroy {
 
   floors: Floor[] = [];
+
+  bShaftSubscription: Subscription;
 
   constructor(
     private shaftService: ShaftService,
     private floorService: FloorService
   ) {
-    shaftService.buildShaftsStream.subscribe(shafts => this.setFloors(shafts));
+    this.bShaftSubscription = shaftService.buildShaftsStream.subscribe(shafts => this.setFloors(shafts));
   }
 
   /*  Set Floors
@@ -43,5 +47,10 @@ export class FloorsComponent {
       .buildFloors(stories)
       .then(floors => (this.floors = floors));
   }
+
+  ngOnDestroy (): void {
+    this.bShaftSubscription.unsubscribe();
+  }
+
 }
 

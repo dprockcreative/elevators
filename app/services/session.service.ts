@@ -35,14 +35,6 @@ export class SessionService {
     this.query();
   }
 
-  /*  Is Welcomed
-      @type   public
-      @return welcomed [boolean]
-   */
-  public isWelcomed (): boolean {
-    return this.welcomed;
-  }
-
   /*  Query
       @type   private
       @return void
