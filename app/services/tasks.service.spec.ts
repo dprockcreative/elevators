@@ -160,9 +160,9 @@ class TestTasksService {
   }
 
   taskForShaft (shaft: Shaft): boolean {
-    return this.tasks.length ? (
-      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)
-    ) === undefined) : true;
+    return this.tasks.length ?
+      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)) === undefined
+      : true;
   }
 
 }
