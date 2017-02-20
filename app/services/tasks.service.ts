@@ -48,8 +48,7 @@ export class TasksService {
         themselves at strategic locations.
    */
   private waitForDistribute (): void {
-    //
-    console.debug('waitForDistribute');
+    //console.debug('waitForDistribute');
   }
 
   /*  Start Elevator Operations - Event Stream Emitter
