@@ -16,17 +16,17 @@ echo "Building Elevator Directories"
 
 echo "Installing CSS"
 
-	cp -R ./src/css/elevators.css ../../elevators/css/elevators.css
-	cp -R ./src/css/elevators.css.map ../../elevators/css/elevators.css.map
+	cp -R src/css/elevators.css ../../elevators/css/elevators.css
+	cp -R src/css/elevators.css.map ../../elevators/css/elevators.css.map
 
 echo "Installing Fonts"
 
-	cp -R ./src/fonts/ ../../elevators/fonts
+	cp -R src/fonts/ ../../elevators/fonts
 
 echo "Installing Images"
 
-	cp -R ./src/images/	../../elevators/images
+	cp -R src/images/	../../elevators/images
 
 echo "Installing JavaScript"
 
-	cp -R ./dist/ ../../elevators/js
+	cp -R dist/ ../../elevators/js
