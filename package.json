@@ -74,9 +74,11 @@
     "url": "https://github.com/dprockcreative/elevators"
   },
   "keywords": [
-    "elevators"
+    "Elevators",
+    "UI",
+    "UX",
+    "Demo"
   ],
   "author": "dp@dprockcreative.com",
-  "license": "UNLICENSED",
-  "private": true
+  "license": "ISC"
 }
