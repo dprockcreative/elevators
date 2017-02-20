@@ -13,7 +13,7 @@
   "exclude": [
     "./node_modules/*",
     "./aot/*",
-    "./app/*-aot.ts"
+    "./app/aot.*"
   ],
   "typeRoots": [ "./node_modules/@types/jasmine", "./node_modules/@types/node" ],
   "types": []

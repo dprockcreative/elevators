@@ -10,7 +10,7 @@ module.exports = {
     middleware: [
       fallback({
         index: '/index.htm',
-        htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] // systemjs workaround
+        htmlAcceptHeaders: [ 'text/html', 'application/xhtml+xml' ]
       })
     ]
   }
