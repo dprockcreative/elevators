@@ -2,9 +2,7 @@
 *.env
 *.log
 .sass*
-app/*.js
-app/*.map
-app/**/*.js
-app/**/*.map
-aot
+dev/app/**/*.js
+dev/app/**/*.map
+dev/aot
 node_modules

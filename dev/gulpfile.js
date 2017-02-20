@@ -4,8 +4,9 @@ const fs   = require('fs');
 const $    = require('gulp-load-plugins')({lazy : true});
 const lite = require('lite-server');
 
+const DEST    = '../dist';
+const DIST    = './dist';
 const BUILD   = './dist/build.js';
-const DEST    = './dist';
 const BASE    = 'index.htm';
 const HEAD    = 'templates/head.tmpl';
 const BODY    = 'templates/body.tmpl';
@@ -40,32 +41,44 @@ function output(msg) {
   }
 }
 
-gulp.task('gzip', function () {
+gulp.task('gzip', () => {
   output('gzipping');
   let source = [].concat(VENDORS, BUILD);
-  return gulp.src(source).pipe($.gzip()).pipe(gulp.dest(DEST));
+  return gulp
+    .src(source)
+    .pipe($.gzip())
+    .pipe(gulp.dest(DIST))
+    .pipe(gulp.dest(DEST));
 });
 
-gulp.task('build:prod', ['gzip', 'clean'], function () {
+gulp.task('build:prod', ['gzip', 'clean', 'src'], () => {
   output('build prod');
   return copyIndex(PROD);
 });
 
-gulp.task('build:stage', ['clean'], function () {
+gulp.task('build:stage', ['clean', 'src'], () => {
   output('build stage');
 
-  gulp.src(VENDORS)
+  let source = [].concat(VENDORS, BUILD);
+
+  gulp.src(source)
+    .pipe(gulp.dest(DIST))
     .pipe(gulp.dest(DEST));
 
   return copyIndex(STAGE);
 });
 
-gulp.task('build:dev', ['clean'], function () {
+gulp.task('build:dev', ['clean', 'src'], () => {
   output('build dev');
   return copyIndex(DEV);
 });
 
-gulp.task('clean', function (done) {
+gulp.task('src', [], () => {
+  return gulp.src(['./src/**/*', '!./src/sass', '!./src/sass/**/*'])
+    .pipe(gulp.dest('../src'));
+});
+
+gulp.task('clean', (done) => {
   output('clean');
   del([BASE]).then(paths => {
     console.log('Deleted files and folders:\n', paths.join('\n'));

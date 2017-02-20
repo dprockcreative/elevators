@@ -1,9 +1,2 @@
-aot
-app
-node_modules
-templates
-/*.ico
-/*.js
-/*.json
-/*.htm
+dev
 README.md
