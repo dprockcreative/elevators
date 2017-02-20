@@ -11,7 +11,6 @@
     "sass:compile": "sass -t compressed src/sass/elevators.scss:src/css/elevators.css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
-    "pree2e": "webdriver-manager update",
     "test": "karma start karma.conf.js",
     "test-watch": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",

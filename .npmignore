@@ -2,8 +2,8 @@ aot
 app
 node_modules
 templates
-*.ico
-*.js
-*.json
-*.htm
+/*.ico
+/*.js
+/*.json
+/*.htm
 README.md
