@@ -35,6 +35,7 @@ export class ElevatorDirective implements OnInit, AfterViewChecked {
       - Fired because the ElevatorComponent::arrived (and sibling methods employ Zone Functions)
    */
   ngAfterViewChecked (): void {
+    //console.log('ElevatorDirective', this.ec.parent.id, this.getCurrentFloor());
     this.ec.parent.elevator.floor = this.getCurrentFloor();
   }
 

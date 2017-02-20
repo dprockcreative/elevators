@@ -9,6 +9,7 @@ import { Number2AlphaPipe } from '../pipes/index';
 
 import {
   TASK_PENDING,
+  TASK_CALLED_LOADING,
   TASK_CALLED_COMPLETE,
   TASK_STOPS_LIMIT,
   TASKS_BROADCAST_INTERVAL
@@ -20,6 +21,7 @@ export class TasksService {
   private tasks: Task[] = [];
   private INT: any = 0;
   private LENGTH: number = 0;
+  private PIPE = new Number2AlphaPipe();
 
   // Observable sources
   public openTasksSource = new Subject<Task[]>();
@@ -35,7 +37,19 @@ export class TasksService {
 
   constructor (
     private shaftService: ShaftService
-  ) {}
+  ) {
+    this.waitForDistribute();
+  }
+
+  /*  Wait For Distribute
+      @type   public
+      @return void
+      - After a timeout, elevators will station
+        themselves at strategic locations.
+   */
+  private waitForDistribute (): void {
+    //console.debug('waitForDistribute');
+  }
 
   /*  Start Elevator Operations - Event Stream Emitter
       @type   public
@@ -74,15 +88,6 @@ export class TasksService {
    */
   public taskById (id: string): Task {
     return this.tasks.find(task => task.id === id);
-  }
-
-  /*  Task For Shaft
-      @type   public
-      @param  shaft [Shaft]
-      @return Task | null
-   */
-  public taskForShaft (shaft: Shaft): Task | null {
-    return this.tasks.find(task => task.shaft && task.shaft.id === shaft.id && task.status === TASK_PENDING) || null;
   }
 
   /*  Set Task Status
@@ -133,56 +138,6 @@ export class TasksService {
     return false;
   }
 
-  /*  Receive request from Floor
-      @type   public
-      @param  from [number: Floor]
-      @param  to [number: Floor]
-      @return void
-      - Generates Task/s for Broadcast.
-   */
-  public requestFromFloor (from: number, to: number): void {
-
-    let task: Task = new Task(from, to);
-    let shaft: Shaft = this.shaftForTask(task);
-    let log = [`Request from Floor: *${from}* to Floor: *${to}*`];
-    let mTasks = this.mergableTasks(task);
-
-    let pipe = new Number2AlphaPipe();
-    let alpha;
-
-    // nothing to merge
-    if (!mTasks.length) {
-
-      let t = this.addTask(task);
-
-      if (shaft) {
-
-        t.assignShaft(shaft);
-
-        alpha = pipe.transform(t.shaft.id);
-
-        log.push(`Generated new Task using *Shaft ${alpha}*`, `Task ID: ${t.id}`);
-
-      } else {
-
-        log.push(`Generated new Task for async pickup`, `Task ID: ${t.id}`);
-
-      }
-
-    } else {
-
-      let t = this.mergeTasks(task, mTasks[0]);
-      alpha = pipe.transform(t.shaft.id);
-
-      log.push(`Merged with existing Task using *Shaft ${alpha}*`, `Task ID: ${t.id}`);
-
-    }
-
-    console.info.apply(null, log);
-
-    this.watchTasks();
-  }
-
   /*  Reset
       @type   public
       @return void
@@ -194,41 +149,166 @@ export class TasksService {
     }
   }
 
-  /*  Shafts for Task
+  /*  Receive request from Floor
+      @type   public
+      @param  from [number: Floor]
+      @param  to [number: Floor]
+      @return void
+      - Generates Task/s for Broadcast.
+   */
+  public requestFromFloor (from: number, to: number): void {
+
+    if (this.isDuplicateRequest(from, to)) {
+
+      console.info(`Duplicate Request from Floor: *${from}* to Floor: *${to}* Ignored.`);
+
+    } else {
+
+      let log: any[] = [`Request from Floor: *${from}* to Floor: *${to}*`];
+      let alpha;
+
+      // This may end up a pseudo task
+      let task: Task = new Task(from, to);
+      let mTasks: Task[] = this.mergeableTasks(task);
+
+      if (mTasks.length) {
+
+        task = this.mergeTasks(task, mTasks[0]);
+
+        alpha = this.PIPE.transform(task.shaft.id);
+
+        log.push(`Merged with existing Task using *Shaft ${alpha}*`, `Task ID: ${task.id}`);
+
+      } else {
+
+        let shaft: Shaft = this.shaftForTask(task);
+
+        task.assignShaft(shaft);
+        task = this.addTask(task);
+
+        alpha = this.PIPE.transform(task.shaft.id);
+
+        log.push(`Generated Task using *Shaft ${alpha}*`, `Task ID: ${task.id}`);
+
+      }
+
+      console.info.apply(null, log);
+
+    }
+
+    this.watchTasks();
+  }
+
+  /*  Task For Shaft
+      @type   private
+      @param  shafts [Shaft[]]
+      @return boolean
+   */
+  private taskForShaft (shaft: Shaft): boolean {
+    return this.tasks.length ? (
+      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)
+    ) === undefined) : true;
+  }
+
+  /*  Shaft for Task - Immediate
+      @type   private
+      @param  T [Task]
+      @return shaft [Shaft Array[0]]
+   */
+  private shaftForTask (task: Task): Shaft {
+    let shafts: Shaft[] = this.shaftService.getCurrent();
+    let tshafts: Shaft[];
+
+    shafts  = shafts.filter(shaft => task.canUse(shaft));
+    tshafts = shafts.filter(shaft => this.taskForShaft(shaft));
+
+    if (tshafts.length) {
+      shafts = tshafts;
+    }
+
+    return shafts.sort((sa, sb) => {
+      let a = sa.elevator.floor;
+      let b = sb.elevator.floor;
+      return b > a ? 1 : (a > b ? -1 : (() => {
+        let aa = this.shaftsByTasksDistribution(sa);
+        let bb = this.shaftsByTasksDistribution(sb);
+        return aa > bb ? 1 : ( bb > aa ? -1 : 0 );
+      })());
+    })[0];
+  }
+
+  /*  Is Duplicate Request
+      @type   private
+      @param  from [number]
+      @param  to [number]
+      @return boolean [tasks.length]
+   */
+  private isDuplicateRequest (from: number, to: number): boolean {
+    let tasks: Task[] = this.tasks
+      .filter(task => (task.status <= TASK_CALLED_COMPLETE))
+      .filter(task => (task.floor === from && !!~task.stops.indexOf(to) || task.floor === to && !!~task.stops.indexOf(from)))
+    ;
+    return Boolean(tasks.length);
+  }
+
+  /*  Shaft By Task Distribution
+      @type   private
+      @param  shaft [Shaft]
+      @return number [tasks.length]
+   */
+  private shaftsByTasksDistribution (shaft: Shaft): number {
+    return this.tasks.filter(task => (task.shaft && task.shaft.id === shaft.id)).length;
+  }
+
+  /*  Merge-able Tasks
       @type   private
       @param  T [Task]
       @return array [Task Array]
+      - Looks for Viable Open Tasks that allow compared Task<T> as added stop.
    */
-  private shaftForTask (task: Task): Shaft {
-    return this.shaftService.getCurrent()
-      .filter(shaft => task.canUse(shaft))
-      .filter(shaft => (this.taskForShaft(shaft) === null))
-      .sort((sa, sb) => {
-        let a = sa.elevator.floor;
-        let b = sb.elevator.floor;
-        return b > a ? 1 : ( a > b ? -1 : 0 );
-      })[0];
-  }
+  private mergeableTasks (T: Task): Task[] {
+    return this.tasks.filter(task => {
 
-  /*  Consolidate Open Tasks - Event Stream Emitter
-      @type   private
-      @return boolean
-   */
-  private consolidateOpenTasks (): boolean {
-    if (this.tasks.length) {
-      let task = this.tasks.find(task => (!task.shaft));
-      if (task) {
-        let mTasks = this.mergableTasks(task);
-        if (mTasks.length) {
-          this.mergeTasks(task, mTasks[0]);
-          this.removeTask(task);
-        }
+      if (!task.shaft) {
+        return false;
       }
 
-      this.openTasksSource.next(this.tasks);
+      if (
+        task.up !== T.up ||
+        task.status >= TASK_CALLED_COMPLETE ||
+        task.stops.length >= TASK_STOPS_LIMIT
+      ) {
+        return false;
+      }
+
+      let floormatch = task.floor === T.floor;
+
+      if (!floormatch && !(task.stops[0] === T.stops[0])) {
+        return false;
+      }
+
+      if (floormatch && (
+        task.up ?
+          task.shaft.elevator.floor < T.floor
+        : task.shaft.elevator.floor > T.floor
+      )) {
+        return false;
+      }
+
       return true;
+    });
+  }
+
+  /*  Broadcast Open Tasks
+      @type   private
+      @return void
+   */
+  private broadcastOpenTasks (): void {
+    let tasks: Task[] = this.tasks.filter(task => (task.status === TASK_PENDING));
+
+    if (tasks.length) {
+      this.openTasksSource.next(tasks);
     }
-    return false;
   }
 
   /*  Watch Tasks - Event Stream Emitter
@@ -236,11 +316,11 @@ export class TasksService {
       @return void
    */
   private watchTasks (): void {
-
-    this.openTasksSource.next(this.tasks);
+    if (this.tasks.length) {
+      this.broadcastOpenTasks();
+    }
 
     if (!this.INT) {
-
       this.INT = setInterval(() => {
 
         if (this.tasks.length !== this.LENGTH) {
@@ -252,30 +332,15 @@ export class TasksService {
           }
         }
 
-        if (!this.consolidateOpenTasks()) {
+        if (this.tasks.length === 0) {
+          this.waitForDistribute();
           clearInterval(this.INT);
           this.INT = 0;
+        } else {
+          this.broadcastOpenTasks();
         }
       }, TASKS_BROADCAST_INTERVAL);
     }
-  }
-
-  /*  Merge-able Tasks
-      @type   private
-      @param  T [Task]
-      @return array [Task Array]
-      - Looks for Viable Open Tasks that allow compared Task<T> as added stop.
-   */
-  private mergableTasks (T: Task): Task[] {
-    return this.tasks.filter(task => {
-      return task.shaft && (
-        task.floor === T.floor &&
-        task.up === T.up &&
-        task.status < TASK_CALLED_COMPLETE &&
-        task.stops.length < TASK_STOPS_LIMIT &&
-        (task.up ? task.shaft.elevator.floor > T.floor : task.shaft.elevator.floor < T.floor)
-      ) || false;
-    });
   }
 
   /*  Merge Tasks
@@ -311,5 +376,6 @@ export class TasksService {
     let index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
   }
+
 
 }
