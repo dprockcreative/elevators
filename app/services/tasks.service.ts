@@ -48,7 +48,7 @@ export class TasksService {
         themselves at strategic locations.
    */
   private waitForDistribute (): void {
-    //console.debug('waitForDistribute');
+    //  console.debug('waitForDistribute');
   }
 
   /*  Start Elevator Operations - Event Stream Emitter
@@ -201,13 +201,13 @@ export class TasksService {
 
   /*  Task For Shaft
       @type   private
-      @param  shafts [Shaft[]]
+      @param  shaft [Shaft]
       @return boolean
    */
   private taskForShaft (shaft: Shaft): boolean {
-    return this.tasks.length ? (
-      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)
-    ) === undefined) : true;
+    return this.tasks.length ?
+      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)) === undefined
+      : true;
   }
 
   /*  Shaft for Task - Immediate
@@ -245,7 +245,7 @@ export class TasksService {
    */
   private isDuplicateRequest (from: number, to: number): boolean {
     let tasks: Task[] = this.tasks
-      .filter(task => (task.status <= TASK_CALLED_COMPLETE))
+      .filter(task => task.status <= TASK_CALLED_COMPLETE)
       .filter(task => (task.floor === from && !!~task.stops.indexOf(to) || task.floor === to && !!~task.stops.indexOf(from)))
     ;
     return Boolean(tasks.length);
@@ -257,7 +257,7 @@ export class TasksService {
       @return number [tasks.length]
    */
   private shaftsByTasksDistribution (shaft: Shaft): number {
-    return this.tasks.filter(task => (task.shaft && task.shaft.id === shaft.id)).length;
+    return this.tasks.filter(task => task.shaft.id === shaft.id).length;
   }
 
   /*  Merge-able Tasks
@@ -304,8 +304,7 @@ export class TasksService {
       @return void
    */
   private broadcastOpenTasks (): void {
-    let tasks: Task[] = this.tasks.filter(task => (task.status === TASK_PENDING));
-
+    let tasks: Task[] = this.tasks.filter(task => task.status === TASK_PENDING);
     if (tasks.length) {
       this.openTasksSource.next(tasks);
     }
