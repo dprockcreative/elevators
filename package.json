@@ -1,0 +1,15 @@
+{
+  "name": "elevators",
+  "version": "1.0.0",
+  "author": "dp@dprockcreative.com",
+  "license": "ISC",
+  "main": "postinstall.sh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dprockcreative/elevators"
+  },
+  "keywords": [ "Elevators", "UI", "UX", "Demo" ],
+  "scripts": {
+    "postinstall": "./postinstall.sh",
+  }
+}
