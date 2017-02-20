@@ -15,7 +15,7 @@ const PROD    = 'templates/prod.tmpl';
 const ROOT    = './';
 const VENDORS = [
   'node_modules/core-js/client/shim.min.js',
-  'node_modules/zone.js/dist/zone.js'
+  'node_modules/zone.js/dist/zone.min.js'
 ];
 
 function copyIndex(source) {
