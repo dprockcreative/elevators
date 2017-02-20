@@ -14,32 +14,16 @@ export class ShaftService {
   private shafts: Shaft[] = [];
 
   // Observable sources
-  private buildShaftsSource = new Subject<Shaft[]>();
+  public buildShaftsSource = new Subject<Shaft[]>();
+  public stationShaftSource = new Subject<Shaft>();
 
   // Observable streams
   buildShaftsStream = this.buildShaftsSource.asObservable();
+  stationShaftStream = this.stationShaftSource.asObservable();
 
   constructor (
     private http: Http
   ) {}
-
-  /*  Broadcast
-      @type   private
-      @param  shafts [Shaft[]]
-      @return void
-   */
-  private broadcast (shafts: Shaft[]): void {
-    this.buildShaftsSource.next(shafts);
-  }
-
-  /*  Map Data To Shafts
-      @type   private
-      @param  shafts [Shaft[]]
-      @return void
-   */
-  private mapDataToShafts (data: any[]): Shaft[] {
-    return data.map(row => new Shaft(row.id, row.stories));
-  }
 
   /*  Build
       @type   public
@@ -137,6 +121,33 @@ export class ShaftService {
     } else {
       return this.put(shaft);
     }
+  }
+
+  /*  Broadcast
+      @type   public
+      @param  shafts [Shaft[]]
+      @return void
+   */
+  public station (shaft: Shaft): void {
+    this.stationShaftSource.next(shaft);
+  }
+
+  /*  Broadcast
+      @type   private
+      @param  shafts [Shaft[]]
+      @return void
+   */
+  private broadcast (shafts: Shaft[]): void {
+    this.buildShaftsSource.next(shafts);
+  }
+
+  /*  Map Data To Shafts
+      @type   private
+      @param  shafts [Shaft[]]
+      @return void
+   */
+  private mapDataToShafts (data: any[]): Shaft[] {
+    return data.map(row => new Shaft(row.id, row.stories));
   }
 
   /*  Delete
