@@ -2,8 +2,11 @@
 
 An experiment in UI/UX using Angular 2 &amp; SaSS.
 
-Clone &amp; CD into local directory; type:
+Clone locally.
+
+User Terminal:
+`cd /PATH_TO_LOCATION/elevators/dev`
 
 `npm install`
 
-`npm run start`
+`npm run local`
