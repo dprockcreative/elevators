@@ -4,7 +4,8 @@ An experiment in UI/UX using Angular 2 &amp; SaSS.
 
 Clone locally.
 
-User Terminal:
+Use Terminal:
+
 `cd /PATH_TO_LOCATION/elevators/dev`
 
 `npm install`
