@@ -2,8 +2,8 @@ const gulp = require('gulp');
 const del  = require('del');
 const fs   = require('fs');
 const $    = require('gulp-load-plugins')({lazy : true});
-const lite = require('lite-server');
 
+const PRSRV   = './preserve.js';
 const DEST    = '../dist';
 const DIST    = './dist';
 const BUILD   = './dist/build.js';
@@ -72,6 +72,8 @@ gulp.task('build:dev', ['clean', 'src'], () => {
   output('build dev');
   return copyIndex(DEV);
 });
+
+
 
 gulp.task('src', [], () => {
   return gulp.src(['./src/**/*', '!./src/sass', '!./src/sass/**/*'])
