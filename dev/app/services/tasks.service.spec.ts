@@ -8,165 +8,6 @@ import {
   TASK_STOPS_LIMIT
 } from '../constants/task';
 
-// MOCKED
-class TestShaftService {
-  shafts: Shaft[] = [];
-
-  constructor () {
-    let shafts = [
-      { id: 1, stories: 7 },
-      { id: 2, stories: 7 },
-      { id: 3, stories: 7 },
-      { id: 4, stories: 10 },
-      { id: 5, stories: 10 },
-    ];
-
-    let shaft: Shaft;
-
-    for (let s of shafts) {
-      shaft = new Shaft(s.id, s.stories);
-      shaft.elevator = new Elevator();
-      shaft.elevator.floor = 1;
-      this.shafts.push(shaft);
-    }
-  }
-
-  getCurrent() {
-    return this.shafts;
-  }
-
-  findShaft (id: number): Shaft {
-    return this.shafts.find(shaft => shaft.id === id);
-  }
-}
-
-class TestTasksService {
-  tasks: Task[] = [];
-
-  constructor (private shaftService: TestShaftService) {}
-
-  requestFromFloor (from: number, to: number): void {
-
-    if (!this.isDuplicateRequest(from, to)) {
-
-      // This may end up a pseudo task
-      let task: Task = new Task(from, to);
-      let mTasks: Task[] = this.mergeableTasks(task);
-
-      if (mTasks.length) {
-
-        task = this.mergeTasks(task, mTasks[0]);
-
-      } else {
-
-        let shaft: Shaft = this.shaftForTask(task);
-
-        task.assignShaft(shaft);
-        task = this.addTask(task);
-
-      }
-
-    }
-
-  }
-
-  isDuplicateRequest (from: number, to: number): boolean {
-    let tasks: Task[] = this.tasks
-      .filter(task => (task.status <= TASK_CALLED_COMPLETE))
-      .filter(task => (task.floor === from && !!~task.stops.indexOf(to) || task.floor === to && !!~task.stops.indexOf(from)))
-    ;
-    return Boolean(tasks.length);
-  }
-
-  mergeTasks (src: Task, dest: Task): Task {
-    dest.addStop(src.stops);
-    return dest;
-  }
-
-
-  shaftsByTasksDistribution (shaft: Shaft): number {
-    return this.tasks.filter(task => (task.shaft && task.shaft.id === shaft.id)).length;
-  }
-
-
-  mergeableTasks (T: Task): Task[] {
-    return this.tasks.filter(task => {
-
-      if (!task.shaft) {
-        return false;
-      }
-
-      if (
-        task.up !== T.up ||
-        task.status >= TASK_CALLED_COMPLETE ||
-        task.stops.length >= TASK_STOPS_LIMIT
-      ) {
-        return false;
-      }
-
-      let floormatch = task.floor === T.floor;
-
-      if (!floormatch && !(task.stops[0] === T.stops[0])) {
-        return false;
-      }
-
-      if (floormatch && (
-        task.up ?
-          task.shaft.elevator.floor < T.floor
-        : task.shaft.elevator.floor > T.floor
-      )) {
-        return false;
-      }
-
-      return true;
-    });
-  }
-
-  addTask (task: Task): Task {
-    this.tasks.push(task.activate());
-    return task;
-  }
-
-  getTasks (): Task[] {
-    return this.tasks;
-  }
-
-  reset (): void {
-    if (this.tasks.length) {
-      this.tasks = [];
-    }
-  }
-
-  shaftForTask (task: Task): Shaft {
-    let shafts: Shaft[] = this.shaftService.getCurrent();
-    let tshafts: Shaft[];
-
-    shafts  = shafts.filter(shaft => task.canUse(shaft));
-    tshafts = shafts.filter(shaft => this.taskForShaft(shaft));
-
-    if (tshafts.length) {
-      shafts = tshafts;
-    }
-
-    return shafts.sort((sa, sb) => {
-      let a = sa.elevator.floor;
-      let b = sb.elevator.floor;
-      return b > a ? 1 : (a > b ? -1 : (() => {
-        let aa = this.shaftsByTasksDistribution(sa);
-        let bb = this.shaftsByTasksDistribution(sb);
-        return aa > bb ? 1 : ( bb > aa ? -1 : 0 );
-      })());
-    })[0];
-  }
-
-  taskForShaft (shaft: Shaft): boolean {
-    return this.tasks.length ?
-      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)) === undefined
-      : true;
-  }
-
-}
-
 
 // TESTS
 describe('TasksService : ', () => {
@@ -491,3 +332,163 @@ describe('TasksService : ', () => {
   });
 
 });
+
+
+// MOCKED
+class TestShaftService {
+  shafts: Shaft[] = [];
+
+  constructor () {
+    let shafts = [
+      { id: 1, stories: 7 },
+      { id: 2, stories: 7 },
+      { id: 3, stories: 7 },
+      { id: 4, stories: 10 },
+      { id: 5, stories: 10 },
+    ];
+
+    let shaft: Shaft;
+
+    for (let s of shafts) {
+      shaft = new Shaft(s.id, s.stories);
+      shaft.elevator = new Elevator();
+      shaft.elevator.floor = 1;
+      this.shafts.push(shaft);
+    }
+  }
+
+  getCurrent() {
+    return this.shafts;
+  }
+
+  findShaft (id: number): Shaft {
+    return this.shafts.find(shaft => shaft.id === id);
+  }
+}
+
+class TestTasksService {
+  tasks: Task[] = [];
+
+  constructor (private shaftService: TestShaftService) {}
+
+  requestFromFloor (from: number, to: number): void {
+
+    if (!this.isDuplicateRequest(from, to)) {
+
+      // This may end up a pseudo task
+      let task: Task = new Task(from, to);
+      let mTasks: Task[] = this.mergeableTasks(task);
+
+      if (mTasks.length) {
+
+        task = this.mergeTasks(task, mTasks[0]);
+
+      } else {
+
+        let shaft: Shaft = this.shaftForTask(task);
+
+        task.assignShaft(shaft);
+        task = this.addTask(task);
+
+      }
+
+    }
+
+  }
+
+  isDuplicateRequest (from: number, to: number): boolean {
+    let tasks: Task[] = this.tasks
+      .filter(task => (task.status <= TASK_CALLED_COMPLETE))
+      .filter(task => (task.floor === from && !!~task.stops.indexOf(to) || task.floor === to && !!~task.stops.indexOf(from)))
+    ;
+    return Boolean(tasks.length);
+  }
+
+  mergeTasks (src: Task, dest: Task): Task {
+    dest.addStop(src.stops);
+    return dest;
+  }
+
+
+  shaftsByTasksDistribution (shaft: Shaft): number {
+    return this.tasks.filter(task => (task.shaft && task.shaft.id === shaft.id)).length;
+  }
+
+
+  mergeableTasks (T: Task): Task[] {
+    return this.tasks.filter(task => {
+
+      if (!task.shaft) {
+        return false;
+      }
+
+      if (
+        task.up !== T.up ||
+        task.status >= TASK_CALLED_COMPLETE ||
+        task.stops.length >= TASK_STOPS_LIMIT
+      ) {
+        return false;
+      }
+
+      let floormatch = task.floor === T.floor;
+
+      if (!floormatch && !(task.stops[0] === T.stops[0])) {
+        return false;
+      }
+
+      if (floormatch && (
+        task.up ?
+          task.shaft.elevator.floor < T.floor
+        : task.shaft.elevator.floor > T.floor
+      )) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  addTask (task: Task): Task {
+    this.tasks.push(task.activate());
+    return task;
+  }
+
+  getTasks (): Task[] {
+    return this.tasks;
+  }
+
+  reset (): void {
+    if (this.tasks.length) {
+      this.tasks = [];
+    }
+  }
+
+  shaftForTask (task: Task): Shaft {
+    let shafts: Shaft[] = this.shaftService.getCurrent();
+    let tshafts: Shaft[];
+
+    shafts  = shafts.filter(shaft => task.canUse(shaft));
+    tshafts = shafts.filter(shaft => this.taskForShaft(shaft));
+
+    if (tshafts.length) {
+      shafts = tshafts;
+    }
+
+    return shafts.sort((sa, sb) => {
+      let a = sa.elevator.floor;
+      let b = sb.elevator.floor;
+      return b > a ? 1 : (a > b ? -1 : (() => {
+        let aa = this.shaftsByTasksDistribution(sa);
+        let bb = this.shaftsByTasksDistribution(sb);
+        return aa > bb ? 1 : ( bb > aa ? -1 : 0 );
+      })());
+    })[0];
+  }
+
+  taskForShaft (shaft: Shaft): boolean {
+    return this.tasks.length ?
+      this.tasks.find(task => (task.shaft.id === shaft.id && task.status <= TASK_CALLED_LOADING)) === undefined
+      : true;
+  }
+
+}

@@ -40,8 +40,7 @@ import {
       (click)="stats()"
       [attr.current]="parent.elevator.current"
       [attr.next]="parent.elevator.next"
-      [ngClass]="{'open':(parent.elevator.open === true)}"
-    >
+      [ngClass]="{'open':(parent.elevator.open === true)}">
       <span class="cube"></span>
     </div>
   `
@@ -65,9 +64,12 @@ export class ElevatorComponent implements OnInit, OnDestroy {
     this.dTaskSubscription = tasksService.destroyTaskStream.subscribe(task => this.destroyTask(task));
   }
 
-  stats (): void {
-    console.debug('Elevator stats');
-    console.dir(this.parent);
+  /*  Stats - On Click
+      @type   private
+      @return void
+   */
+  public stats (): void {
+    //console.debug('Elevator stats');console.dir(this.parent);
   }
 
   /*  Query Task - Event Listener
