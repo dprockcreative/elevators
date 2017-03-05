@@ -13,7 +13,7 @@
     "build:dev": "node uninstall.js && gulp build:dev",
     "build:stage": "node install.js && npm run aot && npm run rollup && npm run sass:compile && gulp build:stage",
     "build:prod": "node install.js && npm run aot && npm run rollup && gulp build:prod",
-    "local": "npm run build:dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "local": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "sass": "sass --watch --no-cache src/sass:src/css",
     "sass:compile": "sass --no-cache -t compressed src/sass/elevators.scss:src/css/elevators.css",
     "lint": "tslint ./app/**/*.ts -t verbose",
