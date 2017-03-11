@@ -8,6 +8,8 @@ import { Task } from '../../../interfaces/index';
 
 import { Number2AlphaPipe } from '../../../pipes/index';
 
+import { WaitsFor } from '../../../extensions/waits-for';
+
 import {
   TASK_CALLED,
   TASK_CALLED_ARRIVED,
@@ -17,8 +19,7 @@ import {
   TASK_DELIVERED_ARRIVED,
   TASK_DELIVERED_UNLOADING,
   TASK_DELIVERED_COMPLETE,
-  TASK_COMPLETE,
-  TASK_STOPS_INTERVAL
+  TASK_COMPLETE
 } from '../../barrel';
 
 import {
@@ -27,7 +28,6 @@ import {
 
 import {
   Elevator,
-  ELEVATOR_CHECK_INTERVAL,
   ELEVATOR_DOOR_DELAY,
   ELEVATOR_LOAD_DELAY
 } from '../index';
@@ -171,39 +171,29 @@ export class ElevatorComponent implements OnInit, OnDestroy {
       let stops;
       let I;
       let SP;
-      let ask = () => {
+      const ask = () => {
         if (!SP) {
           stop = stops[tick];
           this.parent.elevator.goTo(stop);
           this.setTaskStatus(TASK_DELIVERED);
           SP = this.stopProcedure(stop);
-          SP.then(() => (tick++, SP = undefined));
+          SP.then(() => (tick++, SP = undefined, true));
         }
       };
+      const success = () => {
+        stops = this.TASK.stops;
+        return (tick === stops.length) || (ask(), false);
+      };
+      const fail = () => {
+        return this.TASK ? false : true;
+      };
 
-      I = setInterval(() => {
-
-        if (!this.TASK) {
-
-          clearInterval(I);
-          reject('task jettison -> cycleStops');
-
-        } else {
-
-          stops = this.TASK.stops;
-
-          if (tick === stops.length) {
-
-            this.setTaskStatus(TASK_COMPLETE);
-            clearInterval(I);
-            resolve();
-
-          } else {
-            ask();
-          }
-
-        }
-      }, TASK_STOPS_INTERVAL);
+      WaitsFor(success, fail).then(() => {
+        this.setTaskStatus(TASK_COMPLETE);
+        resolve();
+      }).catch(() => {
+        reject('task jettison -> cycleStops');
+      });
     });
   }
 
@@ -255,27 +245,21 @@ export class ElevatorComponent implements OnInit, OnDestroy {
   private arrived (floor: number, status?: number): Promise<any> {
 
     return new Promise((resolve, reject) => {
+      WaitsFor(
+        () => (this.parent.elevator.floor === floor),
+        () => (!this.TASK)
+      ).then(() => {
 
-      let I = setInterval(() => {
+        console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Arrived *Floor ${this.parent.elevator.floor}*`);
 
-        if (!this.TASK) {
+        this.setTaskStatus(status);
+        resolve(true);
 
-          clearInterval(I);
-          reject('task jettison -> arrived');
+      }).catch(() => {
 
-        } else {
+        reject('task jettison -> arrived');
 
-          if (this.parent.elevator.floor === floor) {
-
-            console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Arrived *Floor ${this.parent.elevator.floor}*`);
-
-            this.setTaskStatus(status);
-            clearInterval(I);
-            resolve(true);
-          }
-        }
-      }, ELEVATOR_CHECK_INTERVAL);
-
+      });
     });
   };
 
@@ -285,22 +269,14 @@ export class ElevatorComponent implements OnInit, OnDestroy {
       @return Promise [any]
    */
   private loadUnload (status?: number): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       let T = setTimeout(() => {
 
-        if (!this.TASK) {
+        console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Loading/Unloading`);
 
-          clearTimeout(T);
-          reject('task jettison -> loadUnload');
-
-        } else {
-
-          console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Loading/Unloading`);
-
-          this.setTaskStatus(status);
-          clearTimeout(T);
-          resolve(true);
-        }
+        this.setTaskStatus(status);
+        clearTimeout(T);
+        resolve(true);
       }, ELEVATOR_LOAD_DELAY);
     });
   };
@@ -311,24 +287,16 @@ export class ElevatorComponent implements OnInit, OnDestroy {
       @return Promise [any]
    */
   private openDoors (status?: number): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
 
       this.parent.elevator.open = true;
 
       let T = setTimeout(() => {
+        console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Opening Doors`);
 
-        if (!this.TASK) {
-
-          clearTimeout(T);
-          reject('task jettison -> openDoors');
-
-        } else {
-          console.info(`*Elevator ${this.pipe.transform(this.parent.id)}* Opening Doors`);
-
-          this.setTaskStatus(status);
-          clearTimeout(T);
-          resolve(true);
-        }
+        this.setTaskStatus(status);
+        clearTimeout(T);
+        resolve(true);
       }, ELEVATOR_DOOR_DELAY);
     });
   };
@@ -339,7 +307,7 @@ export class ElevatorComponent implements OnInit, OnDestroy {
       @return Promise [any]
    */
   private closeDoors (status?: number): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
 
       this.parent.elevator.open = false;
 
