@@ -1,40 +1,44 @@
+import { NgZone } from '@angular/core';
+
 import {
   BooleanFunc
 } from '../types';
 
 /**
  *  Waits For
- *  @type private
+ *  @type public
  *  @param callback [(): boolean => {}]
+ *  @param cancels [!optional (): boolean => {}]
  *  @param timeout [!optional number]
  *  @return promise [any]
  */
 export const WaitsFor = (callback: BooleanFunc, cancels?: BooleanFunc, timeout?: number): Promise<any> => {
+  let ngZone = new NgZone(false);
+
   return new Promise((resolve, reject) => {
-
-    if (cancels && cancels()) {
-      reject();
-    }
-
-    let T, I;
-    const iterate = () => {
-      if (callback()) {
-        clearTimeout(I);
-        resolve();
-      } else {
-        I = setTimeout(iterate, 0);
+    ngZone.runOutsideAngular(() => {
+      if (cancels && cancels()) {
+        reject();
       }
-    };
 
-    iterate();
+      let I;
+      let T;
 
-    if (timeout) {
-      T = setTimeout(() => {
-        if (!callback()) {
-          clearTimeout(T);
-          reject(`WaitsFor operation timed out [${callback.toString()}] [${timeout}]`);
+      I = setInterval(() => {
+        if (callback()) {
+          clearInterval(I);
+          resolve();
         }
-      }, timeout);
-    }
+      }, 1);
+
+      if (timeout) {
+        T = setTimeout(() => {
+          if (!callback()) {
+            clearTimeout(T);
+            reject(`WaitsFor operation timed out [${callback.toString()}] [${timeout}]`);
+          }
+        }, timeout);
+      }
+    });
   });
 };
